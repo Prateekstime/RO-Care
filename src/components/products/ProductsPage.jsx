@@ -1,7 +1,7 @@
 
 import { NavLink } from "react-router-dom";
 import { FaRupeeSign } from "react-icons/fa";
-
+import { FaClock, FaShieldAlt, FaCogs, FaArrowCircleRight } from "react-icons/fa";
 import Quality from "../../assets/Quality.png";
 import Customer from "../../assets/Customer.png";
 import Gift from "../../assets/GiftBox.png"
@@ -47,20 +47,20 @@ const ProductsPage = () => {
         { img: Offer2, title: "Kent Automated Water Softener, 3000 LPH" },
     ];
     return (
-      <div className="flex flex-col gap-5  my-2">
+      <div className="flex flex-col gap-5  my-6">
         {/*Title */}
         <div className="flex items-center">
           <div className="flex-grow border-t border-gray-900"></div>
           <span
             className="mx-2
-                text-3xl font-semibold"
+                text-3xl font-semibold text-blue-800 "
           >
             Products
           </span>
           <div className="flex-grow border-t border-gray-900"></div>
         </div>
         {/*Middle */}
-        <div className="flex gap-x-10 mx-20">
+        <div className="flex gap-x-10 mx-4">
           {/* Sidebar */}
           <div className=" flex flex-col w-3/12 p-6 gap-6">
             {/*Product Brands */}
@@ -258,38 +258,40 @@ const ProductsPage = () => {
           </div>
 
           {/*Products Available */}
-          <div className="w-full p-2 border border-gray-300 rounded-md shadow-md">
+          <div className="w-full p-2 border border-gray-300 bg-cyan-50 rounded-md shadow-md">
             <h1 className="text-2xl ">Spare Parts </h1>
             {/* Gray Dashed Line */}
             <div className="my-2 border-t border border-gray-200"></div>
-            <div className="grid grid-cols-2 grid-rows-4 gap-x-20 gap-y-10 px-20 py-5">
+            <div className="grid grid-cols-3 grid-rows-4 gap-x-10 gap-y-10 px-20 py-5">
               {products.map((offer, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center justify-center border border-gray-300 rounded-lg gap-2 py-5"
+                  className="flex flex-col items-center justify-center border bg-white border-gray-300 rounded-lg  py-5"
                 >
+                   <span className="relative -top-2 left-16 z-10  bg-slate-200 rounded-full px-2 text-xs flex items-center">
+                      <div className="w-2 h-2 mr-1 "><FaClock /></div>
+                      30 mins
+                    </span>
                   <img
                     src={offer.img}
                     alt={offer.title}
-                    className="w-[160px] h-[160px] mb-3 border border-gray-200 rounded-lg p-4"
+                    className="w-auto relative h-[160px] mb-3 p-4 "
                   />
-                  <h3 className="text-lg font-semibold mb-2">{offer.title}</h3>
+                  
+                  <h3 className="text-md font-semibold mb-2 border-t border-b">{offer.title}</h3>
                   {/* Rating Row */}
-                  <div className="flex items-center text-gray-600">
+                  <div className="flex items-start  text-gray-600">
                     <img src={BlueStar} alt="Star" className="w-4 h-4 mr-1" />
-                    <span className="font-semibold">4.81</span>
-                    <span className="ml-1">(1.9M Reviews)</span>
+                    <span className="font-semibold text-xs">4.81</span>
+                    <span className="ml-1 text-xs">(1.9M Reviews)</span>
                   </div>
                   {/* Price & Time */}
                   <div className="flex items-center text-gray-600 gap-2">
                     <span className="font-semibold text-lg">₹299.00</span>
-                    <span className=" flex items-center">
-                      <div className="w-3 h-3 rounded-full bg-black"></div>{" "}
-                      Time: 30 mins
-                    </span>
+                   
                   </div>
                   <NavLink to={"/buynow"}>
-                    <button className="px-4 py-2 bg-[#7EC1B1] text-white rounded-lg">
+                    <button className="px-3 mt-2 py-1 bg-[#4ab29a] text-white rounded-lg">
                       Buy Now
                     </button>
                   </NavLink>
