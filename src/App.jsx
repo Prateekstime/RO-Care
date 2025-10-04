@@ -2,6 +2,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Loading from "./pages/Loading";
 import Layout from "./pages/Layout";
+import ProductDetailPage from "./components/products/ProductDetailPage";
 
 const Home = React.lazy(() => import("./components/home/Home"));
 const ServiceusPage = React.lazy(() =>
@@ -69,6 +70,8 @@ function App() {
             />
             <Route path="/services" element={<ServiceusPage />} />
             <Route path="/products" element={<Products />} />
+             <Route path="/product-detail" element={<ProductDetailPage />} />
+
             <Route path="/service-request" element={<ServiceRequest />} />
             <Route path="/buynow" element={<BuyNow />} />
             <Route path="/cart" element={<Cart />} />
