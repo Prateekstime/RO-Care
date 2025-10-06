@@ -383,7 +383,7 @@ const ServicesPage = () => {
       </div>
 
       {/* Rewards & Gifts Section */}
-      <div className="w-full max-w-[100%] h-[400px] flex items-center justify-between bg-[#FFD166] px-10 mx-auto rounded-2xl mt-10">
+      {/* <div className="w-full max-w-[100%] h-[400px] flex items-center justify-between bg-[#FFD166] px-10 mx-auto rounded-2xl mt-10">
         <div className="flex flex-col gap-4">
           <h2 className="text-3xl font-bold text-gray-800">
             Refer and Earn Rewards
@@ -399,7 +399,7 @@ const ServicesPage = () => {
         <div>
           <img src={Gift} alt="Gift Box" className="w-[200px] h-auto" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

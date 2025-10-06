@@ -44,11 +44,11 @@ const EngineerCard = () => {
       >
         {engineers.map((engineer, index) => (
           <SwiperSlide key={index}>
-            <div className="flex flex-col items-center transition-all duration-300 hover:scale-105">
+            <div className="flex py-4 flex-col items-center transition-all duration-300 hover:scale-105">
               <img
                 src={engineer.src}
                 alt={engineer.alt}
-                className="w-full h-[500px] object-cover rounded-lg shadow-md transition-all duration-300 hover:shadow-xl"
+                className="w-full h-[440px] object-cover rounded-lg shadow-md transition-all duration-300 hover:shadow-xl"
               />
             </div>
           </SwiperSlide>
