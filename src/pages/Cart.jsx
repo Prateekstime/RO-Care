@@ -2,43 +2,51 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const [showPaymentSection, setShowPaymentSection] = useState(false);
+  const navigate = useNavigate();
 
- const [showPaymentSection, setShowPaymentSection] = useState(false);
- const navigate = useNavigate();
+  const goToPayment = () => {
+    navigate("/payment");
+  };
 
- const goToPayment = () => {
-   navigate("/payment");
- };
-
- const goToSuccessPage = () => {
-   navigate("/payment");
- };
-
+  const goToSuccessPage = () => {
+    navigate("/payment");
+  };
 
   return (
     <>
-      <div className="w-375">
-        <div className="max-w-[1390px] mx-auto p-6">
-          <h1 className="text-center text-2xl font-semibold border-b border-gray-200 pb-4 mb-6">
-            My Cart
-          </h1>
+      <div className="w-full min-h-screen bg-gray-50">
+        <div className="max-w-[1300px] mx-auto p-6">
+          <div className="bg-gradient-to-r from-teal-500 to-green-600 rounded-lg shadow-lg p-5 mb-8 text-center">
+            <h1 className="text-3xl font-bold text-white tracking-wide flex items-center justify-center gap-2">
+              🛒 My Cart
+            </h1>
+            <p className="text-sm text-teal-100 mt-1">
+              Review your items before checkout
+            </p>
+          </div>
 
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="md:w-2/3">
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Left Section */}
+            <div className="md:w-2/3 space-y-5">
               {/* Delivery Address */}
-              <div className="bg-white rounded  p-4 mb-4 border  border-gray-300">
+              <div className="bg-white rounded-lg shadow-md p-5 border border-gray-200">
                 <div className="flex justify-between items-start">
                   <div>
-                    <span className="text-sm text-gray-600">Deliver to: </span>
-                    <span className="font-medium">Jane Cooper, 39495</span>
-                    <span className="bg-gray-100 px-2 py-0.5 text-xs ml-2">
+                    <span className="text-sm text-gray-500">Deliver to: </span>
+                    <span className="font-semibold text-gray-800">
+                      Jane Cooper, 39495
+                    </span>
+                    <span className="bg-teal-100 text-teal-600 px-2 py-0.5 text-xs ml-2 rounded">
                       Home
                     </span>
                     <div className="text-sm text-gray-600 mt-1">
                       4517 Washington Ave, Manchester, Kentucky 39495
                     </div>
                   </div>
-                  <button className="text-teal-500 text-sm">Change</button>
+                  <button className="text-sm text-teal-600 hover:text-teal-700 font-medium">
+                    Change
+                  </button>
                 </div>
               </div>
 
@@ -46,60 +54,67 @@ const Cart = () => {
               {[1, 2, 3].map((item) => (
                 <div
                   key={item}
-                  className="bg-white rounded border border-gray-300 p-4 mb-4"
+                  className="bg-white rounded-xl shadow-md border border-gray-100 p-5 hover:shadow-xl hover:scale-[1.01] transition-transform relative"
                 >
-                  <div className="flex gap-4 ">
-                    <div className="w-24 h-24 bg-gray-50 rounded flex items-center justify-center">
+                  {/* Discount Badge */}
+                  <span className="absolute top-3 right-3 bg-gradient-to-r from-teal-500 to-green-600 text-white text-xs px-2 py-1 rounded-lg shadow">
+                    25% OFF
+                  </span>
+
+                  <div className="flex gap-6">
+                    {/* Image */}
+                    <div className="w-28 h-28 bg-gray-50 rounded-xl flex items-center justify-center border">
                       <img
                         src="/kent-filter.jpg"
                         alt="KENT Gold Filter"
                         className="w-20 h-20 object-contain"
                       />
                     </div>
-                    <div className="flex-grow">
-                      <div className="flex justify-between">
-                        <h3 className="text-sm font-medium">
+
+                    {/* Details */}
+                    <div className="flex-grow flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-base font-semibold text-gray-800 leading-snug">
                           KENT Gold Spare Kit Gold Pleated Filter Cartridge
                           (0.5, Pack Of 1)
                         </h3>
-                        <div className="text-sm">
-                          <span className="text-gray-600">
-                            Delivery by Sun Jun 2024
-                          </span>
-                          <span className="text-teal-500 ml-2">₹100 Free</span>
-                        </div>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Delivery by{" "}
+                          <span className="font-medium">Sun Jun 2024</span>{" "}
+                          <span className="text-green-600 ml-2">Free</span>
+                        </p>
                       </div>
 
-                      <div className="mt-2">
-                        <span className="text-gray-400 line-through text-sm">
-                          ₹398
-                        </span>
-                        <span className="font-medium ml-2">₹299</span>
-                        <span className="text-teal-500 text-sm ml-2">
-                          25% Off
-                        </span>
-                        <span className="text-teal-500 text-sm ml-2">
-                          1 Offer Available
+                      {/* Price Row */}
+                      <div className="mt-2 flex items-center gap-2 text-sm">
+                        <span className="text-gray-400 line-through">₹398</span>
+                        <span className="font-bold text-gray-800">₹299</span>
+                        <span className="text-teal-600 text-xs font-medium bg-teal-50 px-2 py-0.5 rounded">
+                          1 Offer
                         </span>
                       </div>
 
-                      <div className="flex items-center gap-4 mt-4">
-                        <div className="flex items-center">
-                          <button className="w-6 h-6 rounded-full bg-teal-100 text-teal-500 flex  items-center justify-center">
+                      {/* Actions */}
+                      <div className="flex items-center gap-3 mt-4">
+                        {/* Quantity Selector */}
+                        <div className="flex items-center border rounded-lg overflow-hidden shadow-sm">
+                          <button className="w-8 h-8 bg-gray-100 hover:bg-teal-100 text-teal-600 font-bold">
                             -
                           </button>
-                          <span className="mx-4 border border-gray-500 p-2  ">
+                          <span className="px-4 py-2 border-l border-r text-gray-700 font-medium">
                             3
                           </span>
-                          <button className="w-6 h-6 rounded-full bg-teal-100 text-teal-500 flex items-center justify-center">
+                          <button className="w-8 h-8 bg-gray-100 hover:bg-teal-100 text-teal-600 font-bold">
                             +
                           </button>
                         </div>
-                        <button className="text-teal-500 border border-teal-500 p-1 rounded text-sm">
-                          Mark as Favorite
+
+                        {/* Favorite + Remove */}
+                        <button className="flex items-center gap-1 text-sm text-pink-500 border border-pink-400 px-3 py-1 rounded-full hover:bg-pink-50 transition">
+                          ❤️ Favorite
                         </button>
-                        <button className="text-teal-500 text-sm border border-teal-500 p-1 rounded">
-                          Remove
+                        <button className="flex items-center gap-1 text-sm text-red-500 border border-red-400 px-3 py-1 rounded-full hover:bg-red-50 transition">
+                          🗑️ Remove
                         </button>
                       </div>
                     </div>
@@ -107,152 +122,144 @@ const Cart = () => {
                 </div>
               ))}
 
-              {!showPaymentSection ? (
+              {/* Place Order Button */}
+              {!showPaymentSection && (
                 <button
-                  className="w-40 bg-teal-500 text-white py-3 rounded font-medium ml-auto block"
+                  className="w-48 bg-gradient-to-r from-teal-500 to-teal-600 text-white py-3 rounded-lg font-semibold ml-auto block shadow-md hover:scale-105 transform transition"
                   onClick={() => setShowPaymentSection(true)}
                 >
                   Place Order
                 </button>
-              ) : null}
+              )}
             </div>
 
-            <div className="md:w-1/">
+            {/* Right Section */}
+            <div className="md:w-1/3 space-y-6">
               {/* Price Details */}
-              <div className="bg-white rounded border border-gray-300  pt-2 p-5 mb-3 ">
-                <h2 className="font-semibold mb-4">Price Details</h2>
-                <div className="space-y-2 text-sm border-t pt-2 border-gray-300">
-                  <div className="flex justify-between pt-3">
+              <div className="bg-white rounded-lg shadow-md border p-5">
+                <h2 className="font-bold mb-4 text-lg text-gray-800">
+                  Price Details
+                </h2>
+                <div className="space-y-3 text-sm text-gray-700 border-t pt-3">
+                  <div className="flex justify-between">
                     <span>Price (3 items)</span>
                     <span>₹1187</span>
                   </div>
-                  <div className="flex justify-between pt-3 ">
+                  <div className="flex justify-between">
                     <span>Discount</span>
-                    <span className="text-green-500 ">-₹300</span>
+                    <span className="text-green-600">-₹300</span>
                   </div>
-                  <div className="flex justify-between pt-3">
+                  <div className="flex justify-between">
                     <span>Platform Fee</span>
                     <span>₹3</span>
                   </div>
-                  <div className="flex justify-between pt-3">
+                  <div className="flex justify-between">
                     <span>Delivery Charges</span>
                     <span>
-                      <span className="text-gray-400 line-through">₹300</span>
-                      <span className="text-green-500 ml-1">Free</span>
+                      <span className="line-through text-gray-400">₹300</span>
+                      <span className="text-green-600 ml-1">Free</span>
                     </span>
                   </div>
-                  <div className="border-t pt-2 flex justify-between  border-gray-300 font-semibold pt-3">
+                  <div className="border-t pt-3 flex justify-between font-bold text-gray-800">
                     <span>Total Amount</span>
                     <span>₹900</span>
                   </div>
-                  <div className="text-green-500 text-xs border-t border-gray-300 pt-2">
-                    Your total savings on this order ₹600
-                  </div>
+                  <p className="text-green-600 text-xs pt-2">
+                    You saved ₹600 on this order 🎉
+                  </p>
                 </div>
               </div>
 
               {/* Offers */}
-              <div className="bg-white rounded border border-gray-300 h-61   p-2 mb-4">
-                <h2 className="font-semibold mb-4">Offers</h2>
-                <div className="space-y-5 border-t border-gray-300 ">
+              <div className="bg-white rounded-lg shadow-md border p-5">
+                <h2 className="font-bold mb-4 text-lg text-gray-800">Offers</h2>
+                <div className="space-y-5">
                   {[
                     "UPI Off ₹50",
                     "Debit Card Off ₹100",
                     "Credit Card Off 5%",
                   ].map((offer, index) => (
-                    <div key={index} className="flex gap-3">
-                      <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-500 text-sm">
+                    <div key={index} className="flex gap-3 items-start">
+                      <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 font-bold">
                         %
                       </div>
                       <div>
-                        <div className="font-medium text-sm">{offer}</div>
-                        <div className="text-xs text-gray-600">
+                        <div className="font-medium text-sm text-gray-800">
+                          {offer}
+                        </div>
+                        <div className="text-xs text-gray-500">
                           {index === 0
-                            ? "Pay using any UPI and get instant off ₹50"
+                            ? "Pay using UPI and get instant ₹50 off"
                             : index === 1
-                            ? "Pay using Debit Card and get off ₹100"
+                            ? "Pay using Debit Card and save ₹100"
                             : "Pay using Credit Card and get 5% off"}
                         </div>
                       </div>
                     </div>
                   ))}
-                  <button className="text-teal-500 text-sm">
+                  <button className="text-teal-600 text-sm hover:underline">
                     View More Offers
                   </button>
                 </div>
               </div>
 
-              {/* Safe and Secure Payments Section */}
-              <div className="flex items-center justify-center mt-6 p-4 bg-gray-50 rounded shadow text-sm text-gray-700">
+              {/* Safe Payments */}
+              <div className="bg-gray-50 p-4 rounded-lg border text-gray-600 text-sm flex items-center shadow-sm">
                 <svg
-                  className="w-14 h-10 text-gray-600 mr-2"
+                  className="w-8 h-8 text-teal-500 mr-2"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
                   viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
-                  ></path>
+                  />
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M9 12l2 2 4-4"
-                  ></path>
+                  />
                 </svg>
-                Safe and Secure Payments. Easy Returns. 100% Authentic Products
-                and Services.
-              </div>
-              <div className="flex items-center justify-center text-sm pt-3 gap-2">
-                <span className="text-gray-600">Need Help? Visit the</span>
-                <a href="#" className="text-teal-500">
-                  Help Center
-                </a>
-                <span className="text-gray-600">or</span>
-                <a href="#" className="text-teal-500">
-                  Contact Us
-                </a>
+                Safe & Secure Payments. Easy Returns. 100% Authentic Products.
               </div>
             </div>
           </div>
 
           {/* Payment Section */}
           {showPaymentSection && (
-            <div className="bg-white rounded ">
-              <div className="text-sm mb-3 border-1 h-10 p-1 text-2xl border-gray-300 w-199 rounded">
-                If you are booking any services, please select a time slot for
-                the technician.
-                <button className="ml-2  text-teal-500 border-1  border-teal-500 px-3 py-1 rounded text-sm">
+            <div className="mt-10 bg-white rounded-lg shadow-lg p-6 border space-y-4">
+              <div className="flex items-center justify-between border p-3 rounded-lg bg-gray-50">
+                <span className="text-gray-700 text-sm">
+                  If booking services, please select a time slot
+                </span>
+                <button className="text-teal-600 border border-teal-500 px-3 py-1 rounded-lg text-sm hover:bg-teal-50">
                   Select Time Slot
                 </button>
               </div>
-              <div className="flex items-center mb-3">
-                <div className="text-sm mb-3 w-200 border-1 h-10 p-2 text-2xl border-gray-300 rounded">
-                  <input type="checkbox" id="gst" className="mr-2" />
-                  <label htmlFor="gst">Use GST Invoice</label>
-                </div>
+              <div className="flex items-center border p-3 rounded-lg bg-gray-50">
+                <input type="checkbox" id="gst" className="mr-2" />
+                <label htmlFor="gst" className="text-gray-700 text-sm">
+                  Use GST Invoice
+                </label>
               </div>
               <div
                 onClick={goToPayment}
-                className="text-sm mb-3 w-200 border-1 h-10 p-2 text-2xl border-gray-300 rounded"
+                className="border p-3 rounded-lg bg-gray-50 cursor-pointer hover:shadow-md transition"
               >
-                <h3 className="font-medium text-teal-500 mb-2">
-                  4 Payment Options
+                <h3 className="font-semibold text-teal-600 text-sm">
+                  💳 4 Payment Options
                 </h3>
               </div>
-              <div className="text-sm mb-3 w-200 border-1 h-10 p-2 text-2xl border-gray-300 rounded">
-                <p>
-                  Order confirmation email will be sent to your register email
-                  id{" "}
-                </p>
+              <div className="border p-3 rounded-lg bg-gray-50 text-sm text-gray-700">
+                Order confirmation will be sent to your registered email 📧
               </div>
-              <div className="flex justify-end mt-4 mr-136">
+              <div className="flex justify-end gap-3">
                 <NavLink to={"/cart"}>
                   <button
-                    className="border border-teal-500 text-teal-500 px-4 py-2 rounded mr-2"
+                    className="border border-teal-500 text-teal-600 px-4 py-2 rounded-lg hover:bg-teal-50"
                     onClick={() => setShowPaymentSection(false)}
                   >
                     Back to Cart
@@ -260,7 +267,7 @@ const Cart = () => {
                 </NavLink>
                 <button
                   onClick={goToSuccessPage}
-                  className="bg-teal-500 text-white px-4 py-2 rounded"
+                  className="bg-gradient-to-r from-teal-500 to-teal-600 text-white px-6 py-2 rounded-lg shadow-md hover:scale-105 transform transition"
                 >
                   Continue
                 </button>
