@@ -205,7 +205,7 @@ const ProductsPage = () => {
       </div>
 
       {/* Rewards Section */}
-      <div className="w-full flex flex-col md:flex-row items-center justify-between bg-[#E5DAA1] px-10 md:px-20 py-10 rounded-[16px] shadow-md">
+      {/* <div className="w-full flex flex-col md:flex-row items-center justify-between bg-[#E5DAA1] px-10 md:px-20 py-10 rounded-[16px] shadow-md">
         <div className="flex flex-col gap-4 text-center md:text-left">
           <h2 className="text-3xl font-bold text-gray-800">
             Refer and Earn Rewards
@@ -218,7 +218,7 @@ const ProductsPage = () => {
           </button>
         </div>
         <img src={Gift} alt="Gift Box" className="w-[200px] h-auto mt-5 md:mt-0" />
-      </div>
+      </div> */}
     </div>
   );
 };

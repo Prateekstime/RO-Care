@@ -166,32 +166,6 @@ const Home = () => {
 
 
       {/*Rewards & Gifts */}
-      <div
-        className="w-full max-w-[1420px] h-[400px] flex items-center justify-between 
-                bg-gradient-to-r from-amber-200 to-yellow-300 px-[50px] mx-auto my-5 rounded-[16px] shadow-lg transition-all duration-300 hover:shadow-xl"
-      >
-        {/* Left Side - Text Content */}
-        <div className="flex flex-col gap-4">
-          <h2 className="text-3xl font-bold text-amber-900">
-            Refer and Earn Rewards
-          </h2>
-          <p className="text-lg text-amber-800">
-            Invite and get <span className="font-semibold">₹100 cash back</span>{" "}
-            on your purchase.
-          </p>
-          <button className="w-[160px] h-[48px] bg-amber-600 text-white font-medium rounded-lg transition-all duration-300 hover:bg-amber-700 hover:shadow-md hover:scale-105">
-            Learn More
-          </button>
-        </div>
-
-        <div className="transition-transform duration-300 hover:scale-110">
-          <img
-            src={Gift}
-            alt="Gift Box"
-            className="w-[200px] h-auto object-cover drop-shadow-lg"
-          />
-        </div>
-      </div>
     </div>
   );
 };
