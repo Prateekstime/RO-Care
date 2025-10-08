@@ -83,16 +83,8 @@ const testimonials = [
 
 const CustomerReviewCard = () => {
   return (
-    <div className="max-w-[1440px] mx-auto px-6 py-12">
-      <h2 className="text-3xl font-semibold text-center mb-4 text-blue-800">
-        What Our Customers Say
-      </h2>
-       <div className="w-[340px] mx-auto  h-1 rounded-lg bg-gradient-to-r  mb-2 from-blue-700 via-blue-400 to-blue-700"></div>
-
-      <p className="text-center mx-auto  text-blue-500 mb-10 max-w-2xl ">
-        Don't just take our word for it. See what our satisfied customers have
-        to say about RO Care India services.
-      </p>
+    <div className="max-w-[1440px] mx-auto px-6 py-4">
+  
 
       <Swiper
         modules={[Pagination, Autoplay]}
@@ -163,55 +155,7 @@ const CustomerReviewCard = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="mx-auto flex flex-col md:flex-row bg-white rounded-2xl shadow-xl border border-gray-200">
-        {/* Left Side - Mobile Image Section */}
-        <div className="flex items-center justify-center  overflow-hidden bg-gradient-to-r from-blue-600   to-blue-800 text-white md:w-1/2">
-          {/* Decorative Circles */}
-          <div className="bg-blue-500 h-40 w-40 rounded-full relative -top-52 -left-20 opacity-20"></div>
-
-          <div className="">
-            <div
-              className="bg-blue-700  
-           rounded-2xl shadow-xl"
-            >
-              <img
-                src={RoMobile}
-                alt="Mobile image"
-                className=" md:w-[400px]   h-auto "
-              />
-            </div>
-          </div>
-          <div className="bg-blue-500 h-40 w-40 rounded-full relative -bottom-56 left-20 opacity-20"></div>
-        </div>
-        {/* Right Side - Text Section */}
-        <div className="flex flex-col justify-center md:w-1/2 p-6 md:p-8 text-center md:text-center bg-slate-200">
-          {/* App Description Section */}
-          <div>
-            <h3 className="text-2xl md:text-3xl font-bold text-orange-500 mb-4">
-              The #1 Water Purifier Service App
-            </h3>
-            <p className="text-gray-600 text-lg md:text-sm leading-relaxed">
-              RO Care India mobile app gives you peace of mind at your
-              fingertips. Managing your water purifier has never been easier -
-              from instant bookings to live tracking, everything is just one tap
-              away. Download our app and experience hassle-free water purifier
-              services.
-            </p>
-          </div>
-
-          <div className="mt-6 bg-gray-100 rounded-xl p-6 text-center flex justify-center ">
-            <div className="w-40">
-              <img src={googlePlay} alt="google play" />
-            </div>
-            <div className="mx-4 h-14 bg-slate-500 w-[1px] rounded-lg"></div>
-            <div>
-              <button className="bg-green-500 hover:bg-green-600 text-white w-40 h-12 rounded-lg font-semibold text-lg md:text-xl transition-colors duration-200 shadow-md hover:shadow-lg">
-                Download Now
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+   
     </div>
   );
 };

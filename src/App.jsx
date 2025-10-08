@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Loading from "./pages/Loading";
 import Layout from "./pages/Layout";
 import ProductDetailPage from "./components/products/ProductDetailPage";
+import AllBrands from "./pages/AllBrands";
 
 const Home = React.lazy(() => import("./components/home/Home"));
 const ServiceusPage = React.lazy(() =>
@@ -70,6 +71,7 @@ function App() {
             />
             <Route path="/services" element={<ServiceusPage />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/all-brands" element={<AllBrands />} />
              <Route path="/product-detail" element={<ProductDetailPage />} />
 
             <Route path="/service-request" element={<ServiceRequest />} />

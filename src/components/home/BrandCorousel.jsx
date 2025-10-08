@@ -29,7 +29,7 @@ const brands = [
 
 const BrandCarousel = () => {
   return (
-    <div className="max-w-[1440px] mx-auto px-6 py-12">
+    <div className="max-w-[1440px] mx-auto px-6 py-4">
       <h2 className="text-3xl text-center  font-semibold  mb-2 text-blue-800">
         Trusted By Top Brands
       </h2>

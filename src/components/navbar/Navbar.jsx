@@ -23,7 +23,7 @@ const Header = () => {
   ];
 
   return (
-    <div className="flex border-b-2 shadow-xl bg-cyan-900 text-white border-gray-200 justify-between items-center px-6 py-3 relative">
+    <div className="flex border-b-2 shadow-xl bg-gradient-to-b from-cyan-950  via-cyan-950  to-cyan-900 text-white border-gray-200 justify-between items-center px-6 py-3 relative">
       {/* Left - Logo & Nav */}
       <div className="flex items-center space-x-10">
         <NavLink to="/">
@@ -60,9 +60,9 @@ const Header = () => {
             </NavLink>
 
             {/* Dropdown */}
-            <div className="absolute left-0 top-full hidden group-hover:flex bg-gray-50 shadow-xl p-6 rounded-2xl w-[500px] justify-between z-50">
+            <div className="absolute -right-40  hidden group-hover:flex bg-gray-50 shadow-xl p-4 rounded-2xl w-[540px] justify-between z-50">
               {products.map((col, colIndex) => (
-                <ul key={colIndex} className="space-y-2">
+                <ul key={colIndex} className="space-y-2 text-gray-800">
                   {col.map((item, i) => (
                     <li key={i}>
                       <a
@@ -88,9 +88,9 @@ const Header = () => {
             </NavLink>
 
             {/* Dropdown */}
-            <div className="absolute left-0 top-full hidden group-hover:flex bg-gray-50 shadow-xl p-6 rounded-2xl w-[400px] justify-between z-50">
+            <div className="absolute -right-40 top- hidden group-hover:flex bg-gray-50 shadow-xl p-4 rounded-2xl w-[400px] justify-between z-50">
               {services.map((col, colIndex) => (
-                <ul key={colIndex} className="space-y-2">
+                <ul key={colIndex} className="space-y-2 text-gray-800">
                   {col.map((item, i) => (
                     <li key={i}>
                       <a
@@ -104,6 +104,17 @@ const Header = () => {
                 </ul>
               ))}
             </div>
+          </div>
+
+           <div className="relative group">
+            <NavLink
+              to="/all-brands"
+              className="text-[17px] cursor-pointer hover:text-gray-500"
+            >
+              All Brands
+            </NavLink>
+
+          
           </div>
 
           {/* Service Request Form Button */}

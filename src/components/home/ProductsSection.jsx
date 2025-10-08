@@ -99,7 +99,7 @@ const ProductsSection = () => {
   const products = productsByCategory[activeCategory]; // dynamically get products for selected category
 
   return (
-    <div className="w-full max-w-[1440px] mx-auto px-6 py-12">
+    <div className="w-full max-w-[1440px] mx-auto px-6 py-4">
       <h2 className="text-3xl font-semibold text-center text-blue-900 mb-2">
         Our Products
       </h2>

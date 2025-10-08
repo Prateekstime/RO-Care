@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
       <Header />
   
       {/* Main Content (Grows to push footer down) */}
-      <main className="flex-grow p-2">{children}</main>
+      <main className="flex-grow py-2">{children}</main>
 
       {/* Footer at the Bottom */}
       <Footer />

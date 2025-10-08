@@ -204,21 +204,7 @@ const ProductsPage = () => {
         </div>
       </div>
 
-      {/* Rewards Section */}
-      {/* <div className="w-full flex flex-col md:flex-row items-center justify-between bg-[#E5DAA1] px-10 md:px-20 py-10 rounded-[16px] shadow-md">
-        <div className="flex flex-col gap-4 text-center md:text-left">
-          <h2 className="text-3xl font-bold text-gray-800">
-            Refer and Earn Rewards
-          </h2>
-          <p className="text-lg text-gray-600">
-            Invite and get <span className="font-semibold">₹100 cash back</span> on your purchase.
-          </p>
-          <button className="w-[160px] h-[48px] bg-[#0000004D] text-white font-medium rounded-lg mx-auto md:mx-0">
-            Learn More
-          </button>
-        </div>
-        <img src={Gift} alt="Gift Box" className="w-[200px] h-auto mt-5 md:mt-0" />
-      </div> */}
+
     </div>
   );
 };
