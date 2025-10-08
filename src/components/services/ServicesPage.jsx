@@ -12,9 +12,11 @@ import UnIn from "../../assets/UnIn.png";
 import UnInService from "../../assets/UnInService.png";
 import Quality from "../../assets/Quality.png";
 import Customer from "../../assets/Customer.png";
-import Gift from "../../assets/GiftBox.png";
+import { Check } from "lucide-react";
+import { PhoneCall, Globe, Mail } from "lucide-react";
 
 import { useState } from "react";
+import CustomerReviewCard from "../home/CustomerReviewCard";
 
 const ServicesPage = () => {
   const [price, setPrice] = useState({ min: 99, max: 9999 });
@@ -56,6 +58,32 @@ const ServicesPage = () => {
       review:
         "Lorem ipsum dolor sit amet consectetur. Sed lacus facilisi semper lacus rhoncus cursus...",
       rating: 4,
+    },
+  ];
+   const features = [
+    {
+      title: "Experienced Professionals",
+      desc: "Our highly trained and skilled team ensures top-quality service.",
+    },
+    {
+      title: "Fast & Reliable",
+      desc: "We offer same-day service to keep your RO system running efficiently.",
+    },
+    {
+      title: "Affordable Pricing",
+      desc: "Transparent pricing with no hidden charges.",
+    },
+    {
+      title: "Customer Satisfaction",
+      desc: "100% guaranteed results for pure and healthy water.",
+    },
+    {
+      title: "24/7 Support",
+      desc: "Our team is always ready to assist you with your RO service needs.",
+    },
+    {
+      title: "Trusted Service",
+      desc: "Reliable and expert solutions for all RO maintenance needs.",
     },
   ];
 
@@ -124,6 +152,26 @@ const ServicesPage = () => {
           description: "Annual maintenance contract for your RO system.",
         },
       ],
+    },
+  ];
+    const contactInfo = [
+    {
+      icon: <PhoneCall className="text-white" size={18} />,
+      bg: "bg-blue-600",
+      text: "+91-9268887770",
+      link: "tel:+919268887770",
+    },
+    {
+      icon: <Globe className="text-white" size={18} />,
+      bg: "bg-blue-600",
+      text: "www.rocareindia.com",
+      link: "https://www.rocareindia.com",
+    },
+    {
+      icon: <Mail className="text-white" size={18} />,
+      bg: "bg-blue-600",
+      text: "info@rocareindia.com",
+      link: "mailto:info@rocareindia.com",
     },
   ];
 
@@ -206,8 +254,8 @@ const ServicesPage = () => {
               <div className="w-5 h-5 rounded-full bg-[#1F7A8C]"></div>
             </div>
 
-            <div className="text-gray-600">
-              <FaRupeeSign /> {price.min} - <FaRupeeSign /> {price.max}
+            <div className="text-gray-600 flex ">
+              <FaRupeeSign className="mt-1 text-sm"/> {price.min} - <FaRupeeSign className="mt-1 text-sm" /> {price.max}
             </div>
           </div>
 
@@ -382,24 +430,69 @@ const ServicesPage = () => {
         </div>
       </div>
 
-      {/* Rewards & Gifts Section */}
-      {/* <div className="w-full max-w-[100%] h-[400px] flex items-center justify-between bg-[#FFD166] px-10 mx-auto rounded-2xl mt-10">
-        <div className="flex flex-col gap-4">
-          <h2 className="text-3xl font-bold text-gray-800">
-            Refer and Earn Rewards
-          </h2>
-          <p className="text-lg text-gray-600">
-            Invite and get <span className="font-semibold">₹100 cash back</span>{" "}
-            on your purchase.
-          </p>
-          <button className="w-[160px] h-[48px] bg-[#EF476F] text-white font-medium rounded-lg">
-            Learn More
-          </button>
+       <section className="max-w-7xl mx-auto px-6 py-4">
+      <h2 className="text-center text-xl md:text-2xl font-bold mb-10">
+        Why Choose <span className="text-blue-600">RO Care India</span> Water
+        Purifier Service In India{" "}
+        <span className="text-blue-600 font-semibold">@9268887770?</span>
+      </h2>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        {features.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-start gap-3 bg-gray-100 rounded-lg px-5 py-4 border-l-4 border-blue-600 shadow-sm"
+          >
+            <Check className="text-blue-600 mt-1 flex-shrink-0" size={20} />
+            <div>
+              <h3 className="font-semibold text-lg text-gray-900">
+                {item.title}
+              </h3>
+              <p className="text-gray-700 text-sm md:text-base">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+      <section className="max-w-7xl mx-auto px-6 ">
+      <div className="bg-gray-50 rounded-lg shadow-md p-8 text-center">
+        <h2 className="text-lg md:text-xl font-bold text-gray-800">
+          Book Your Water Purifier Service Today!
+        </h2>
+        <p className="text-gray-600 mt-2">
+          Don’t wait! Get the <span className="font-semibold">Best RO service</span> 
+          at the most competitive rates. Contact rocareindia today for a free 
+          consultation and quote.
+        </p>
+
+        <div className="mt-8 flex flex-col md:flex-row justify-center items-center gap-6">
+          {contactInfo.map((item, index) => (
+            <a
+              key={index}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-white rounded-full shadow-md px-6 py-3 transition hover:shadow-lg w-full md:w-auto"
+            >
+              <div className={`p-2 rounded-full ${item.bg}`}>{item.icon}</div>
+              <span className="text-gray-800 font-medium">{item.text}</span>
+            </a>
+          ))}
         </div>
-        <div>
-          <img src={Gift} alt="Gift Box" className="w-[200px] h-auto" />
-        </div>
-      </div> */}
+      </div>
+    </section>
+
+    <section>
+          <h2 className="text-3xl font-semibold text-center mb-4 text-blue-800">
+        Happiness Guarantee
+      </h2>
+       <div className="w-[340px] mx-auto  h-1 rounded-lg bg-gradient-to-r  mb-2 from-blue-700 via-blue-400 to-blue-700"></div>
+
+    
+      <CustomerReviewCard />
+    </section>
+
+
     </div>
   );
 };

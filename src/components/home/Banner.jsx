@@ -53,7 +53,7 @@ function Banner() {
 
   return (
     <div className="w-full bg-gradient-to-r from-blue-900 via-blue-700 to-cyan-700 relative overflow-hidden">
-      <div className="flex flex-col items-center justify-center relative py-12 z-10">
+      <div className="flex flex-col items-center justify-center relative py-6 z-10">
         <div className="flex items-center justify-center gap-20 px-4">
           {/* Animated Content */}
           <AnimatePresence mode="wait">
@@ -81,7 +81,7 @@ function Banner() {
                   key={banners[currentSlide].image}
                   src={banners[currentSlide].image}
                   alt="Banner"
-                  className="w-[450px] h-[280px] object-contain drop-shadow-2xl"
+                  className="w-[550px] h-[320px] object-contain drop-shadow-2xl"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}

@@ -21,7 +21,7 @@ const EngineerCard = () => {
   ];
 
   return (
-    <div className="relative w-full max-w-[1440px] px-8 mx-auto py-12">
+    <div className="relative w-full max-w-[1440px] px-8 mx-auto py-4">
       <h2 className="text-3xl font-semibold text-center mb-2 text-blue-900">
         What Our Engineers Say
       </h2>
