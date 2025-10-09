@@ -7,13 +7,14 @@ import SystemCheckup from "../../assets/SystemCheckup.png";
 import Banner from "../home/Banner";
 import ProductCard from "../home/ProductCard";
 import ServiceCard from "./ServiceCard.jsx";
-import CategoryCard from "./CategoryCard.jsx";
 import QuickLinkCard from "./QuickLinkCard.jsx";
 import CustomerReviewCard from "./CustomerReviewCard.jsx";
 import BrandCarousel from "./BrandCorousel.jsx";
 import EngineerCard from "./EngineerCard.jsx";
 import ServiceSection from "./ServiceSection.jsx";
 import ProductsSection from "./ProductsSection.jsx";
+import RoMobile from "../../assets/rocareMobile.webp"
+import googlePlay from "../../assets/googleplay.png"
 
 const Home = () => {
   return (
