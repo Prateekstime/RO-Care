@@ -63,7 +63,7 @@ const Footer = () => {
               <li>RO Plant</li>
               <li>Water Softener</li>
               <li>Water Dispenser</li>
-              <li>Water ATM</li>
+              {/* <li>Water ATM</li> */}
               <li>Water Ionizer</li>
               <li>Water Cooler</li>
               <li>Spare Parts</li>
