@@ -6,9 +6,12 @@ import { HiOutlineBell } from "react-icons/hi2";
 import { CiSearch } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 import RequestForm from "../../pages/RequestForm";
+import NotificationOverlay from "../NotificationOverlay";
+
 
 const Header = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+    const [showOverlay, setShowOverlay] = useState(false);
 
   const products = [
     ["Water Purifier", "Vacuum Cleaner", "Water Ionizer", "Air Purifier", "DM Plant", "Swimming Pool Filtration Plant", "Air Conditioner"],
@@ -132,7 +135,13 @@ const Header = () => {
       {/* Right - Icons */}
       <div className="flex items-center text-2xl space-x-6">
         <p className="cursor-pointer hover:text-gray-500">
-          <HiOutlineBell />
+          <HiOutlineBell
+           onClick={() => setShowOverlay(true)}
+          />
+      <NotificationOverlay
+        visible={showOverlay}
+        onClose={() => setShowOverlay(false)}
+      />
         </p>
         <NavLink to={"/cart"}>
           <p className="cursor-pointer hover:text-gray-500">
