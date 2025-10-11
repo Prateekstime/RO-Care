@@ -32,7 +32,6 @@ function Banner() {
 
   const goToSlide = (index) => setCurrentSlide(index);
 
-  // Animation variants for smooth slide effect
   const slideVariants = {
     enter: {
       opacity: 0,
@@ -52,7 +51,14 @@ function Banner() {
   };
 
   return (
-    <div className="w-full bg-gradient-to-r from-blue-900 via-blue-700 to-cyan-700 relative overflow-hidden">
+    <div className="w-full bg-[#212844] relative overflow-hidden rounded-lg">
+      <div className="absolute right-20 rounded-full -top-60 z-10 p-2 border border-[#2C3454] ">
+        <div className="bg-[#2C3454] w-96 h-96 rounded-full"></div>
+        </div>
+
+         <div className="absolute right-72 rounded-full -bottom-20 z-10 p-2 border border-[#2C3454] ">
+        <div className="bg-[#2C3454] w-40 h-40 rounded-full"></div>
+        </div>
       <div className="flex flex-col items-center justify-center relative py-6 z-10">
         <div className="flex items-center justify-center gap-20 px-4">
           {/* Animated Content */}

@@ -1,143 +1,100 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
+import Slider from "react-slick";
 import Purifier from "../../assets/Purifier.png";
 import Offer1 from "../../assets/Offer1.png";
 import Offer2 from "../../assets/Offer2.png";
 import Offer3 from "../../assets/Offer3.png";
 import Offer4 from "../../assets/Offer4.png";
 import Offer5 from "../../assets/Offer5.png";
-import GoRightButton from '../ui/GoRightButton';
-import GoLeft from '../ui/GoLeft';
+import GoRightButton from "../ui/GoRightButton";
+import GoLeft from "../ui/GoLeft";
 
 function CategoryCard() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCards, setVisibleCards] = useState(4);
-
   const categoryData = [
-    {
-      id: 1,
-      image: Purifier,
-      title: "Purifiers",
-    },
-    {
-      id: 2,
-      image: Offer5,
-      title: "Water Softener",
-    },
-    {
-      id: 3,
-      image: Offer3,
-      title: "Water Dispenser",
-    },
-    {
-      id: 4,
-      image: Offer4,
-      title: "Water Cooler",
-    },
-    {
-      id: 5,
-      image: Offer2,
-      title: "Water Ionizer",
-    },
-    {
-      id: 6,
-      image: Offer1,
-      title: "Water Tank",
-    }
+    { id: 1, image: Purifier, title: "Purifiers" },
+    { id: 2, image: Offer5, title: "Water Softener" },
+    { id: 3, image: Offer3, title: "Water Dispenser" },
+    { id: 4, image: Offer4, title: "Water Cooler" },
+    { id: 5, image: Offer2, title: "Water Ionizer" },
+    { id: 6, image: Offer1, title: "Water Tank" },
   ];
 
-  // Create extended array for seamless infinite looping
-  const extendedCategoryData = [...categoryData, ...categoryData, ...categoryData];
+  // Custom navigation buttons
+  const NextArrow = ({ onClick }) => (
+    <button
+      className="absolute right-[-30px] top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-2 rounded-full hover:scale-110 transition"
+      onClick={onClick}
+    >
+      <GoRightButton />
+    </button>
+  );
 
-  // Auto-slide effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => {
-        const newIndex = prevIndex + 1;
-        if (newIndex >= categoryData.length * 2) {
-          return categoryData.length;
-        }
-        return newIndex;
-      });
-    }, 3000);
+  const PrevArrow = ({ onClick }) => (
+    <button
+      className="absolute left-[-30px] top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-2 rounded-full hover:scale-110 transition"
+      onClick={onClick}
+    >
+      <GoLeft />
+    </button>
+  );
 
-    return () => clearInterval(interval);
-  }, [categoryData.length]);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex + 1;
-      return newIndex >= categoryData.length * 2 ? categoryData.length : newIndex;
-    });
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex - 1;
-      return newIndex < 0 ? categoryData.length * 2 - 1 : newIndex;
-    });
-  };
-
-  const getVisibleCategories = () => {
-    return extendedCategoryData.slice(currentIndex, currentIndex + visibleCards);
-  };
-
-  const handleCategoryClick = (categoryId) => {
-    console.log(`Category clicked: ${categoryId}`);
-    // Add your category click logic here
+  // Slider configuration
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    cssEase: "ease-in-out",
+    pauseOnHover: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: { slidesToShow: 4 },
+      },
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 3 },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 2 },
+      },
+      {
+        breakpoint: 480,
+        settings: { slidesToShow: 1 },
+      },
+    ],
   };
 
   return (
-    <div className="relative w-full">
-      <div className="flex justify-between items-center gap-3 overflow-hidden">
-        {/* Left Navigation Button */}
-        <button 
-          className="relative left-2 z-10"
-          onClick={prevSlide}
-        >
-          <GoLeft />
-        </button>
-
-        {/* Categories Container */}
-        <div className="flex my-4 mx-6 flex-1 gap-6 justify-center">
-          {getVisibleCategories().map((category, index) => (
-            <div
-              key={`${category.id}-${currentIndex}-${index}`}
-              onClick={() => handleCategoryClick(category.id)}
-              className="flex-1 flex flex-col items-center p-4 bg-gradient-to-b from-blue-50 to-white border border-blue-200 rounded-[16px] transition-all duration-300 hover:shadow-lg hover:-translate-y-2 hover:border-blue-300 cursor-pointer min-w-[150px]"
-            >
+    <div className="relative w-full px-10 py-6">
+      <Slider {...settings}>
+        {categoryData.map((category) => (
+          <div
+            key={category.id}
+            className="flex flex-col items-center justify-center p-4"
+          >
+            {/* Circle */}
+            <div className="w-40 h-40 flex items-center justify-center bg-gray-50 border border-cyan-400 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-2 hover:border-blue-300 cursor-pointer">
               <img
                 src={category.image}
                 alt={category.title}
-                className="transition-transform h-40 duration-300 hover:scale-110"
+                className="h-24 w-24 object-contain transition-transform duration-300 hover:scale-110"
               />
-              <p className="mt-2 font-medium text-blue-800">{category.title}</p>
             </div>
-          ))}
-        </div>
 
-        {/* Right Navigation Button */}
-        <button 
-          className="relative right-2 z-10"
-          onClick={nextSlide}
-        >
-          <GoRightButton />
-        </button>
-      </div>
-
-      {/* Optional Dots Indicator */}
-      <div className="flex justify-center gap-2 mt-6">
-        {categoryData.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index + categoryData.length)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === (currentIndex % categoryData.length) 
-                ? 'bg-blue-600 scale-125' 
-                : 'bg-gray-300 hover:bg-gray-400'
-            }`}
-          />
+            {/* Text below the circle */}
+            <p className="mt-3 text-base font-semibold text-blue-800 text-center">
+              {category.title}
+            </p>
+          </div>
         ))}
-      </div>
+      </Slider>
     </div>
   );
 }
