@@ -1,5 +1,8 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import Loading from "./pages/Loading";
 import Layout from "./pages/Layout";
 import ProductDetailPage from "./components/products/ProductDetailPage";
