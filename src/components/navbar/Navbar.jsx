@@ -24,7 +24,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
-
+  const [requestForm, setRequestForm] =useState(false)
   const [search, setSearch] = useState("");
 
   return (
@@ -103,9 +103,9 @@ export default function Header() {
             <Link to="/services" className="hover:text-blue-600">
               Services
             </Link>
-            <Link to="/service-request" className="hover:text-blue-600">
+            <ul  onClick={() => setRequestForm(true)} className="hover:text-blue-600">
               Service Request
-            </Link>
+            </ul>
           </nav>
         </div>
         {/* Search Bar */}
@@ -140,6 +140,12 @@ export default function Header() {
           </span>
         </div>
       </div>
+{requestForm && (
+  <div className="absolute top-20 right-10 z-50">
+    <RequestForm requestForm={requestForm} setRequestForm={setRequestForm} onClick={() => setRequestForm(false)} />
+  </div>
+)}
+
     </header>
   );
 }

@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import downArrow from "../assets/downArrow.png";
 import Cross from "../assets/Cross.png";
 
-const RequestForm = ({ onClose }) => {
+
+const RequestForm = ({ setRequestForm }) => {
+  const navigate =useNavigate()
+
   const [formData, setFormData] = useState({
     fullName: "",
     mobileNumber: "",
@@ -17,6 +21,11 @@ const RequestForm = ({ onClose }) => {
   });
   const [submitted, setSubmitted] = useState(false);
 
+    const handleClose = () => {
+      console.log("close clickk")
+    navigate(-1); 
+  };
+
   // Disable background scroll when form is open
   useEffect(() => {
     document.body.classList.add("overflow-hidden");
@@ -30,23 +39,36 @@ const RequestForm = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
+
+    // Simulate successful submission
     setTimeout(() => {
       setSubmitted(false);
-      onClose();
-    }, 3000);
+      if (onClose) onClose(); // ✅ ensure function exists before calling
+    }, 2000);
   };
 
   return (
-    <div className="fixed inset-0  flex items-center justify-center bg-black bg-opacity-50 z-50 px-3">
+    <div
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-3"
+      onClick={handleSubmit
+       
+      }
+    >
       {submitted ? (
-        <div className="bg-green-500 text-white p-4 rounded-md text-center shadow-lg">
+        <div
+          className="bg-green-500 text-white p-4 rounded-md text-center shadow-lg cursor-pointer"
+          onClick={(e) => e.stopPropagation()} 
+        >
           Request submitted, you will receive a call from us.
         </div>
       ) : (
-        <div className="relative w-full  overflow-y-scroll max-h-[500px] max-w-md p-5 bg-white shadow-lg rounded-lg">
+        <div
+          className="relative w-full max-h-[500px] overflow-y-auto max-w-md p-5 bg-white shadow-lg rounded-lg"
+          onClick={(e) => e.stopPropagation()}
+        >
           {/* Close Button */}
           <button
-            onClick={onClose}
+            onClick={()=> {setRequestForm(false)}}
             className="absolute top-2 right-2 hover:opacity-80"
           >
             <img src={Cross} alt="Close" className="w-5 h-5" />
@@ -58,7 +80,7 @@ const RequestForm = ({ onClose }) => {
           </h2>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-2 text-sm flex flex-col h-100 max-h-100">
+          <form onSubmit={handleSubmit} className="space-y-2 text-sm flex flex-col">
             <input
               type="text"
               name="fullName"
@@ -71,7 +93,7 @@ const RequestForm = ({ onClose }) => {
               type="tel"
               name="mobileNumber"
               placeholder="Mobile Number"
-              className="w-full p-2 border  bg-slate-100 rounded"
+              className="w-full p-2 border bg-slate-100 rounded"
               onChange={handleChange}
               required
             />
@@ -84,6 +106,7 @@ const RequestForm = ({ onClose }) => {
               required
             />
 
+            {/* Category + Pin Code */}
             <div className="flex gap-2">
               <div className="relative w-1/2">
                 <select
@@ -112,11 +135,12 @@ const RequestForm = ({ onClose }) => {
               />
             </div>
 
+            {/* State + City */}
             <div className="flex gap-2">
               <div className="relative w-1/2">
                 <select
                   name="state"
-                  className="w-full p-2  text-gray-700 bg-slate-100 border rounded appearance-none"
+                  className="w-full p-2 text-gray-700 bg-slate-100 border rounded appearance-none"
                   onChange={handleChange}
                   required
                 >
@@ -150,7 +174,7 @@ const RequestForm = ({ onClose }) => {
             </div>
 
             {/* Service Type */}
-            <div className="space-y-2 ">
+            <div className="space-y-2">
               {[
                 "Services",
                 "New Purchase",
