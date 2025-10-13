@@ -16,6 +16,7 @@ import ProductsSection from "./ProductsSection.jsx";
 import RoMobile from "../../assets/rocareMobile.webp";
 import googlePlay from "../../assets/googleplay.png";
 import CategoryCard from "../home/CategoryCard.jsx";
+import { FaPhoneAlt } from "react-icons/fa";
 
 
 const Home = () => {
@@ -150,86 +151,61 @@ const Home = () => {
       <div className="w-full max-w-[1440px] ">
         <EngineerCard />
       </div>
-      <div className="w-full max-w-[1440px] "> </div>
+      <div className="w-full max-w-[1440px] ">
+              <h2 className="text-3xl text-center  font-semibold  mb-2">
+                Trusted By Top Brands
+              </h2>
         <BrandCarousel />
+         </div>
 
-        <div>
-          <h2 className="text-3xl font-semibold text-center mb-4 text-blue-800">
+        <div className="w-full max-w-[1440px]">
+          <h2 className="text-3xl font-semibold text-center mb-4 ">
             What Our Customers Say
           </h2>
-          <div className="w-[340px] mx-auto  h-1 rounded-lg bg-gradient-to-r  mb-2 from-blue-700 via-blue-400 to-blue-700"></div>
+          {/* <div className="w-[340px] mx-auto  h-1 rounded-lg bg-gradient-to-r  mb-2 from-blue-700 via-blue-400 to-blue-700"></div> */}
 
-          <p className="text-center mx-auto  text-blue-500 mb-10 max-w-2xl ">
+          <p className="text-center mx-auto  text-gray-600 mb-10 max-w-[1440px] ">
             Don't just take our word for it. See what our satisfied customers
             have to say about RO Care India services.
           </p>
           <CustomerReviewCard />
-          <div className="mx-auto flex flex-col md:flex-row bg-white rounded-2xl shadow-xl border border-gray-200">
-            {/* Left Side - Mobile Image Section */}
-            <div className="flex items-center justify-center  overflow-hidden bg-gradient-to-r from-blue-600   to-blue-800 text-white md:w-1/2">
-              {/* Decorative Circles */}
-              <div className="bg-blue-500 h-40 w-40 rounded-full relative -top-52 -left-20 opacity-20"></div>
 
-              <div className="">
-                <div
-                  className="bg-blue-700  
-           rounded-2xl shadow-xl"
-            >
-              {/* <img
-                src={RoMobile}
-                alt="Mobile image"
-                className=" md:w-[400px]   h-auto "
-              /> */}
-                
-                  <img
-                    src={RoMobile}
-                    alt="Mobile image"
-                    className=" md:w-[400px]   h-auto "
-                  />
-                </div>
-              </div>
-              <div className="bg-blue-500 h-40 w-40 rounded-full relative -bottom-56 left-20 opacity-20"></div>
-            </div>
-            {/* Right Side - Text Section */}
-            <div className="flex flex-col justify-center md:w-1/2 p-6 md:p-8 text-center md:text-center bg-slate-200">
-              {/* App Description Section */}
-              <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-orange-500 mb-4">
-                  The #1 Water Purifier Service App
-                </h3>
-                <p className="text-gray-600 text-lg md:text-sm leading-relaxed">
-                  RO Care India mobile app gives you peace of mind at your
-                  fingertips. Managing your water purifier has never been easier
-                  - from instant bookings to live tracking, everything is just
-                  one tap away. Download our app and experience hassle-free
-                  water purifier services.
-                </p>
-              </div>
+      <div className="w-full py-10 px-6 flex justify-center items-center relative overflow-">
+      <div className="max-w-5xl w-full bg-[#BCBBFF] rounded-xl shadow-md text-center text-gray-900 p-10 relative overflow-hidden">
 
-          <div className="mt-6 bg-gray-100 rounded-xl p-6 text-center flex justify-center ">
-            <div className="w-40">
-              {/* <img src={googlePlay} alt="google play" /> */}
-            </div>
-            <div className="mx-4 h-14 bg-slate-500 w-[1px] rounded-lg"></div>
-            <div>
-              <button className="bg-green-500 hover:bg-green-600 text-white w-40 h-12 rounded-lg font-semibold text-lg md:text-xl transition-colors duration-200 shadow-md hover:shadow-lg">
-                Download Now
-              </button>
-              <div className="mt-6 bg-gray-100 rounded-xl p-6 text-center flex justify-center ">
-                <div className="w-40">
-                  <img src={googlePlay} alt="google play" />
-                </div>
-                <div className="mx-4 h-14 bg-slate-500 w-[1px] rounded-lg"></div>
-                <div>
-                  <button className="bg-green-500 hover:bg-green-600 text-white w-40 h-12 rounded-lg font-semibold text-lg md:text-xl transition-colors duration-200 shadow-md hover:shadow-lg">
-                    Download Now
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Decorative background circles (BEHIND CONTENT) */}
+        <div className="absolute inset-0 z-10">
+          {/* Top Right Circle */}
+          <div className="absolute top-[-100px] right-[50px] w-80 h-80 border border-[#94A6ED] rounded-full "></div>
+          <div className="absolute top-[-84px] right-[64px] w-72 h-72 border border-[#94A6ED] rounded-full bg-[#C5C4FF]"></div>
+
+          {/* Bottom Left Circle */}
+          <div className="absolute bottom-[-180px] right-[200px] w-72 h-72 border border-[#94A6ED]  rounded-full "></div>
+          <div className="absolute bottom-[-166px] right-[216px] w-64 h-64 border border-[#94A6ED] rounded-full bg-[#C5C4FF]"></div>
         </div>
+
+        {/* Heading */}
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 relative z-10">
+          Get the AMC Plan and Save Money
+        </h2>
+
+        {/* Description */}
+        <p className="text-gray-900 leading-relaxed mb-4 max-w-3xl mx-auto relative z-10">
+          Our experts are ready to assist you 24/7. Call us now for personalized
+          guidance and special offers on water purifier services.
+        </p>
+        <p className="text-gray-900 leading-relaxed max-w-3xl mx-auto mb-6 relative z-10">
+          Whether you need emergency repairs, routine maintenance, or a brand new system,
+          our certified professionals will recommend the perfect solution for your
+          specific needs. Don’t guess — get expert advice that saves you time and money.
+        </p>
+
+        {/* Button */}
+        <button className="mt-3 flex items-center justify-center gap-2 mx-auto px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition relative z-10">
+          <FaPhoneAlt /> Contact Us Now
+        </button>
       </div>
+    </div>
       <QuickLinkCard />
 
       <div className="relative w-full max-w-[1420px] justify-between items-center ">

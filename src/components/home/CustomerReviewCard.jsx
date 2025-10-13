@@ -128,7 +128,19 @@ const CustomerReviewCard = () => {
       >
         {testimonials.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="bg-white my-2 rounded-xl shadow-lg p-6 flex flex-col justify-between h-full border border-gray-100 hover:shadow-xl transition-all duration-300">
+            <div className="bg-white my-2 rounded-xl shadow-lg p-6 flex flex-col justify-between w-full border border-gray-100 hover:shadow-xl transition-all duration-300">
+               <div>
+                  <h5 className="font-bold text-gray-800">{item.name}</h5>
+                  <p className="text-sm text-gray-600">{item.location}</p>
+                </div>
+                 <div className="flex items-center gap-3 mt-auto  border-t border-gray-100">
+                <img
+                  src={item.avatar}
+                  alt={item.name}
+                  className="w-10 h-10 rounded-full object-cover border-2 border-blue-100"
+                />
+               
+              </div>
               <div className="mb-2">
                 <div className="text-yellow-500 text-lg mb-3">
                   {"★".repeat(item.rating)}
@@ -140,17 +152,7 @@ const CustomerReviewCard = () => {
                   {item.review}
                 </p>
               </div>
-              <div className="flex items-center gap-3 mt-auto  border-t border-gray-100">
-                <img
-                  src={item.avatar}
-                  alt={item.name}
-                  className="w-10 h-10 rounded-full object-cover border-2 border-blue-100"
-                />
-                <div>
-                  <h5 className="font-bold text-gray-800">{item.name}</h5>
-                  <p className="text-sm text-gray-600">{item.location}</p>
-                </div>
-              </div>
+             
             </div>
           </SwiperSlide>
         ))}
