@@ -16,7 +16,7 @@ const ServiceusPage = React.lazy(() =>
   import("./components/services/ServicesPage")
 );
 const Products = React.lazy(() => import("./components/products/ProductsPage"));
-const ServiceRequest = React.lazy(() => import("./pages/RequestForm"));
+
 const Cart = React.lazy(() => import("./pages/Cart"));
 const BuyNow = React.lazy(() => import("./pages/BuyNow"));
 const OrderCancelled = React.lazy(() =>
@@ -80,7 +80,7 @@ function App() {
             <Route path="/all-brands" element={<AllBrands />} />
              <Route path="/product-detail" element={<ProductDetailPage />} />
 
-            <Route path="/service-request" element={<ServiceRequest />} />
+      
             <Route path="/buynow" element={<BuyNow />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/paymentSuccess" element={<PaymentSuccess />} />
