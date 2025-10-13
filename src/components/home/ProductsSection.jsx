@@ -41,14 +41,14 @@ const categories = [
 // Products grouped by category
 const productsByCategory = {
   "Featured Products": [
-    { id: 1, name: "Doctor Fresh Life Veda RO+UV+UF+TDS Infuser+ME+AS+Alkaline", brand: "RO Care India", price: "₹18,500.00", image: featureImage1 },
-    { id: 2, name: "Revolution Semi-Commercial Water Ionizer", brand: "Chanson India", price: "₹2,60,000.00", image: featureImage2  },
-    { id: 3, name: "Knitters RO Membrane G3000", brand: "Shri Krishna Enterprises", price: "₹2,200.00", image: featureImage3 },
-    { id: 4, name: "Doctor Fresh 250 LPH RO Plant - Platinum", brand: "RO Care India", price: "₹1,50,000.00", image: featureImage4 },
-    { id: 5, name: "Usha Celcius Floor Standing Water Dispenser", brand: "3D Logic", price: "₹14,000.00", image: featureImage5 },
+    { id: 1, name: "RO+UV+UF+TDS ", brand: "RO Care India", price: "₹18,500.00", image: featureImage1 },
+    { id: 2, name: "Water Ionizer", brand: "Chanson India", price: "₹2,60,000.00", image: featureImage2  },
+    { id: 3, name: "Knitters RO ", brand: "Shri Krishna Enterprises", price: "₹2,200.00", image: featureImage3 },
+    { id: 4, name: "250 LPH RO Plant", brand: "RO Care India", price: "₹1,50,000.00", image: featureImage4 },
+    { id: 5, name: "Water Dispenser", brand: "3D Logic", price: "₹14,000.00", image: featureImage5 },
   ],
   "Water Purifier": [
-    { id: 6, name: "PurePro Water Purifier X100", brand: "PurePro", price: "₹12,500.00", image: featureImage1 },
+    { id: 6, name: "Water Purifier", brand: "PurePro", price: "₹12,500.00", image: featureImage1 },
     { id: 7, name: "AquaSafe Home RO", brand: "AquaSafe", price: "₹15,000.00", image: featureImage6 },
     { id: 8, name: "Kent Grand Plus", brand: "Kent", price: "₹18,000.00", image: featureImage7 },
     { id: 9, name: "BlueStar RO Smart", brand: "BlueStar", price: "₹14,500.00", image: featureImage8 },
@@ -59,7 +59,7 @@ const productsByCategory = {
     { id: 12, name: "RO Plant 1000 LPH", brand: "RO Care India", price: "₹3,50,000.00", image:featureImage10 },
     { id: 13, name: "RO Plant 2000 LPH", brand: "Shree Water Solutions", price: "₹6,50,000.00", image: featureImage11 },
     { id: 14, name: "RO Plant Industrial", brand: "Chanson India", price: "₹7,20,000.00", image: featureImage12 },
-    { id: 15, name: "Compact RO Plant 300 LPH", brand: "RO Care India", price: "₹90,000.00", image:featureImage12 },
+    { id: 15, name: "RO Plant 300 ", brand: "RO Care India", price: "₹90,000.00", image:featureImage12 },
   ],
   "Water Softner": [
     { id: 16, name: "SoftPro 50L", brand: "SoftPro", price: "₹45,000.00", image: featureImage13 },
@@ -100,12 +100,11 @@ const ProductsSection = () => {
 
   return (
     <div className="w-full max-w-[1440px] mx-auto px-6 py-4">
-      <h2 className="text-3xl font-semibold text-center text-blue-900 mb-2">
+      <h2 className="text-3xl font-semibold text-center text-black mb-2">
         Our Products
       </h2>
-       <div className="w-[180px] mx-auto  h-1 rounded-lg bg-gradient-to-r  mb-2 from-blue-700 via-blue-400 to-blue-700"></div>
-
-      <p className="text-blue-500 text-center mb-6">
+      
+      <p className=" text-center mb-6">
         Choose the product according your preference.
       </p>
       
@@ -118,8 +117,8 @@ const ProductsSection = () => {
             onClick={() => setActiveCategory(cat)}
             className={`px-4 py-2 rounded-full text-sm font-medium transition ${
               activeCategory === cat
-                ? "bg-blue-600 text-white"
-                : "bg-blue-100 text-blue-700 hover:bg-blue-200"
+                ? "bg-[#70FFDD] text-white"
+                : "bg-gray-200 text-black hover:bg-[#ddfff7]"
             }`}
           >
              {cat} 
@@ -144,6 +143,7 @@ const ProductsSection = () => {
           <SwiperSlide key={product.id}>
             <div className="bg-white border rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
               <div className="flex justify-center items-center h-56 p-4">
+                <div className="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-white px-2 bg-[#008ECC]"> <p>42%<br />Off</p></div>
                 <img
                   src={product.image}
                   alt={product.name}
@@ -151,12 +151,19 @@ const ProductsSection = () => {
                 />
               </div>
               <div className="p-4 flex flex-col gap-2">
-                <p className="text-gray-800 font-medium">{product.name}</p>
-                <p className="text-gray-500 text-sm">{product.brand}</p>
-                <p className="font-semibold text-lg text-blue-900">{product.price}</p>
-                <div>
-                <button className="text-2xl w-10 h-10 flex items-center justify-center bg-blue-200 text-white rounded-full hover:bg-blue-500 transition">
-                  👁️
+                <p className="text-gray-800  font-medium">{product.name}</p>
+                {/* <p className="text-gray-500 text-sm">{product.brand}</p> */}
+                <p className="font-semibold text-sm text-blue-900">{product.price}{"  "}
+              <span className="inline line-through text-gray-500">
+  {product.price + 5000}
+</span>
+                </p>
+                <div className="flex justify-between">
+                <button className="text-md px-2 flex items-center justify-center border border-black rounded-md hover:bg-green-500 transition">
+                  Add to Cart
+                </button>
+                  <button className="text-md px-2 flex items-center justify-center bg-green-400 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
+                  Buy Now
                 </button>
                 </div>
               </div>
@@ -172,8 +179,8 @@ const ProductsSection = () => {
             key={i}
             className="flex flex-col items-center text-center max-w-[140px]"
           >
-            <div className="text-3xl mb-2">{f.icon}</div>
-            <p className="text-gray-700 font-medium">{f.text}</p>
+            {/* <div className="text-3xl mb-2">{f.icon}</div>
+            <p className="text-gray-700 font-medium">{f.text}</p> */}
           </div>
         ))}
       </div>
