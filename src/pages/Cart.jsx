@@ -20,7 +20,7 @@ const Cart = () => {
         {" "}
         <div className="max-w-[1300px] mx-auto p-6">
           {/* Header */}{" "}
-          <div className="bg-gradient-to-r from-sky-500 to-blue-600 rounded-lg shadow-lg p-5 mb-8 text-center">
+          <div className="bg-gradient-to-r from-cyan-500 to-cyan-800 rounded-lg shadow-lg p-5 mb-8 text-center">
             {" "}
             <h1 className="text-3xl font-bold text-white tracking-wide flex items-center justify-center gap-2">
               🛒 My Cart{" "}

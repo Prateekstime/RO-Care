@@ -15,6 +15,7 @@ import EngineerCard from "./EngineerCard.jsx";
 import ServiceSection from "./ServiceSection.jsx";
 import ProductsSection from "./ProductsSection.jsx";
 
+
 const Home = () => {
   return (
     <div className="w-full flex flex-col  items-center justify-center px-1">
@@ -168,11 +169,11 @@ const Home = () => {
               className="bg-blue-700  
            rounded-2xl shadow-xl"
             >
-              <img
+              {/* <img
                 src={RoMobile}
                 alt="Mobile image"
                 className=" md:w-[400px]   h-auto "
-              />
+              /> */}
             </div>
           </div>
           <div className="bg-blue-500 h-40 w-40 rounded-full relative -bottom-56 left-20 opacity-20"></div>
@@ -195,7 +196,7 @@ const Home = () => {
 
           <div className="mt-6 bg-gray-100 rounded-xl p-6 text-center flex justify-center ">
             <div className="w-40">
-              <img src={googlePlay} alt="google play" />
+              {/* <img src={googlePlay} alt="google play" /> */}
             </div>
             <div className="mx-4 h-14 bg-slate-500 w-[1px] rounded-lg"></div>
             <div>
