@@ -30,10 +30,8 @@ const brands = [
 const BrandCarousel = () => {
   return (
     <div className="max-w-[1440px] mx-auto px-6 py-4">
-      <h2 className="text-3xl text-center  font-semibold  mb-2 text-blue-800">
-        Trusted By Top Brands
-      </h2>
-      <div className="w-[300px] mx-auto  h-1 rounded-lg bg-gradient-to-r  mb-8 from-blue-700 via-blue-400 to-blue-700"></div>
+
+      {/* <div className="w-[300px] mx-auto  h-1 rounded-lg bg-gradient-to-r  mb-8 from-blue-700 via-blue-400 to-blue-700"></div> */}
 
       <Swiper
         modules={[Autoplay]}
