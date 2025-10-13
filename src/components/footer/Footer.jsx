@@ -10,9 +10,9 @@ import Wave from "react-wavify";
 
 const Footer = () => {
   return (
-    <footer className="footer relative overflow-hidden text-gray-200">
+    <footer className="footer relative overflow-hidden bg-[#1D283A] text-gray-200">
       {/* Waves */}
-      <div className="waveContainer absolute w-full z-10 -top-12 h-[800px] overflow-hidden bg-gradient-to-b from-blue-800 via-blue-600 to-cyan-600">
+      {/* <div className="waveContainer absolute w-full z-10 -top-12 h-[800px] overflow-hidden bg-gradient-to-b from-blue-800 via-blue-600 to-cyan-600">
         <Wave
           className="wave absolute top-0"
           fill="#1e3a8a"
@@ -31,7 +31,7 @@ const Footer = () => {
           paused={false}
           options={{ height: 120, amplitude: 50, speed: 0.15, points: 6 }}
         />
-      </div>
+      </div> */}
 
       {/* Footer Content */}
       <div className="footerContent relative z-10 pt-6 w-11/12 mx-auto">
@@ -63,7 +63,7 @@ const Footer = () => {
               <li>RO Plant</li>
               <li>Water Softener</li>
               <li>Water Dispenser</li>
-              <li>Water ATM</li>
+              {/* <li>Water ATM</li> */}
               <li>Water Ionizer</li>
               <li>Water Cooler</li>
               <li>Spare Parts</li>

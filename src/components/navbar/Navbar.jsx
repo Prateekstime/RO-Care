@@ -6,149 +6,140 @@ import { HiOutlineBell } from "react-icons/hi2";
 import { CiSearch } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 import RequestForm from "../../pages/RequestForm";
+import NotificationOverlay from "../NotificationOverlay";
+import FilterLogo from "../../assets/filter.svg";
+import userLogo from "../../assets/user.svg";
+import cartLogo from "../../assets/cart.svg";
+import {
+  Search,
+  Bell,
+  ShoppingCart,
+  MapPin,
+  Truck,
+  Wrench,
+  Gift,
+  User,
+} from "lucide-react";
+import { useNavigate, Link } from "react-router-dom";
 
-const Header = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+export default function Header() {
+  const navigate = useNavigate();
 
-  const products = [
-    ["Water Purifier", "Vacuum Cleaner", "Water Ionizer", "Air Purifier", "DM Plant", "Swimming Pool Filtration Plant", "Air Conditioner"],
-    ["RO Plant", "Water Dispenser", "Water Cooler", "Vegetable Purifier", "Water Chiller", "(STP) Sewage Treatment Plant", "Home Appliance"],
-    ["Water Softener", "Water ATM", "Water Filter", "Water Tank", "Water Heater", "(ETP) Effluent Treatment Plant"],
-  ];
-
-  const services = [
-    ["Installation", "Maintenance", "Repair", "AMC Services"],
-    ["Water Testing", "Filter Replacement", "RO Membrane Cleaning"],
-    ["Home Visit", "Industrial Service", "Emergency Service"],
-  ];
+  const [search, setSearch] = useState("");
 
   return (
-    <div className="flex border-b-2 shadow-xl bg-gradient-to-b from-cyan-950  via-cyan-950  to-cyan-900 text-white border-gray-200 justify-between items-center px-6 py-3 relative">
-      {/* Left - Logo & Nav */}
-      <div className="flex items-center space-x-10">
-        <NavLink to="/">
-          <img
-            className="h-[40px] w-[150px] cursor-pointer"
-            src={logo}
-            alt="Logo"
-          />
-        </NavLink>
-
-     
-      </div>
-      <div className="flex gap-6 whitespace-nowrap ">
-
-      {/* Middle - Search Bar */}
-      <div className="relative flex items-center w-full max-w-xs">
-        <span className="absolute left-3 text-gray-500 text-lg">
-          <CiSearch />
+    <header className="w-full shadow-sm border-b border-gray-200">
+      {/* --- Top Bar --- */}
+      <div className="bg-[#F5F5F5] text-sm text-gray-950 flex items-center justify-between px-6 py-2">
+        <span>
+          Welcome to <strong>Techno RO</strong>
         </span>
-        <input
-          type="text"
-          className=" p-2 pl-10 rounded-md border text-white bg-cyan-900 border-cyan-800 focus:outline-none focus:ring-1 focus:ring-gray-700"
-          placeholder="Services,Products,Spare Parts"
-        />
-      </div>
-         <nav className="flex items-center text-white font-semibold space-x-4 relative">
-          {/* Products Menu */}
-          <div className="relative group">
-            <NavLink
-              to="/products"
-              className="text-[17px] cursor-pointer hover:text-gray-500"
-            >
-              Products ▾
-            </NavLink>
-
-            {/* Dropdown */}
-            <div className="absolute -right-40  hidden group-hover:flex bg-gray-50 shadow-xl p-4 rounded-2xl w-[540px] justify-between z-50">
-              {products.map((col, colIndex) => (
-                <ul key={colIndex} className="space-y-2 text-gray-800">
-                  {col.map((item, i) => (
-                    <li key={i}>
-                      <a
-                        href="#"
-                        className="block text-xs hover:text-blue-600 transition"
-                      >
-                        {item}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ))}
-            </div>
-          </div>
-
-          {/* Services Menu */}
-          <div className="relative group">
-            <NavLink
-              to="/services"
-              className="text-[17px] cursor-pointer hover:text-gray-500"
-            >
-              Services ▾
-            </NavLink>
-
-            {/* Dropdown */}
-            <div className="absolute -right-40 top- hidden group-hover:flex bg-gray-50 shadow-xl p-4 rounded-2xl w-[400px] justify-between z-50">
-              {services.map((col, colIndex) => (
-                <ul key={colIndex} className="space-y-2 text-gray-800">
-                  {col.map((item, i) => (
-                    <li key={i}>
-                      <a
-                        href="#"
-                        className="block text-xs hover:text-blue-600 transition"
-                      >
-                        {item}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ))}
-            </div>
-          </div>
-
-           <div className="relative group">
-            <NavLink
-              to="/all-brands"
-              className="text-[17px] cursor-pointer hover:text-gray-500"
-            >
-              All Brands
-            </NavLink>
-
-          
-          </div>
-
-          {/* Service Request Form Button */}
-          <button
-            onClick={() => setIsFormOpen(true)}
-            className="text-[17px] cursor-pointer hover:text-gray-500"
+        <div className="flex items-center gap-4 text-gray-950">
+          <Link
+            to="/address"
+            className="flex items-center gap-1 cursor-pointer hover:text-blue-600"
           >
-            Service Request
-          </button>
+            <MapPin size={16} className="text-blue-600" /> Deliver to{" "}
+            <strong>Address...</strong>
+          </Link>
 
-          {/* Service Request Form Overlay */}
-          {isFormOpen && <RequestForm onClose={() => setIsFormOpen(false)} />}
-        </nav>
+          <div className="h-5 w-[1px] bg-blue-600"></div>
 
-      {/* Right - Icons */}
-      <div className="flex items-center text-2xl space-x-6">
-        <p className="cursor-pointer hover:text-gray-500">
-          <HiOutlineBell />
-        </p>
-        <NavLink to={"/cart"}>
-          <p className="cursor-pointer hover:text-gray-500">
-            <LuShoppingCart />
-          </p>
-        </NavLink>
-        <NavLink to={"/profile"}>
-          <p className="cursor-pointer hover:text-gray-500">
-            <FiUser />
-          </p>
-        </NavLink>
+          <Link
+            to="/track-order"
+            className="flex items-center gap-1 cursor-pointer hover:text-blue-600"
+          >
+            <Truck size={16} className="text-blue-600" /> Track Your Order
+          </Link>
+
+          <div className="h-5 w-[1px] bg-blue-600"></div>
+
+          <Link
+            to="/track-service"
+            className="flex items-center gap-1 cursor-pointer hover:text-blue-600"
+          >
+            <Wrench size={16} className="text-blue-600" /> Track Your Service
+          </Link>
+
+          <div className="h-5 w-[1px] bg-blue-600"></div>
+
+          <Link
+            to="/offers"
+            className="flex items-center gap-1 cursor-pointer hover:text-blue-600"
+          >
+            <Gift size={16} className="text-blue-600" /> All Offers
+          </Link>
+
+          <div className="h-5 w-[1px] bg-blue-600"></div>
+
+          <Link
+            to="/NotificationOverlay"
+            className="flex items-center gap-1 cursor-pointer hover:text-blue-600"
+          >
+            <Bell size={16} className="text-blue-600" /> Notifications
+          </Link>
+        </div>
       </div>
-      </div>
 
-    </div>
+      {/* --- Main Navbar --- */}
+      <div className="flex items-center justify-between px-8 py-3 bg-white">
+        {/* Left Section - Logo */}
+        <div className="flex items-center gap-2">
+          <Link to="/">
+            <img
+              src={logo}
+              alt="Techno RO Logo"
+              className="w-32 h-10 cursor-pointer"
+            />
+          </Link>
+        </div>
+
+        {/* Center Section - Links + Search */}
+        <div className="flex items-center gap-8">
+          <nav className="flex items-center gap-6 text-gray-700 font-medium">
+            <Link to="/products" className="hover:text-blue-600">
+              Products
+            </Link>
+            <Link to="/services" className="hover:text-blue-600">
+              Services
+            </Link>
+            <Link to="/service-request" className="hover:text-blue-600">
+              Service Request
+            </Link>
+          </nav>
+        </div>
+        {/* Search Bar */}
+        <div className="relative flex items-center bg-[#F3F9FB] border border-gray-300 rounded-lg px-4 py-2 w-72">
+          <Search size={18} className="text-blue-500" />
+          <input
+            type="text"
+            placeholder="Search..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="flex-1  ml-2 outline-none bg-transparent text-sm"
+          />
+          <img src={FilterLogo} alt="" />
+        </div>
+
+        {/* Right Section */}
+        <div className="flex items-center gap-6 text-gray-950 font-medium">
+          {/* Sign Up / Log In */}
+          <span
+            onClick={() => navigate("/loginpage")}
+            className="flex items-center gap-2 cursor-pointer hover:text-blue-600"
+          >
+            <img src={userLogo} alt="" /> Sign Up / Log In
+          </span>
+
+          {/* Cart */}
+          <span
+            onClick={() => navigate("/cart")}
+            className="flex items-center gap-2 text-gray-950 cursor-pointer hover:text-blue-600"
+          >
+            <img src={cartLogo} alt="" /> Cart
+          </span>
+        </div>
+      </div>
+    </header>
   );
-};
-
-export default Header;
+}
