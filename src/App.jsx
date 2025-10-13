@@ -10,6 +10,11 @@ import AllBrands from "./pages/AllBrands";
 import Login from "./pages/Login";
 import Register from "./pages/RegisterPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
+import ServiceDetailsPage from "./components/services/ServiceDetailsPage";
+import AmcPlanDetails from "./components/services/AmcPlanDetails";
+import EditProfile from "./pages/EditProfile";
+import ServiceTracking from "./components/services/ServiceTracking";
+import ProductTracking from "./components/products/ProductTracking ";
 
 const Home = React.lazy(() => import("./components/home/Home"));
 const ServiceusPage = React.lazy(() =>
@@ -76,17 +81,20 @@ function App() {
               element={<RegisterProfessional />}
             />
             <Route path="/services" element={<ServiceusPage />} />
+            <Route path="/service-detail" element = {<ServiceDetailsPage/>}/>
+            <Route path="/service-tracking" element = {<ServiceTracking/>}/>
+            <Route path="/amc-plan-detail" element = {<AmcPlanDetails/>}/>
             <Route path="/products" element={<Products />} />
+            <Route path="/tracking-product" element = {<ProductTracking/>}/>
             <Route path="/all-brands" element={<AllBrands />} />
              <Route path="/product-detail" element={<ProductDetailPage />} />
-
-      
             <Route path="/buynow" element={<BuyNow />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/paymentSuccess" element={<PaymentSuccess />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/payment-method" element={<PaymentMethods />} />
             <Route path="/profile" element={<ProfileSetting />} />
+            <Route path="/editprofile" element= {<EditProfile/>}/>
             <Route path="/my-booking" element={<MyBooking />} />
             <Route path="/beforeComplete" element={<BeforeComplete />} />
             <Route path="/orderCompleted" element={<OrderCompleted />} />
@@ -99,6 +107,7 @@ function App() {
             <Route path="/refer" element={<Refer />} />
             <Route path="/chat" element={<ChatWithUs />} />
             <Route path="/help-support" element={<HelpAndSupport />} />
+
             <Route path ="/loginpage" element= {<Login/>}/>
             <Route path ="/registerpage" element= {<Register/>}/>
             <Route path="/resetpassword"element ={<ResetPasswordPage/>}/>
