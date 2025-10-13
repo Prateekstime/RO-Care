@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import img from "../assets/img.png";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -41,248 +40,142 @@ const ProfileSetting = () => {
   };
 
   return (
-    <div className="w-full bg-gray-50 py-6 md:py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Container */}
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-          {/* Sidebar */}
-          <div className="w-full lg:w-72 border border-gray-200 shadow-md rounded-xl p-4 bg-white">
-            <div className="flex items-center gap-3 border-b border-gray-200 pb-4">
-              <div className="relative w-16 h-16">
-                <img
-                  src={user.image}
-                  alt="Profile"
-                  className="rounded-full w-16 h-16 border shadow-md object-cover"
-                />
-                <label
-                  htmlFor="profilePic"
-                  className="absolute bottom-0 right-0 bg-blue-600 p-2 rounded-full cursor-pointer hover:bg-blue-700"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 text-white"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M4 3a2 2 0 00-2 2v1h16V5a2 2 0 00-2-2H4z" />
-                    <path
-                      fillRule="evenodd"
-                      d="M18 8H2v7a2 2 0 002 2h12a2 2 0 002-2V8zm-6 3a2 2 0 11-4 0 2 2 0 014 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </label>
-                <input
-                  id="profilePic"
-                  type="file"
-                  className="hidden"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-              </div>
-
-              <div>
-                <p className="text-gray-500 text-sm">Hello,</p>
-                <h2 className="text-base sm:text-lg font-semibold text-gray-800">
-                  {user.firstName} {user.lastName}
-                </h2>
-              </div>
-            </div>
-
-            <ul className="mt-4 space-y-1 sm:space-y-2">
-              {[
-                { to: "/my-booking", label: "My Bookings" },
-                { to: "/my-amc-plain", label: "My AMC Plans" },
-                { to: "/manage-addresses", label: "Manage Address" },
-                { to: "/payment-method", label: "Manage Payment" },
-                { to: "/favourite-items", label: "Favorite Items" },
-                { to: "/refer", label: "Refer & Earn" },
-                { to: "/help-support", label: "Help & Support" },
-              ].map((item, i) => (
-                <NavLink
-                  key={i}
-                  to={item.to}
-                  className={({ isActive }) =>
-                    `block px-3 py-2 rounded-md text-sm sm:text-base transition-all ${
-                      isActive
-                        ? "bg-blue-100 text-blue-700 font-semibold"
-                        : "text-gray-700 hover:bg-gray-100"
-                    }`
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              ))}
-            </ul>
+    <div className="bg-[#f9fafb] p-6 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {/* Sidebar */}
+        <aside className="bg-white rounded-md border shadow-sm p-4 space-y-4">
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 bg-gray-300 rounded-full" />
+            <h2 className="font-semibold text-gray-800">Eleanor Pena</h2>
           </div>
 
-          {/* Main Profile Card */}
-          <div className="flex-1 bg-white rounded-xl shadow-md p-4 sm:p-6">
-            <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
+          <button className="w-full text-left text-[#1f2937] font-medium border rounded-md py-2 px-3 hover:bg-gray-100">
+            MY PRDERS STATUS
+          </button>
+
+          <div className="border-t pt-3 text-sm text-gray-700 space-y-2">
+            <button
+              className="w-full text-left text-2xl font-semibold text-gray-800 mb-2 hover:text-blue-600 transition-colors"
+              onClick={() => console.log("Account Settings clicked")}
+            >
+              Account Settings
+            </button>
+            <p className="text-[#3b82f6] font-medium">Profile Information</p>
+            <p>Manage Address</p>
+            <p>My Bookings</p>
+            <p>My AMC Plans</p>
+            <p>Favorite Items</p>
+            <p>Settings</p>
+          </div>
+
+          <div className="border-t pt-4 text-sm text-gray-700">
+            <p className="font-medium">PAYMENTS</p>
+          </div>
+
+          <div className="border-t pt-4">
+            <button className="text-red-500 font-medium text-sm">Logout</button>
+          </div>
+        </aside>
+
+        {/* Main Content */}
+        <main className="md:col-span-3 space-y-6">
+          {/* Header */}
+          <div className="flex justify-between items-center">
+            <h3 className="text-xl font-semibold text-gray-800">
               Personal Information
             </h3>
-            <label className="font-semibold block mb-2 text-gray-700 text-sm sm:text-base">
-              Your Name
-            </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button  onClick={() => navigate('/editprofile')} className="text-blue-600 font-medium text-sm">Edit</button>
+          </div>
+
+          {/* Form */}
+          <div className="bg-white rounded-md shadow-sm border p-6 space-y-6">
+            <div>
+              <label className="text-sm font-medium block text-gray-700">
+                Full Name
+              </label>
               <input
                 type="text"
-                name="firstName"
-                value={user.firstName}
-                onChange={handleChange}
-                className="p-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-500 text-sm sm:text-base"
-              />
-              <input
-                type="text"
-                name="lastName"
-                value={user.lastName}
-                onChange={handleChange}
-                className="p-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-500 text-sm sm:text-base"
+                value="Eleanor Pena"
+                readOnly
+                className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1 bg-white text-gray-800"
               />
             </div>
 
-            <label className="font-semibold block mt-6 mb-2 text-gray-700 text-sm sm:text-base">
-              Your Gender
-            </label>
-            <div className="flex flex-wrap gap-3">
-              {["Male", "Female"].map((g) => (
-                <label
-                  key={g}
-                  className={`flex items-center px-3 sm:px-4 py-2 border rounded-md cursor-pointer transition text-sm sm:text-base ${
-                    user.gender === g
-                      ? "border-blue-500 bg-blue-50 text-blue-700 font-medium"
-                      : "border-gray-300 hover:bg-gray-50"
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="gender"
-                    value={g}
-                    checked={user.gender === g}
-                    onChange={handleChange}
-                    className="mr-2"
-                  />
-                  {g}
+            <div>
+              <label className="text-sm font-medium block text-gray-700 mb-1">
+                Your Gender
+              </label>
+              <div className="flex space-x-4">
+                <label className="flex items-center space-x-2 text-gray-700">
+                  <input type="radio" name="gender" className="form-radio" />
+                  <span>Male</span>
                 </label>
+                <label className="flex items-center space-x-2 bg-green-100 border border-green-400 px-4 py-2 rounded-md">
+                  <input type="radio" name="gender" checked readOnly />
+                  <span className="text-green-700 font-medium">Female</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label className="text-sm font-medium block text-gray-700">
+                Email Address
+              </label>
+              <input
+                type="email"
+                value="eleanorpena@abcd.com"
+                readOnly
+                className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1 bg-white text-gray-800"
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-medium block text-gray-700">
+                Mobile Number
+              </label>
+              <input
+                type="tel"
+                value="+91876543210"
+                readOnly
+                className="w-full border border-gray-300 rounded-md px-4 py-2 mt-1 bg-white text-gray-800"
+              />
+            </div>
+          </div>
+
+          {/* FAQ */}
+          <div className="bg-white rounded-md shadow-sm border p-6">
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">
+              Frequently Asked Questions
+            </h4>
+            <div className="space-y-4 text-sm text-gray-800">
+              {[
+                "What happens when I update my email address (or mobile number)?",
+                "You’ll receive all your account related communication on your updated email address (or mobile number).",
+                "When will my Techno RO account be updated with the new email address (or mobile number)?",
+                "It happens as soon as you confirm the verification code sent to your email (or mobile) and save the changes.",
+                "What happens when I update my email address?",
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="flex justify-between items-start border-b pb-3"
+                >
+                  <p>{item}</p>
+                  <span className="text-xl text-gray-500">+</span>
+                </div>
               ))}
             </div>
-
-            <h3 className="text-lg sm:text-xl font-bold mt-8 mb-4 text-gray-800">
-              Contact Information
-            </h3>
-            <label className="font-semibold block mb-2 text-gray-700 text-sm sm:text-base">
-              Email Address
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={user.email}
-              onChange={handleChange}
-              className="w-full p-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-500 text-sm sm:text-base"
-            />
-
-            <label className="font-semibold block mt-6 mb-2 text-gray-700 text-sm sm:text-base">
-              Mobile Number
-            </label>
-            <input
-              type="text"
-              name="mobile"
-              value={user.mobile}
-              onChange={handleChange}
-              className="w-full p-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-500 text-sm sm:text-base"
-            />
-
-            <div className="mt-8 text-right">
-              <button
-                onClick={handleSave}
-                className="w-full sm:w-auto px-6 py-2 rounded-md bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium shadow hover:from-blue-600 hover:to-blue-700 transition text-sm sm:text-base"
-              >
-                Save Changes
-              </button>
-            </div>
           </div>
-        </div>
 
-        {/* FAQ Section */}
-        <div className="mt-8 sm:mt-10 bg-white shadow-md rounded-xl p-4 sm:p-6">
-          <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-800">
-            FAQs
-          </h3>
-          <div className="space-y-5 sm:space-y-6 text-gray-700 text-sm sm:text-base">
-            <div>
-              <p className="font-semibold">
-                What happens when I update my email address (or mobile number)?
-              </p>
-              <p className="mt-2 text-gray-600">
-                Your login email id (or mobile number) changes, likewise. You'll
-                receive all your account-related communication on your updated
-                email address (or mobile number).
-              </p>
-            </div>
-
-            <div>
-              <p className="font-semibold">
-                When will my Techno RO account be updated with the new email
-                address (or mobile number)?
-              </p>
-              <p className="mt-2 text-gray-600">
-                It happens as soon as you confirm the verification code sent to
-                your email (or mobile) and save the changes.
-              </p>
-            </div>
-
-            <div>
-              <p className="font-semibold">
-                What happens to my existing Techno RO account when I update my
-                email address (or mobile number)?
-              </p>
-              <p className="mt-2 text-gray-600">
-                Updating your email address (or mobile number) doesn't
-                invalidate your account. Your account remains fully functional.
-                You'll continue seeing your order history, saved information,
-                and personal details.
-              </p>
-              <button
-                onClick={() => setShowDeleteModal(true)}
-                className="mt-4 px-4 py-2 rounded-md bg-red-100 text-red-600 font-medium hover:bg-red-200 transition"
-              >
-                Delete Account
-              </button>
-            </div>
+          {/* Delete */}
+          <div>
+            <button className="text-red-600 font-medium text-sm">
+              Delete Account
+            </button>
           </div>
-        </div>
+        </main>
       </div>
-
-      {showDeleteModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
-            <h2 className="text-lg font-bold text-gray-800">
-              Confirm Account Deletion
-            </h2>
-            <p className="mt-2 text-gray-600 text-sm">
-              Are you sure you want to delete your account? This action cannot
-              be undone.
-            </p>
-            <div className="mt-4 flex justify-end gap-3">
-              <button
-                onClick={() => setShowDeleteModal(false)}
-                className="px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleDeleteAccount}
-                className="px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
 
 export default ProfileSetting;
-
