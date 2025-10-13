@@ -7,6 +7,9 @@ import Loading from "./pages/Loading";
 import Layout from "./pages/Layout";
 import ProductDetailPage from "./components/products/ProductDetailPage";
 import AllBrands from "./pages/AllBrands";
+import Login from "./pages/Login";
+import Register from "./pages/RegisterPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 const Home = React.lazy(() => import("./components/home/Home"));
 const ServiceusPage = React.lazy(() =>
@@ -96,6 +99,9 @@ function App() {
             <Route path="/refer" element={<Refer />} />
             <Route path="/chat" element={<ChatWithUs />} />
             <Route path="/help-support" element={<HelpAndSupport />} />
+            <Route path ="/loginpage" element= {<Login/>}/>
+            <Route path ="/registerpage" element= {<Register/>}/>
+            <Route path="/resetpassword"element ={<ResetPasswordPage/>}/>
           </Routes>
         </Suspense>
       </Layout>

@@ -17,9 +17,10 @@ import RoMobile from "../../assets/rocareMobile.webp";
 import googlePlay from "../../assets/googleplay.png";
 import CategoryCard from "../home/CategoryCard.jsx";
 
+
 const Home = () => {
   return (
-    <div className="w-full flex flex-col  items-center justify-center px-1">
+    <div className="w-full flex flex-col  items-center justify-center px-1"> 
       <Banner />
       <div className="w-full max-w-[1420px] h-auto px-4">
         <h2 className="text-3xl font-semibold text-start p-5 text-gray-900">
@@ -112,6 +113,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+     
     <div className="w-full flex flex-col max-w-[1440px] rounded-2xl p-3 justify-between items-center">
   <div className="w-full text-left">
     <h2 className="text-3xl font-semibold p-5 text-gray-900">
@@ -148,7 +150,7 @@ const Home = () => {
       <div className="w-full max-w-[1440px] ">
         <EngineerCard />
       </div>
-      <div className="w-full max-w-[1440px] ">
+      <div className="w-full max-w-[1440px] "> </div>
         <BrandCarousel />
 
         <div>
@@ -172,7 +174,13 @@ const Home = () => {
                 <div
                   className="bg-blue-700  
            rounded-2xl shadow-xl"
-                >
+            >
+              {/* <img
+                src={RoMobile}
+                alt="Mobile image"
+                className=" md:w-[400px]   h-auto "
+              /> */}
+                
                   <img
                     src={RoMobile}
                     alt="Mobile image"
@@ -198,6 +206,15 @@ const Home = () => {
                 </p>
               </div>
 
+          <div className="mt-6 bg-gray-100 rounded-xl p-6 text-center flex justify-center ">
+            <div className="w-40">
+              {/* <img src={googlePlay} alt="google play" /> */}
+            </div>
+            <div className="mx-4 h-14 bg-slate-500 w-[1px] rounded-lg"></div>
+            <div>
+              <button className="bg-green-500 hover:bg-green-600 text-white w-40 h-12 rounded-lg font-semibold text-lg md:text-xl transition-colors duration-200 shadow-md hover:shadow-lg">
+                Download Now
+              </button>
               <div className="mt-6 bg-gray-100 rounded-xl p-6 text-center flex justify-center ">
                 <div className="w-40">
                   <img src={googlePlay} alt="google play" />
@@ -227,7 +244,9 @@ const Home = () => {
 
       {/*Rewards & Gifts */}
     </div>
+   </div>
   );
 };
 
-export default Home;
+export default Home ;
+ 
