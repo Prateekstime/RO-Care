@@ -74,12 +74,12 @@ const RequestForm = ({ setRequestForm }) => {
             <img src={Cross} alt="Close" className="w-5 h-5" />
           </button>
 
-          {/* Title */}
+        
           <h2 className="text-lg font-bold mb-4 text-gray-800 text-center">
             Submit Your Request
           </h2>
 
-          {/* Form */}
+         
           <form onSubmit={handleSubmit} className="space-y-2 text-sm flex flex-col">
             <input
               type="text"
