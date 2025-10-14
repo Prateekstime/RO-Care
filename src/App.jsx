@@ -15,6 +15,9 @@ import AmcPlanDetails from "./components/services/AmcPlanDetails";
 import EditProfile from "./pages/EditProfile";
 import ServiceTracking from "./components/services/ServiceTracking";
 import ProductTracking from "./components/products/ProductTracking ";
+import TrackingCanceled from "./components/services/TrackingCancled";
+import SpareParts from "./components/spare/SpareParts";
+import WaterPurifierCheckup from "./components/spare/WaterPurifierCheckup";
 
 const Home = React.lazy(() => import("./components/home/Home"));
 const ServiceusPage = React.lazy(() =>
@@ -86,6 +89,7 @@ function App() {
             <Route path="/amc-plan-detail" element = {<AmcPlanDetails/>}/>
             <Route path="/products" element={<Products />} />
             <Route path="/tracking-product" element = {<ProductTracking/>}/>
+            <Route path="/tracking-cancelled" element= {<TrackingCanceled/>}/>
             <Route path="/all-brands" element={<AllBrands />} />
              <Route path="/product-detail" element={<ProductDetailPage />} />
             <Route path="/buynow" element={<BuyNow />} />
@@ -107,6 +111,8 @@ function App() {
             <Route path="/refer" element={<Refer />} />
             <Route path="/chat" element={<ChatWithUs />} />
             <Route path="/help-support" element={<HelpAndSupport />} />
+            <Route path="/spareparts" element={<SpareParts/>}/>
+            <Route path="/waterpurifiercheckup" element={<WaterPurifierCheckup/>}/>
 
             <Route path ="/loginpage" element= {<Login/>}/>
             <Route path ="/registerpage" element= {<Register/>}/>
