@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
+    const navigate =useNavigate();
   const [editMode] = useState(true); // always in edit mode
   const [profile, setProfile] = useState({
     fullName: 'Eleanor Pena',
@@ -30,52 +32,17 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="bg-[#f9fafb] p-6 max-w-7xl mx-auto">
+    <div className=" max-w-7xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        {/* Sidebar */}
-        <aside className="bg-white rounded-md border shadow-sm p-4 space-y-4">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gray-300 rounded-full overflow-hidden">
-              <img
-                src={profile.image || 'https://via.placeholder.com/48'}
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <h2 className="font-semibold text-gray-800">{profile.fullName}</h2>
-          </div>
-
-          <button className="w-full text-left text-[#1f2937] font-medium border rounded-md py-2 px-3 hover:bg-gray-100">
-            MY PRDERS STATUS
-          </button>
-
-          <div className="border-t pt-4 text-sm text-gray-700 space-y-2">
-             <button
-              className="w-full text-left text-2xl font-semibold text-gray-800 mb-2 hover:text-blue-600 transition-colors"
-              onClick={() => console.log("Account Settings clicked")}
-            >
-              Account Settings
-            </button>
-            <p className="text-[#3b82f6] font-medium">Profile Information</p>
-            <p>Manage Address</p>
-            <p>My Bookings</p>
-            <p>My AMC Plans</p>
-            <p>Favorite Items</p>
-            <p>Settings</p>
-          </div>
-
-          <div className="border-t pt-4 text-sm text-gray-700">
-            <p className="font-medium">PAYMENTS</p>
-          </div>
-        </aside>
+      
 
         {/* Main Content */}
         <main className="md:col-span-3 space-y-6">
             
-          <h3 className="text-xl font-semibold text-gray-800">Personal Information</h3>
+          <h3 className="text-xl font-semibold text-gray-800">Edit Information</h3>
 
           {/* Editable Form */}
-          <div className="bg-white rounded-md shadow-sm border p-6 space-y-6">
+          <div className=" p-6 space-y-6">
             {/* Profile Picture */}
             <div className="flex flex-col items-start space-y-2">
               <label htmlFor="profilePic" className="cursor-pointer relative group">
@@ -161,7 +128,8 @@ const EditProfile = () => {
 
             {/* Save Button */}
             <div className="flex justify-end">
-              <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
+              <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+              onClick={()=>{navigate("/profile/")}}>
                 Save
               </button>
             </div>

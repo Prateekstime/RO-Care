@@ -97,99 +97,40 @@ const DeleteAccount = () => {
             Nulla nisl risus consectetur tellus malesuada nunc.
           </li>
         </ul>
+        <div className="w-full bg-[#70FFDD] rounded-xl p-4 mb-4">
+          <h2 className="text-2xl my-4 font-medium">Deleting account is a permanent action</h2>
+          <p className="max-w-6xl tracking-wide">Please be advised that the deletion of your account is a permanent action.  Once your account is deleted, you will lose Flipkart
+             and Shopsy data  including order history & it will no longer be accessible and cannot be restored under any circumstances.</p>
+        </div>
 
-        <div className="flex items-center mb-4">
+          <div className="flex justify-start">
+
           <input
             type="checkbox"
             id="agree"
             checked={isChecked}
             onChange={handleCheckboxChange}
-            className="mr-2 h-4 w-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+            className="mr-2 mt-1 h-4 w-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
           />
           <label htmlFor="agree" className="text-gray-700">
             Agree to continue delete this account.
           </label>
-        </div>
+          </div>
+        <div className="flex flex-col items-center mb-4 mx-auto">
         <button
           onClick={handleDeleteAccount}
           disabled={!isChecked}
-          className={`w-full py-2 px-4 text-white rounded ${
+          className={`w-fit py-2 px-6 text-white rounded ${
             isChecked
               ? "bg-red-600 hover:bg-red-700"
-              : "bg-red-300 cursor-not-allowed"
+              : "bg-red-500 cursor-not-allowed"
           }`}
         >
           Delete Account
         </button>
+        </div>
       </main>
-      {/* Footer */}
-      <footer className="bg-gray-800 text-gray-400 py-6">
-        <div className="container mx-auto grid md:grid-cols-4 gap-6 text-sm">
-          <div>
-            <h3 className="text-white font-semibold mb-2">Techno RO</h3>
-            <ul className="space-y-1">
-              <li>
-                <a href="#" className="hover:text-white">
-                  About us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Terms & conditions
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Privacy policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Careers
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-white font-semibold mb-2">For customers</h3>
-            <ul className="space-y-1">
-              <li>
-                <a href="#" className="hover:text-white">
-                  Contact us
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-white font-semibold mb-2">For partners</h3>
-            <ul className="space-y-1">
-              <li>
-                <a href="#" className="hover:text-white">
-                  Register as a professional
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-white font-semibold mb-2">Social links</h3>
-            <div className="flex space-x-3">
-              <a href="#" className="hover:text-white">
-                Facebook
-              </a>
-              <a href="#" className="hover:text-white">
-                Twitter
-              </a>
-              <a href="#" className="hover:text-white">
-                Instagram
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="mt-4 text-center text-xs text-gray-500">
-          &copy; Copyright 2025 Techno RO. All rights reserved. | CIN:
-          UID2584937HDR20250101
-        </div>
-      </footer>
+      
     </div>
   );
 };

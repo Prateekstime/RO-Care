@@ -27,6 +27,7 @@ import ProfileInfo from "./pages/profile/ProfileInfo";
 import MyBookings from './pages/profile/MyBookings';
 import MyAMCPlans from "./pages/profile/MyAMCPlans";
 import MyOrders from "./pages/profile/MyOrders";
+import ServiceDetail from "./pages/profile/ServiceDetail";
 
 
 const Home = React.lazy(() => import("./components/home/Home"));
@@ -107,17 +108,22 @@ function App() {
             <Route path="/payment-method" element={<PaymentMethods />} />
             <Route path="/profile" element={<ProfileLayout />}>
              <Route path="/profile/orders" element={<MyOrders />} />
-              <Route path="/profile/info" element={<ProfileInfo />} />
+              <Route path="/profile/" element={<ProfileInfo />} />
+              {/* <Route */}
               <Route path="/profile/address" element={<ManageAddress />} />
               <Route path="/profile/bookings" element={<MyBookings />} />
               <Route path="/profile/amc-plans" element={<MyAMCPlans />} />
               <Route path="/profile/favorites" element={<FavouriteItems />} />
+              <Route path="/profile/edit" element={<EditProfile />} />
+
 
               {/* <Route path="settings" element={<ProfileSettings />} /> */}
             </Route>
+            <Route path="/cancel-reason" element={<CancelReason />}/>
+              <Route path="/order-detail-invoice" element={<ServiceDetail />} />
             <Route path="/beforeComplete" element={<BeforeComplete />} />
             <Route path="/orderCompleted" element={<OrderCompleted />} />
-            <Route path="/orderCancelled" element={<OrderCancelled />} />
+            <Route path="/order-cancelled" element={<OrderCancelled />} />
             <Route path="/cancelReason" element={<CancelReason />} />
             <Route path="/delete-account" element={<DeleteAccount />} />
             <Route path="/my-amc-plain" element={<MyAMCPlan />} />

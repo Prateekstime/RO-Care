@@ -20,7 +20,7 @@ export default function ProfileLayout() {
   };
 
   const menuItems = [
-    { name: "Profile Information", path: "/profile/info" },
+    { name: "Profile Information", path: "/profile/" },
     { name: "Manage Address", path: "/profile/address" },
     { name: "My Bookings", path: "/profile/bookings" },
     { name: "My AMC Plans", path: "/profile/amc-plans" },

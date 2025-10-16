@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function ProfileInfo() {
+  const navigate =useNavigate()
   return (
     <div>
         {/* Main Content */}
@@ -8,7 +11,7 @@ export default function ProfileInfo() {
             <h3 className="text-xl font-semibold text-gray-800">
               Personal Information
             </h3>
-            <button  onClick={() => navigate('/editprofile')} className="text-blue-600 font-medium text-sm">Edit</button>
+            <button  onClick={() => navigate('/profile/edit')} className="text-blue-600 font-medium text-sm">Edit</button>
           </div>
 
           {/* Form */}

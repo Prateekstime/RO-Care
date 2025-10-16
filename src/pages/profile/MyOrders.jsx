@@ -1,5 +1,6 @@
 import React from "react";
-import filterImg from "../../assets/product_1702_1_thumb.webp"; // Replace with your actual product images
+import { useNavigate } from "react-router-dom";
+import filterImg from "../../assets/product_1702_1_thumb.webp"; 
 
 const orders = [
   {
@@ -57,6 +58,7 @@ const orders = [
 ];
 
 export default function MyOrders() {
+    const navigate = useNavigate();
   return (
     <div className="space-y-4">
       <h2 className="text-xl font-semibold text-gray-800 mb-4">
@@ -65,6 +67,7 @@ export default function MyOrders() {
 
       {orders.map((order) => (
         <div
+        onClick={()=>{navigate("/order-detail-invoice")}}
           key={order.id}
           className="flex flex-col md:flex-row items-start md:items-center justify-between border rounded-md shadow-sm p-4 bg-white"
         >
