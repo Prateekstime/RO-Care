@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ViewArrow  from "../../assets/ViewArrow/Iconly/Two-tone/Stroke-1.svg";
+import ViewArrow  from "../../assets/Stroke-1.svg";
 import BlueStar from "../../assets/BlueStar.png";
 import Offer1 from "../../assets/Offer1.png";
 import Offer2 from "../../assets/Offer2.png";

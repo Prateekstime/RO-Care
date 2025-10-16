@@ -12,7 +12,8 @@ import Register from "./pages/RegisterPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ServiceDetailsPage from "./components/services/ServiceDetailsPage";
 import AmcPlanDetails from "./components/services/AmcPlanDetails";
-import EditProfile from "./pages/EditProfile";
+import EditProfile from "./pages/profile/EditProfile";
+
 import ServiceTracking from "./components/services/ServiceTracking";
 import ProductTracking from "./components/products/ProductTracking ";
 
@@ -21,6 +22,11 @@ import ProductCategoryPage from "./components/products/ProductCategoryPage";
 import TrackingCanceled from "./components/services/TrackingCancled";
 import SpareParts from "./components/spare/SpareParts";
 import WaterPurifierCheckup from "./components/spare/WaterPurifierCheckup";
+import ManageAddress from "./pages/profile/ManageAddress";
+import ProfileInfo from "./pages/profile/ProfileInfo";
+import MyBookings from './pages/profile/MyBookings';
+import MyAMCPlans from "./pages/profile/MyAMCPlans";
+import MyOrders from "./pages/profile/MyOrders";
 
 
 const Home = React.lazy(() => import("./components/home/Home"));
@@ -60,9 +66,9 @@ const PaymentSuccess = React.lazy(() =>
 );
 const HelpAndSupport = React.lazy(() => import("./pages/HelpAndSupport"));
 const ChatWithUs = React.lazy(() => import("./pages/ChatWithUs"));
-const ProfileSetting = React.lazy(() => import("./pages/ProfileSetting"));
-const MyBooking = React.lazy(() => import("./pages/ProfileSetting"));
-const DeleteAccount = React.lazy(() => import("./pages/DeleteAccount"));
+const ProfileLayout = React.lazy(() => import("./pages/profile/ProfileLayout"));
+const MyBooking = React.lazy(() => import("./pages/profile/ProfileLayout"));
+const DeleteAccount = React.lazy(() => import("./pages/profile/DeleteAccount"));
 const MyAMCPlan = React.lazy(() => import("./pages/MyAMCPlan"));
 const ManageAddresses = React.lazy(() => import("./pages/ManageAddresses"));
 const FavouriteItems = React.lazy(() => import("./pages/FavouriteItem"));
@@ -99,9 +105,16 @@ function App() {
             <Route path="/paymentSuccess" element={<PaymentSuccess />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/payment-method" element={<PaymentMethods />} />
-            <Route path="/profile" element={<ProfileSetting />} />
-            <Route path="/editprofile" element= {<EditProfile/>}/>
-            <Route path="/my-booking" element={<MyBooking />} />
+            <Route path="/profile" element={<ProfileLayout />}>
+             <Route path="/profile/orders" element={<MyOrders />} />
+              <Route path="/profile/info" element={<ProfileInfo />} />
+              <Route path="/profile/address" element={<ManageAddress />} />
+              <Route path="/profile/bookings" element={<MyBookings />} />
+              <Route path="/profile/amc-plans" element={<MyAMCPlans />} />
+              <Route path="/profile/favorites" element={<FavouriteItems />} />
+
+              {/* <Route path="settings" element={<ProfileSettings />} /> */}
+            </Route>
             <Route path="/beforeComplete" element={<BeforeComplete />} />
             <Route path="/orderCompleted" element={<OrderCompleted />} />
             <Route path="/orderCancelled" element={<OrderCancelled />} />

@@ -28,11 +28,7 @@ export default function Header() {
   }, []);
 
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem("user");
-  //   setUser(null);
-  //   navigate("/loginpage");
-  // };
+
 
   return (
     <header className="w-full shadow-sm border-b border-gray-200">
@@ -130,12 +126,14 @@ export default function Header() {
         </div>
 
         {/* Right Section */}
-        <div className="flex items-center gap-6 text-gray-950 font-medium">
+        <div className="flex items-center gap-6 text-gray-950 font-medium"
+       >
           {/* ✅ Conditionally render user or login */}
           {user ? (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3"
+             onClick={() =>{navigate("/profile")}}>
               <img src={userLogo} alt="User" className="w-5 h-5" />
-              <span className="text-gray-800 font-medium">
+              <span className="text-gray-800 font-medium hover:text-blue-600">
                 Hi, {user.name}
               </span>
               {/* <button

@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import LoginLogo from "../assets/LoginLogo.png"
 
 const Login = () => {
+  const navigate =useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -15,13 +17,18 @@ const Login = () => {
     e.preventDefault();
     localStorage.setItem("user", JSON.stringify({ name: "Prateek" }));
      navigate("/");
-    alert("Login success");
+    // alert("Login success");
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-blue-200">
+    <div className="min-h-screen flex flex-col items-center justify-center">
+      <div className="grid grid-cols-2">
+        <div className="p-4">
+          <img src={LoginLogo} alt="Logo" />
+        </div>
+
       {/* Card */}
-      <div className="bg-white shadow-2xl rounded-2xl p-8 w-96">
+      <div className="bg-white shadow-2xl rounded-2xl p-8 h-fit mx-auto my-auto w-96">
         {/* Heading */}
         <h1 className="text-3xl font-bold text-center text-blue-700 mb-2">
           RO <span className="text-blue-500">Techno</span>
@@ -97,6 +104,7 @@ const Login = () => {
             </Link>
           </p>
         </form>
+      </div>
       </div>
     </div>
   );
