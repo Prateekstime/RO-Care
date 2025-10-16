@@ -162,7 +162,7 @@ const ProductsSection = () => {
                 <button className="text-md px-2 flex items-center justify-center border border-black rounded-md hover:bg-green-500 transition">
                   Add to Cart
                 </button>
-                  <button className="text-md px-2 flex items-center justify-center bg-green-400 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
+                  <button className="text-sm  px-2 flex items-center justify-center bg-green-500 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
                   Buy Now
                 </button>
                 </div>

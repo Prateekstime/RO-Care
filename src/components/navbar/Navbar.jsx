@@ -1,12 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../../assets/logo.png";
-import { FiUser } from "react-icons/fi";
-import { LuShoppingCart } from "react-icons/lu";
-import { HiOutlineBell } from "react-icons/hi2";
-import { CiSearch } from "react-icons/ci";
-import { NavLink } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import RequestForm from "../../pages/RequestForm";
-import NotificationOverlay from "../NotificationOverlay";
 import FilterLogo from "../../assets/filter.svg";
 import userLogo from "../../assets/user.svg";
 import cartLogo from "../../assets/cart.svg";
@@ -18,14 +13,26 @@ import {
   Truck,
   Wrench,
   Gift,
-  User,
 } from "lucide-react";
-import { useNavigate, Link } from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
-  const [requestForm, setRequestForm] =useState(false)
+  const [requestForm, setRequestForm] = useState(false);
   const [search, setSearch] = useState("");
+  const [user, setUser] = useState(null);
+
+  // ✅ Check for user in localStorage
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) setUser(JSON.parse(storedUser));
+  }, []);
+
+
+  // const handleLogout = () => {
+  //   localStorage.removeItem("user");
+  //   setUser(null);
+  //   navigate("/loginpage");
+  // };
 
   return (
     <header className="w-full shadow-sm border-b border-gray-200">
@@ -94,20 +101,21 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Center Section - Links + Search */}
+        {/* Center Section */}
         <div className="flex items-center gap-8">
           <nav className="flex items-center gap-6 text-gray-700 font-medium">
-            <Link to="/products" className="hover:text-blue-600">
+            <Link to="/product-category" className="hover:text-blue-600">
               Products
             </Link>
             <Link to="/services" className="hover:text-blue-600">
               Services
             </Link>
-            <ul  onClick={() => setRequestForm(true)} className="hover:text-blue-600">
+            <ul onClick={() => setRequestForm(true)} className="hover:text-blue-600 cursor-pointer">
               Service Request
             </ul>
           </nav>
         </div>
+
         {/* Search Bar */}
         <div className="relative flex items-center bg-[#F3F9FB] border border-gray-300 rounded-lg px-4 py-2 w-72">
           <Search size={18} className="text-blue-500" />
@@ -116,36 +124,56 @@ export default function Header() {
             placeholder="Search..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="flex-1  ml-2 outline-none bg-transparent text-sm"
+            className="flex-1 ml-2 outline-none bg-transparent text-sm"
           />
-          <img src={FilterLogo} alt="" />
+          <img src={FilterLogo} alt="Filter" />
         </div>
 
         {/* Right Section */}
         <div className="flex items-center gap-6 text-gray-950 font-medium">
-          {/* Sign Up / Log In */}
-          <span
-            onClick={() => navigate("/loginpage")}
-            className="flex items-center gap-2 cursor-pointer hover:text-blue-600"
-          >
-            <img src={userLogo} alt="" /> Sign Up / Log In
-          </span>
+          {/* ✅ Conditionally render user or login */}
+          {user ? (
+            <div className="flex items-center gap-3">
+              <img src={userLogo} alt="User" className="w-5 h-5" />
+              <span className="text-gray-800 font-medium">
+                Hi, {user.name}
+              </span>
+              {/* <button
+                onClick={handleLogout}
+                className="text-sm text-red-500 hover:underline"
+              >
+                Logout
+              </button> */}
+            </div>
+          ) : (
+            <span
+              onClick={() => navigate("/loginpage")}
+              className="flex items-center gap-2 cursor-pointer hover:text-blue-600"
+            >
+              <img src={userLogo} alt="user" /> Sign Up / Log In
+            </span>
+          )}
 
           {/* Cart */}
           <span
             onClick={() => navigate("/cart")}
-            className="flex items-center gap-2 text-gray-950 cursor-pointer hover:text-blue-600"
+            className="flex items-center gap-2 cursor-pointer hover:text-blue-600"
           >
-            <img src={cartLogo} alt="" /> Cart
+            <img src={cartLogo} alt="cart" /> Cart
           </span>
         </div>
       </div>
-{requestForm && (
-  <div className="absolute top-20 right-10 z-50">
-    <RequestForm requestForm={requestForm} setRequestForm={setRequestForm} onClick={() => setRequestForm(false)} />
-  </div>
-)}
 
+      {/* --- Request Form Modal --- */}
+      {requestForm && (
+        <div className="absolute top-20 right-10 z-50">
+          <RequestForm
+            requestForm={requestForm}
+            setRequestForm={setRequestForm}
+            onClick={() => setRequestForm(false)}
+          />
+        </div>
+      )}
     </header>
   );
 }

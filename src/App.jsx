@@ -15,6 +15,7 @@ import AmcPlanDetails from "./components/services/AmcPlanDetails";
 import EditProfile from "./pages/EditProfile";
 import ServiceTracking from "./components/services/ServiceTracking";
 import ProductTracking from "./components/products/ProductTracking ";
+import ProductCategoryPage from "./components/products/ProductCategoryPage";
 
 const Home = React.lazy(() => import("./components/home/Home"));
 const ServiceusPage = React.lazy(() =>
@@ -74,12 +75,10 @@ function App() {
             <Route path="/About" element={<About />} />
             <Route path="/terms&condition" element={<TermsCondition />} />
             <Route path="/privacy" element={<Home />} />
+            <Route path="/product-category" element={<ProductCategoryPage />} />            
             <Route path="/careers" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
-            <Route
-              path="/register-for-professional"
-              element={<RegisterProfessional />}
-            />
+            <Route path="/register-for-professional"  element={<RegisterProfessional />}            />
             <Route path="/services" element={<ServiceusPage />} />
             <Route path="/service-detail" element = {<ServiceDetailsPage/>}/>
             <Route path="/service-tracking" element = {<ServiceTracking/>}/>
@@ -107,7 +106,6 @@ function App() {
             <Route path="/refer" element={<Refer />} />
             <Route path="/chat" element={<ChatWithUs />} />
             <Route path="/help-support" element={<HelpAndSupport />} />
-
             <Route path ="/loginpage" element= {<Login/>}/>
             <Route path ="/registerpage" element= {<Register/>}/>
             <Route path="/resetpassword"element ={<ResetPasswordPage/>}/>

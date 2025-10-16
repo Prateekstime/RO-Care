@@ -13,7 +13,9 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Login clicked!");
+    localStorage.setItem("user", JSON.stringify({ name: "Prateek" }));
+     navigate("/");
+    alert("Login success");
   };
 
   return (
