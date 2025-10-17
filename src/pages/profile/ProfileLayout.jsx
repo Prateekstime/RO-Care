@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { LogOut, User, CreditCard, ShoppingBag } from "lucide-react";
+import { LogOut, User, CreditCard, ShoppingBag, Settings } from "lucide-react";
 import img from "../../assets/img.png";
 
 export default function ProfileLayout() {
@@ -22,13 +22,12 @@ export default function ProfileLayout() {
   const menuItems = [
     { name: "Profile Information", path: "/profile/" },
     { name: "Manage Address", path: "/profile/address" },
-    { name: "My Bookings", path: "/profile/bookings" },
     { name: "My AMC Plans", path: "/profile/amc-plans" },
     { name: "Favorite Items", path: "/profile/favorites" },
-    { name: "Settings", path: "/profile/settings" },
+  
   ];
 
-  // ✅ Check if the current route is order status
+ 
   const isOrderStatus = location.pathname.includes("/profile/orders");
 
   return (
@@ -57,7 +56,7 @@ export default function ProfileLayout() {
           >
             <span className="flex items-center gap-2">
               <ShoppingBag size={16} />
-              MY ORDERS STATUS
+              MY BOOKINGS
             </span>
             <span>{">"}</span>
           </NavLink>
@@ -121,6 +120,20 @@ export default function ProfileLayout() {
                   </NavLink>
                 ))}
               </div>
+                   <NavLink
+            to="/profile/settings"
+            className={({ isActive }) =>
+              `flex items-center justify-between border-b pb-2 text-sm font-semibold ${
+                isActive ? "text-purple-600" : "text-gray-800"
+              }`
+            }
+          >
+            <span className="flex items-center gap-2">
+              <Settings size={16} />
+              Settings
+            </span>
+            <span>{">"}</span>
+          </NavLink>
 
               <div className="border-t pt-4 text-sm text-gray-700">
                 <p className="flex items-center gap-2 font-semibold text-lg">

@@ -21,14 +21,11 @@ export default function Header() {
   const [search, setSearch] = useState("");
   const [user, setUser] = useState(null);
 
-  // ✅ Check for user in localStorage
+  // ✅ Load user from localStorage
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) setUser(JSON.parse(storedUser));
   }, []);
-
-
-
 
   return (
     <header className="w-full shadow-sm border-b border-gray-200">
@@ -49,7 +46,7 @@ export default function Header() {
           <div className="h-5 w-[1px] bg-blue-600"></div>
 
           <Link
-            to="/track-order"
+            to="/product-tracking"
             className="flex items-center gap-1 cursor-pointer hover:text-blue-600"
           >
             <Truck size={16} className="text-blue-600" /> Track Your Order
@@ -58,7 +55,7 @@ export default function Header() {
           <div className="h-5 w-[1px] bg-blue-600"></div>
 
           <Link
-            to="/track-service"
+            to="/service-tracking"
             className="flex items-center gap-1 cursor-pointer hover:text-blue-600"
           >
             <Wrench size={16} className="text-blue-600" /> Track Your Service
@@ -85,32 +82,27 @@ export default function Header() {
       </div>
 
       {/* --- Main Navbar --- */}
-      <div className="flex items-center justify-between px-8 py-3 bg-white">
+      <div className="flex items-center justify-between px-8 py-3 bg-white max-w-[1440px] mx-auto">
         {/* Left Section - Logo */}
-        <div className="flex items-center gap-2">
-          <Link to="/">
-            <img
-              src={logo}
-              alt="Techno RO Logo"
-              className="w-32 h-10 cursor-pointer"
-            />
-          </Link>
-        </div>
+        <Link to="/" className="flex items-center gap-2">
+          <img src={logo} alt="Techno RO Logo" className="w-32 h-10 cursor-pointer" />
+        </Link>
 
         {/* Center Section */}
-        <div className="flex items-center gap-8">
-          <nav className="flex items-center gap-6 text-gray-700 font-medium">
-            <Link to="/product-category" className="hover:text-blue-600">
-              Products
-            </Link>
-            <Link to="/services" className="hover:text-blue-600">
-              Services
-            </Link>
-            <ul onClick={() => setRequestForm(true)} className="hover:text-blue-600 cursor-pointer">
-              Service Request
-            </ul>
-          </nav>
-        </div>
+        <nav className="flex items-center gap-6 text-gray-700 font-medium">
+          <Link to="/product-category" className="hover:text-blue-600">
+            Products
+          </Link>
+          <Link to="/services" className="hover:text-blue-600">
+            Services
+          </Link>
+          <span
+            onClick={() => setRequestForm(true)}
+            className="hover:text-blue-600 cursor-pointer"
+          >
+            Service Request
+          </span>
+        </nav>
 
         {/* Search Bar */}
         <div className="relative flex items-center bg-[#F3F9FB] border border-gray-300 rounded-lg px-4 py-2 w-72">
@@ -126,22 +118,16 @@ export default function Header() {
         </div>
 
         {/* Right Section */}
-        <div className="flex items-center gap-6 text-gray-950 font-medium"
-       >
-          {/* ✅ Conditionally render user or login */}
+        <div className="flex items-center gap-6 text-gray-950 font-medium">
           {user ? (
-            <div className="flex items-center gap-3"
-             onClick={() =>{navigate("/profile")}}>
+            <div
+              className="flex items-center gap-3 cursor-pointer"
+              onClick={() => navigate("/profile")}
+            >
               <img src={userLogo} alt="User" className="w-5 h-5" />
               <span className="text-gray-800 font-medium hover:text-blue-600">
                 Hi, {user.name}
               </span>
-              {/* <button
-                onClick={handleLogout}
-                className="text-sm text-red-500 hover:underline"
-              >
-                Logout
-              </button> */}
             </div>
           ) : (
             <span
@@ -162,14 +148,22 @@ export default function Header() {
         </div>
       </div>
 
-      {/* --- Request Form Modal --- */}
+      {/* --- Request Form Overlay --- */}
       {requestForm && (
-        <div className="absolute top-20 right-10 z-50">
-          <RequestForm
-            requestForm={requestForm}
-            setRequestForm={setRequestForm}
-            onClick={() => setRequestForm(false)}
-          />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="relative bg-white rounded-2xl shadow-xl w-[90%] max-w-[600px] p-6">
+            <button
+              onClick={() => setRequestForm(false)}
+              className="absolute top-3 right-4 text-gray-600 hover:text-red-500 text-lg font-bold"
+            >
+              ✕
+            </button>
+            <RequestForm
+              requestForm={requestForm}
+              setRequestForm={setRequestForm}
+              onClose={() => setRequestForm(false)}
+            />
+          </div>
         </div>
       )}
     </header>

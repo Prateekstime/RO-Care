@@ -11,7 +11,7 @@ const CancelReason = () => {
    
   useEffect(() => {
     if (submit) {
-      navigate('/orderCancelled'); 
+      navigate('/order-cancelled'); 
     }
   }, [submit, navigate]);
 

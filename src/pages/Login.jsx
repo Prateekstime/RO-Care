@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("user", JSON.stringify({ name: "Prateek" }));
+    localStorage.setItem("user", JSON.stringify({ name: "Amit" }));
      navigate("/");
     // alert("Login success");
   };

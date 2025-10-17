@@ -13,10 +13,8 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ServiceDetailsPage from "./components/services/ServiceDetailsPage";
 import AmcPlanDetails from "./components/services/AmcPlanDetails";
 import EditProfile from "./pages/profile/EditProfile";
-
 import ServiceTracking from "./components/services/ServiceTracking";
 import ProductTracking from "./components/products/ProductTracking ";
-
 import ProductCategoryPage from "./components/products/ProductCategoryPage";
 // added
 import TrackingCanceled from "./components/services/TrackingCancled";
@@ -28,6 +26,9 @@ import MyBookings from './pages/profile/MyBookings';
 import MyAMCPlans from "./pages/profile/MyAMCPlans";
 import MyOrders from "./pages/profile/MyOrders";
 import ServiceDetail from "./pages/profile/ServiceDetail";
+import Settings from "./pages/profile/Settings";
+import PrivacyPage from "./pages/PrivacyPage";
+
 
 
 const Home = React.lazy(() => import("./components/home/Home"));
@@ -84,10 +85,10 @@ function App() {
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route index element={<Home />} />
-            <Route path="/About" element={<About />} />
+            
+            <Route path="/about" element={<About />} />
             <Route path="/terms&condition" element={<TermsCondition />} />
-            <Route path="/privacy" element={<Home />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/product-category" element={<ProductCategoryPage />} />            
             <Route path="/careers" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
@@ -97,7 +98,7 @@ function App() {
             <Route path="/service-tracking" element = {<ServiceTracking/>}/>
             <Route path="/amc-plan-detail" element = {<AmcPlanDetails/>}/>
             <Route path="/products" element={<Products />} />
-            <Route path="/tracking-product" element = {<ProductTracking/>}/>
+            <Route path="/product-tracking" element = {<ProductTracking/>}/>
             <Route path="/tracking-cancelled" element= {<TrackingCanceled/>}/>
             <Route path="/all-brands" element={<AllBrands />} />
              <Route path="/product-detail" element={<ProductDetailPage />} />
@@ -117,7 +118,7 @@ function App() {
               <Route path="/profile/edit" element={<EditProfile />} />
 
 
-              {/* <Route path="settings" element={<ProfileSettings />} /> */}
+              <Route path="/profile/settings" element={<Settings />} />
             </Route>
             <Route path="/cancel-reason" element={<CancelReason />}/>
               <Route path="/order-detail-invoice" element={<ServiceDetail />} />
@@ -136,7 +137,7 @@ function App() {
             <Route path="/waterpurifiercheckup" element={<WaterPurifierCheckup/>}/>
             <Route path ="/loginpage" element= {<Login/>}/>
             <Route path ="/registerpage" element= {<Register/>}/>
-            <Route path="/resetpassword"element ={<ResetPasswordPage/>}/>
+            <Route path="/reset-password"element ={<ResetPasswordPage/>}/>
           </Routes>
         </Suspense>
       </Layout>
