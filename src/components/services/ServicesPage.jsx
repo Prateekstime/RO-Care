@@ -36,11 +36,11 @@ const ServicesPage = () => {
       max: newMax,
     }));
   };
-  // Customer reviews
+
   const reviews = [
     {
       name: "Devon Lane",
-      date: "24 Dec, 2024",
+      date: "24 Nov, 2024",
       review:
         "Lorem ipsum dolor sit amet consectetur. Sed lacus facilisi semper lacus rhoncus cursus...",
       rating: 4,
@@ -205,7 +205,7 @@ const ServicesPage = () => {
               className="w-78 h-78 mx-auto object-contain"
             />
             <div className="pt-3">
-              <h4 className="text-lg font-semibold text-[#0B3D91]">
+              <h4 className="text-2xl font-semibold text-[#0B3D91]">
                 {service.title}
               </h4>
             </div>
