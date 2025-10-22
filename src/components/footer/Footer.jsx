@@ -5,7 +5,7 @@ import LinkedinIcon from "../../assets/Linkedin.png";
 import AppStoreIcon from "../../assets/appStore.png";
 import logo from "../../assets/logo.png";
 import GooglePlayIcon from "../../assets/googleplay.png";
-import X from "../../assets/x.png";
+import X from "../../assets/X.png";
 import Wave from "react-wavify";
 
 const Footer = () => {
