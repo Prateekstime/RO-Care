@@ -54,12 +54,12 @@ const Login = () => {
                 Phone Number
               </label>
               <input
-                type="number"
+                type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Enter your phone number"
-                required
+                // required
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7EC1B1]"
               />
             </div>

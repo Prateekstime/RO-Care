@@ -21,11 +21,54 @@ export default function Header() {
   const [search, setSearch] = useState("");
   const [user, setUser] = useState(null);
 
-  // ✅ Load user from localStorage
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) setUser(JSON.parse(storedUser));
-  }, []);
+
+
+ 
+  const loadUserFromStorage = () => {
+    try {
+      const storedUser = localStorage.getItem("user");
+      console.log("Stored user data:", storedUser); // Debug log
+      
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        console.log("Parsed user:", parsedUser); // Debug log
+        
+        // Check if user data is valid and verified
+        if (parsedUser && parsedUser.verified) {
+          setUser(parsedUser);
+        } else {
+          setUser(null);
+          localStorage.removeItem("user"); // Clean up invalid data
+        }
+      } else {
+        setUser(null);
+      }
+    } catch (error) {
+      console.error("Error loading user from localStorage:", error);
+      setUser(null);
+      localStorage.removeItem("user"); // Clean up corrupted data
+    }
+  };
+    // ✅ Load user from localStorage - Improved version
+useEffect(() => {
+  loadUserFromStorage();
+  const handleUserUpdate = () => loadUserFromStorage();
+
+  window.addEventListener("userUpdated", handleUserUpdate);
+  return () => window.removeEventListener("userUpdated", handleUserUpdate);
+}, []);
+
+
+
+  const handleRoute = () => {
+  if (user) {
+    navigate("/profile");
+  } else {
+    navigate("/loginpage");
+  }
+};
+
+  
 
   return (
     <header className="w-full shadow-sm border-b border-gray-200">
@@ -114,20 +157,26 @@ export default function Header() {
             onChange={(e) => setSearch(e.target.value)}
             className="flex-1 ml-2 outline-none bg-transparent text-sm"
           />
-          <img src={FilterLogo} alt="Filter" />
+          <img src={FilterLogo} alt="Filter" className="w-5 h-5" />
         </div>
 
         {/* Right Section */}
         <div className="flex items-center gap-6 text-gray-950 font-medium">
           {user ? (
-            <div
-              className="flex items-center gap-3 cursor-pointer"
-              onClick={() => navigate("/profile")}
-            >
-              <img src={userLogo} alt="User" className="w-5 h-5" />
-              <span className="text-gray-800 font-medium hover:text-blue-600">
-                Hi, {user.name}
-              </span>
+            <div className="flex items-center gap-4">
+              {/* User Profile with Dropdown */}
+              <div className="relative group">
+                <div className="flex items-center gap-3 cursor-pointer" 
+                onClick={handleRoute}>
+                  <img src={userLogo} alt="User" className="w-5 h-5" />
+                  <span className="text-gray-800 font-medium hover:text-blue-600">
+                    Hi, {user.name || user.username || "User"}
+                  </span>
+                </div>
+                
+             
+               
+              </div>
             </div>
           ) : (
             <span
