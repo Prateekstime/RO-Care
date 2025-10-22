@@ -47,7 +47,7 @@ const MyBooking = () => {
       price: "₹299",
       status: "Canceled on March 15,2025",
       date: "Your item has been canceled",
-      routing: "/orderCancelled",
+      routing: "/order-cancelled",
     },
 
     {

@@ -12,17 +12,31 @@ import Register from "./pages/RegisterPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ServiceDetailsPage from "./components/services/ServiceDetailsPage";
 import AmcPlanDetails from "./components/services/AmcPlanDetails";
-import EditProfile from "./pages/EditProfile";
+import EditProfile from "./pages/profile/EditProfile";
 import ServiceTracking from "./components/services/ServiceTracking";
 import ProductTracking from "./components/products/ProductTracking ";
+import ProductCategoryPage from "./components/products/ProductCategoryPage";
+// added
 import TrackingCanceled from "./components/services/TrackingCancled";
 import SpareParts from "./components/spare/SpareParts";
 import WaterPurifierCheckup from "./components/spare/WaterPurifierCheckup";
+import ManageAddress from "./pages/profile/ManageAddress";
+import ProfileInfo from "./pages/profile/ProfileInfo";
+import MyBookings from './pages/profile/MyBookings';
+import MyAMCPlans from "./pages/profile/MyAMCPlans";
+import MyOrders from "./pages/profile/MyOrders";
+import ServiceDetail from "./pages/profile/ServiceDetail";
+import Settings from "./pages/profile/Settings";
+import PrivacyPage from "./pages/PrivacyPage";
+import ServiceCategoryPage from "./components/services/ServiceCategoryPage";
+
+
 
 const Home = React.lazy(() => import("./components/home/Home"));
 const ServiceusPage = React.lazy(() =>
   import("./components/services/ServicesPage")
 );
+
 const Products = React.lazy(() => import("./components/products/ProductsPage"));
 
 const Cart = React.lazy(() => import("./pages/Cart"));
@@ -56,9 +70,9 @@ const PaymentSuccess = React.lazy(() =>
 );
 const HelpAndSupport = React.lazy(() => import("./pages/HelpAndSupport"));
 const ChatWithUs = React.lazy(() => import("./pages/ChatWithUs"));
-const ProfileSetting = React.lazy(() => import("./pages/ProfileSetting"));
-const MyBooking = React.lazy(() => import("./pages/ProfileSetting"));
-const DeleteAccount = React.lazy(() => import("./pages/DeleteAccount"));
+const ProfileLayout = React.lazy(() => import("./pages/profile/ProfileLayout"));
+const MyBooking = React.lazy(() => import("./pages/profile/ProfileLayout"));
+const DeleteAccount = React.lazy(() => import("./pages/profile/DeleteAccount"));
 const MyAMCPlan = React.lazy(() => import("./pages/MyAMCPlan"));
 const ManageAddresses = React.lazy(() => import("./pages/ManageAddresses"));
 const FavouriteItems = React.lazy(() => import("./pages/FavouriteItem"));
@@ -73,22 +87,20 @@ function App() {
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route index element={<Home />} />
-            <Route path="/About" element={<About />} />
+            
+            <Route path="/about" element={<About />} />
             <Route path="/terms&condition" element={<TermsCondition />} />
-            <Route path="/privacy" element={<Home />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/product-category" element={<ProductCategoryPage />} />            
             <Route path="/careers" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
-            <Route
-              path="/register-for-professional"
-              element={<RegisterProfessional />}
-            />
+            <Route path="/register-for-professional"  element={<RegisterProfessional />}            />
             <Route path="/services" element={<ServiceusPage />} />
             <Route path="/service-detail" element = {<ServiceDetailsPage/>}/>
             <Route path="/service-tracking" element = {<ServiceTracking/>}/>
             <Route path="/amc-plan-detail" element = {<AmcPlanDetails/>}/>
             <Route path="/products" element={<Products />} />
-            <Route path="/tracking-product" element = {<ProductTracking/>}/>
+            <Route path="/product-tracking" element = {<ProductTracking/>}/>
             <Route path="/tracking-cancelled" element= {<TrackingCanceled/>}/>
             <Route path="/all-brands" element={<AllBrands />} />
              <Route path="/product-detail" element={<ProductDetailPage />} />
@@ -97,12 +109,24 @@ function App() {
             <Route path="/paymentSuccess" element={<PaymentSuccess />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/payment-method" element={<PaymentMethods />} />
-            <Route path="/profile" element={<ProfileSetting />} />
-            <Route path="/editprofile" element= {<EditProfile/>}/>
-            <Route path="/my-booking" element={<MyBooking />} />
+            <Route path="/profile" element={<ProfileLayout />}>
+             <Route path="/profile/orders" element={<MyOrders />} />
+              <Route path="/profile/" element={<ProfileInfo />} />
+              {/* <Route */}
+              <Route path="/profile/address" element={<ManageAddress />} />
+              <Route path="/profile/bookings" element={<MyBookings />} />
+              <Route path="/profile/amc-plans" element={<MyAMCPlans />} />
+              <Route path="/profile/favorites" element={<FavouriteItems />} />
+              <Route path="/profile/edit" element={<EditProfile />} />
+
+              <Route path="/profile/settings" element={<Settings />} />
+            </Route>
+              <Route path="/service-category" element={<ServiceCategoryPage />}/>
+            <Route path="/cancel-reason" element={<CancelReason />}/>
+              <Route path="/order-detail-invoice" element={<ServiceDetail />} />
             <Route path="/beforeComplete" element={<BeforeComplete />} />
             <Route path="/orderCompleted" element={<OrderCompleted />} />
-            <Route path="/orderCancelled" element={<OrderCancelled />} />
+            <Route path="/order-cancelled" element={<OrderCancelled />} />
             <Route path="/cancelReason" element={<CancelReason />} />
             <Route path="/delete-account" element={<DeleteAccount />} />
             <Route path="/my-amc-plain" element={<MyAMCPlan />} />
@@ -113,10 +137,9 @@ function App() {
             <Route path="/help-support" element={<HelpAndSupport />} />
             <Route path="/spareparts" element={<SpareParts/>}/>
             <Route path="/waterpurifiercheckup" element={<WaterPurifierCheckup/>}/>
-
             <Route path ="/loginpage" element= {<Login/>}/>
             <Route path ="/registerpage" element= {<Register/>}/>
-            <Route path="/resetpassword"element ={<ResetPasswordPage/>}/>
+            <Route path="/reset-password"element ={<ResetPasswordPage/>}/>
           </Routes>
         </Suspense>
       </Layout>

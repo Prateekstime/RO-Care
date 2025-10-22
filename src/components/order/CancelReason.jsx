@@ -11,7 +11,7 @@ const CancelReason = () => {
    
   useEffect(() => {
     if (submit) {
-      navigate('/orderCancelled'); 
+      navigate('/order-cancelled'); 
     }
   }, [submit, navigate]);
 
@@ -33,8 +33,8 @@ const CancelReason = () => {
                     ))}
                 </div>
                 <textarea onChange={handleChange} type="text" value={Change} className="h-[20vh] w-full my-4 border-[2px] placeholder:text-[#8d8d8c] placeholder:text-lg px-4 py-2" placeholder='Write a Reason'/>
-            <div className="w-full flex justify-center items-center my-12">
-            <button onClick={()=>setSubmit(true)} className="w-[48%] text-center py-4 bg-[#b2b2b0] text-white font-[500] rounded-lg">Submit</button>
+            <div className="w-full flex justify-center items-center my-4">
+            <button onClick={()=>setSubmit(true)} className="w-[200px] text-center py-4 bg-[#44bf69] text-white font-[500] rounded-lg">Submit</button>
             </div>
             </div>
         </>

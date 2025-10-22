@@ -80,37 +80,37 @@ const ProductDetailPage = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
       {/* Product Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         {/* Left Side: Images */}
         <div className="flex flex-col items-center">
           <img
             src={selectedImage}
             alt="Main Product"
-            className="w-[500px] sm:w-[600px] h-auto object-contain shadow-sm"
+            className="w-full max-w-md md:max-w-lg object-contain rounded-md shadow-sm"
           />
 
           {/* Thumbnails */}
-          <div className="flex justify-center gap-4 mt-4">
+          <div className="flex justify-center flex-wrap gap-3 mt-4">
             {thumbnails.map((thumb, i) => (
               <img
                 key={i}
                 src={thumb}
                 alt={`Thumbnail ${i}`}
                 onClick={() => setSelectedImage(thumb)}
-                className={`w-16 h-16 cursor-pointer border rounded-md object-contain ${
+                className={`w-16 h-16 sm:w-20 sm:h-20 cursor-pointer border rounded-md object-contain transition-all ${
                   selectedImage === thumb
-                    ? "border-[#4ab29a]"
+                    ? "border-[#4ab29a] scale-105"
                     : "border-gray-300"
                 }`}
               />
             ))}
           </div>
 
-          <div className="flex gap-3 mt-5">
-            <button className="border border-gray-400 px-4 py-2 rounded-md">
+          <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full max-w-sm">
+            <button className="border border-gray-400 px-4 py-2 rounded-md w-full hover:bg-gray-100 transition">
               Add to Cart
             </button>
-            <button className="bg-[#4ab29a] text-white px-4 py-2 rounded-md">
+            <button className="bg-[#4ab29a] text-white px-4 py-2 rounded-md w-full hover:bg-[#3a8e7a] transition">
               Buy Now
             </button>
           </div>
@@ -118,7 +118,7 @@ const ProductDetailPage = () => {
 
         {/* Right Side: Details */}
         <div>
-          <h1 className="text-2xl font-semibold text-gray-800 mb-3">
+          <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-3">
             Prefilter RO Service Kit Pre-filter Housing Bowl + 2 Pcs. Spun Filter
           </h1>
 
@@ -129,7 +129,7 @@ const ProductDetailPage = () => {
             <span className="text-gray-600 text-sm">(3.2M Reviews)</span>
           </div>
 
-          <div className="flex items-center gap-4 mb-3">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
             <p className="text-2xl font-bold text-gray-800">₹899.00</p>
             <p className="text-gray-500 flex items-center gap-1">
               <FaCheckCircle className="text-[#4ab29a]" /> Warranty: NA
@@ -162,16 +162,15 @@ const ProductDetailPage = () => {
       </div>
 
       {/* Customer Reviews */}
-      <div className="mt-10">
-        <h2 className="text-2xl font-semibold mb-4">Customer Reviews</h2>
-
-        <div className="space-y-5">
+      <div className="mt-12">
+        <h2 className="text-2xl font-semibold mb-6">Customer Reviews</h2>
+        <div className="space-y-6">
           {reviews.map((review, index) => (
             <div
               key={index}
               className="border border-gray-200 rounded-md p-4 bg-gray-50"
             >
-              <div className="flex justify-between items-center mb-2">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-2">
                 <div className="flex items-center gap-3">
                   <img
                     src={review.avatar}
@@ -200,18 +199,18 @@ const ProductDetailPage = () => {
       </div>
 
       {/* Similar Products */}
-      <div className="mt-12">
+      <div className="mt-14">
         <h2 className="text-2xl font-semibold mb-6">Similar Products</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {similarProducts.map((product) => (
             <div
               key={product.id}
-              className="border border-gray-200 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow duration-200"
+              className="border border-gray-200 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition"
             >
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-40 object-contain mb-3"
+                className="w-full h-44 object-contain mb-3"
               />
               <h3 className="text-sm font-medium text-gray-700 mb-1 text-center">
                 {product.name}

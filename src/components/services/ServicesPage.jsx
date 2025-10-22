@@ -242,7 +242,7 @@ const ServicesPage = () => {
           <div>
             <h3 className="text-lg font-semibold mb-2 text-[#0B3D91]">Price</h3>
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-5 h-5 rounded-full bg-[#1F7A8C]"></div>
+              <div className="w-5 h-5 rounded-full "></div>
               <input
                 type="range"
                 min="0"
@@ -251,7 +251,7 @@ const ServicesPage = () => {
                 onChange={handleMinChange}
                 className="w-full"
               />
-              <div className="w-5 h-5 rounded-full bg-[#1F7A8C]"></div>
+              <div className="w-5 h-5 rounded-full "></div>
             </div>
 
             <div className="text-gray-600 flex ">
@@ -279,7 +279,7 @@ const ServicesPage = () => {
               },
             ].map((offer, idx) => (
               <div key={idx} className="flex items-start gap-3 mb-2">
-                <div className="w-8 h-8 bg-[#1F7A8C] text-white rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 text-white rounded-full flex items-center justify-center">
                   %
                 </div>
                 <div>
@@ -353,7 +353,7 @@ const ServicesPage = () => {
 
         <div
           className="w-11/12 md:w-4/5 flex flex-col gap-8 mx-auto 
-                    bg-gradient-to-br from-[#E0F7FA] to-[#B2EBF2] 
+                   
                     p-8 rounded-3xl"
         >
           {servicesData.map((section, idx) => (

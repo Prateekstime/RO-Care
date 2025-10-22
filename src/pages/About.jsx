@@ -5,18 +5,21 @@ const About = () => {
   return (
     <div className="flex flex-col m-2">
       <div className="flex items-center md:my-5 justify-between">
-        <hr className="h-[3px] bg-[#606060] border-none font-bold w-[670px] " />
-        <p className="font-semibold text-[25px]">About Us</p>
-        <hr className="h-[3px] bg-[#606060] border-none font-bold w-[670px]  " />
+        <hr className="h-[2px] bg-black border-none font-bold w-[650px] " />
+        <p className="font-semibold  whitespace-nowrap text-[25px]">About Us</p>
+        <hr className="h-[2px] bg-black border-none font-bold w-[650px]  " />
       </div>
 
-      <div className="flex border space-x-6 border-[#CACACA] md:p-[24px]">
-        <img className="md:w-[650px] md:h-[610px] " src={aboutus} />
-        <div className="md:w-[650px] md:h-[600px] ">
-          <h1 className="text-[#7EC1B1] text-[32px] font-semibold ">
+      <div className="flex flex-col border space-x-6 border-[#CACACA] md:p-[24px]">
+        <div>
+
+         <h1 className="text-[#7EC1B1] w-full text-[32px] font-semibold ">
             Who We are !
           </h1>
-          <p className="text-[22px] text-justify text-[#263138] ">
+          <div className='flex gap-2'>
+        <img className="w-60 h-auto md:w-[400px]  md:h-[300px] " src={aboutus} />
+
+          <p className="text-[18px] text-justify text-[#263138] ">
             At Techno RO we are committed to delivering high-quality water
             filtration solutions that ensure your access to clean and safe
             drinking water. With 20 years of experience in the water treatment
@@ -35,6 +38,11 @@ const About = () => {
             life. That’s why we go the extra mile to ensure your RO system works
             at its best, providing you with pure, fresh water every day.
           </p>
+          </div>
+         
+
+        </div>
+        <div className="md:w-[650px] md:h-[600px] ">
         </div>
       </div>
 

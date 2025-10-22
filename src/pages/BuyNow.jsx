@@ -16,13 +16,20 @@ import { NavLink } from "react-router-dom";
 
 const BuyNow = () => {
   const [liked, setLiked] = useState(false);
-  const [ratings] = useState([
+  const [quantity, setQuantity] = useState(3);
+
+  const handleIncrement = () => setQuantity((prev) => prev + 1);
+  const handleDecrement = () =>
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+
+  const ratings = [
     { star: 5, value: 0.2 },
     { star: 4, value: 0.4 },
     { star: 3, value: 0.6 },
     { star: 2, value: 0.8 },
     { star: 1, value: 1 },
-  ]);
+  ];
+
   const products = [
     { img: Offer1, title: "Whole House Filter with Two Replacement Filters" },
     { img: Offer2, title: "3000 Gallon Replacement Water Filter" },
@@ -32,52 +39,44 @@ const BuyNow = () => {
     { img: Offer6, title: "Kent Complete Filter Replacement" },
     { img: Offer2, title: "Kent Automated Water Softener, 3000 LPH" },
   ];
-  // State for quantity
-  const [quantity, setQuantity] = useState(3);
 
-  const handleIncrement = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
-  };
-
-  const handleDecrement = () => {
-    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
-  };
   const reviews = [
     {
       name: "Devon Lane",
       date: "24 Dec, 2024",
       review:
         "Lorem ipsum dolor sit amet consectetur. Sed lacus facilisi semper lacus rhoncus cursus...",
-      rating: 4, // 4 stars filled
+      rating: 4,
     },
     {
       name: "Eleanor Pena",
       date: "20 Jul, 2024",
       review:
         "Lorem ipsum dolor sit amet consectetur. Sed lacus facilisi semper lacus rhoncus cursus...",
-      rating: 5, // 5 stars filled
+      rating: 5,
     },
     {
       name: "Jane Cooper",
       date: "15 Jan, 2024",
       review:
         "Lorem ipsum dolor sit amet consectetur. Sed lacus facilisi semper lacus rhoncus cursus...",
-      rating: 4, // 4 stars filled
+      rating: 4,
     },
   ];
+
   return (
-    <div className="flex flex-col gap-y-10 mx-20 my-10">
-      {/*Body */}
-      <div className="flex gap-x-20">
-        {/*Left Side */}
-        <div className="w-2/5 ">
-          <div className="w-[400px] h-[400px] border border-gray-300 rounded-lg relative ">
-            {/* Heart Icon Inside Image Container */}
+    <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-10 flex flex-col gap-y-10">
+      {/* Main Body */}
+      <div className="flex flex-col lg:flex-row gap-10">
+        {/* Left Side */}
+        <div className="lg:w-2/5 w-full flex flex-col items-center">
+          <div className="w-full max-w-[400px] border border-gray-300 rounded-lg relative overflow-hidden">
+            {/* Heart Icon */}
             <button
-              className={`absolute top-3 right-3 p-2 rounded-full border ${
+              onClick={() => setLiked(!liked)}
+              className={`absolute top-3 right-3 p-2 rounded-full border transition-all duration-300 hover:bg-gray-200 ${
                 liked ? "border-red-500" : "border-gray-300"
-              } cursor-pointer transition-all duration-300 hover:bg-gray-200`}
-              onClick={() => setLiked(!liked)} // Toggle the liked state on click
+              }`}
             >
               <Heart
                 className="w-5 h-5"
@@ -87,246 +86,211 @@ const BuyNow = () => {
                 }}
               />
             </button>
-            <div className="mt-9"></div>
-            <div className="w-full p-4 relative mt-5">
-              <img src={BuyNow} alt="Product" className="w-[80%] h-[80%]" />
-              <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2 p-2">
+
+            {/* Product Image */}
+            <div className="p-4 flex justify-center items-center">
+              <img
+                src={BuyNowImg}
+                alt="Product"
+                className="w-[80%] h-[80%] object-contain"
+              />
+            </div>
+
+            {/* Thumbnails */}
+            <div className="flex justify-center space-x-2 pb-4">
+              {[Offer1, BuyNowImg, Offer3].map((img, index) => (
                 <img
-                  src={Offer1}
-                  alt="Small 1"
-                  className="w-12 h-12 rounded-md object-cover"
+                  key={index}
+                  src={img}
+                  alt={`Small ${index}`}
+                  className="w-12 h-12 rounded-md object-cover border"
                 />
-                <img
-                  src={BuyNow}
-                  alt="Small 2"
-                  className="w-12 h-12 rounded-md object-cover"
-                />
-                <img
-                  src={BuyNow}
-                  alt="Small 3"
-                  className="w-12 h-12 rounded-md object-cover"
-                />
-              </div>
+              ))}
             </div>
           </div>
 
-          <div className="flex w-[400px] space-x-4 h-[50px] mt-5">
-            <NavLink to={"/cart"}>
-              <button className="flex-1 px-4 py-2 text-[#66b3a1] rounded-lg border border-[#66b3a1] transition">
+          {/* Buttons */}
+          <div className="flex w-full max-w-[400px] gap-4 mt-5">
+            <NavLink to="/cart" className="flex-1">
+              <button className="w-full px-4 py-2 text-[#66b3a1] rounded-lg border border-[#66b3a1] transition hover:bg-[#66b3a111]">
                 Add to Cart
               </button>
             </NavLink>
-
             <button className="flex-1 px-4 py-2 bg-[#7EC1B1] text-white rounded-lg hover:bg-[#66b3a1] transition">
               Buy Now
             </button>
           </div>
         </div>
 
-        {/*Right Sidebar */}
-        <div className=" flex flex-col w-full gap-10">
-          {/*Product Description */}
-          <div className="w-full bg-white p-4 rounded-lg shadow-lg">
-            {/* Product Title*/}
-            <span className="flex-wrap ">
-              <p className="text-xl font-semibold">
-                Prefilter RO Service Kit Pre-filter Housing Bowl
-              </p>
-              <p className="mb-4">
-                + 2 Pcs. Spun Filter + SS Inlet Ball Valveeflon 1/4" + 3 Meter
-                RO Pipe + 2 Ro Tap + 1/4" Connector For Water Purifier, Solid
-                Filter Cartridge (5, Pack of 5)
-              </p>
-            </span>
+        {/* Right Side */}
+        <div className="flex flex-col w-full gap-8">
+          {/* Product Description */}
+          <div className="w-full bg-white p-5 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-2">
+              Prefilter RO Service Kit Pre-filter Housing Bowl
+            </h2>
+            <p className="text-sm mb-4 text-gray-700">
+              + 2 Pcs. Spun Filter + SS Inlet Ball Valveeflon 1/4" + 3 Meter RO
+              Pipe + 2 Ro Tap + 1/4" Connector For Water Purifier, Solid Filter
+              Cartridge (5, Pack of 5)
+            </p>
 
-            {/* Rating */}
-            <div className="flex items-center  mb-3">
-              <img src={BlueStar} alt="" />
-              <span>4.96</span>
+            {/* Ratings */}
+            <div className="flex items-center mb-3">
+              <img src={BlueStar} alt="star" className="w-5 h-5" />
+              <span className="ml-1 font-semibold">4.96</span>
               <span className="ml-2 text-gray-500 text-sm">(2.3M Reviews)</span>
             </div>
 
-            <div className="flex items-center gap-2">
-              {/* Price */}
-              <p className="text-2xl mb-3">₹899.00</p>
-
-              {/* Warranty */}
-              <span className="flex items-center mb-4 gap-x-2">
-                <div className="w-3 h-3 rounded-full bg-black"> </div>
-                <p className=" text-lg">Warranty: NA</p>
-              </span>
+            {/* Price and Warranty */}
+            <div className="flex flex-wrap items-center gap-6">
+              <p className="text-2xl font-semibold text-gray-800">₹899.00</p>
+              <p className="text-gray-700 flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-black"></div>
+                Warranty: NA
+              </p>
             </div>
 
-            <div className="flex w-full gap-x-40 ">
-              {/* Quantity Selector */}
-              <div className="flex items-center justify-center mb-4 space-x-4">
+            {/* Quantity, Availability, Share */}
+            <div className="flex flex-wrap lg:flex-nowrap gap-5 mt-6">
+              {/* Quantity */}
+              <div className="flex items-center space-x-4">
                 <button
-                  className="w-10 h-10 rounded-full bg-[#7EC1B1] flex items-center justify-center text-xl font-bold text-white"
                   onClick={handleDecrement}
+                  className="w-10 h-10 rounded-full bg-[#7EC1B1] flex items-center justify-center text-xl text-white"
                 >
                   -
                 </button>
-                <div className="w-15 h-12 flex items-center justify-center border border-gray-300 text-xl font-semibold">
+                <div className="w-12 h-10 flex items-center justify-center border border-gray-300 text-xl font-semibold">
                   {quantity}
                 </div>
                 <button
-                  className="w-10 h-10 rounded-full bg-[#7EC1B1] flex items-center justify-center text-xl font-bold text-white"
                   onClick={handleIncrement}
+                  className="w-10 h-10 rounded-full bg-[#7EC1B1] flex items-center justify-center text-xl text-white"
                 >
                   +
                 </button>
               </div>
 
-              {/* Check Availability */}
-              <div className="w-[40%] flex items-center justify-between mb-4">
-                <span className="text-sm">Check Availability:</span>
-                <div className="flex items-center justify-between space-x-2 w-full border-b border-gray-900">
-                  <img src={MapPin} alt="Location Icon" className="w-6 h-6" />
-                  <button className="px-4 py-2 text-[#7EC1B1]">Check</button>
+              {/* Availability */}
+              <div className="flex-1 flex items-center justify-between border-b border-gray-400">
+                <div className="flex items-center space-x-2">
+                  <img src={MapPin} alt="Map Pin" className="w-5 h-5" />
+                  <span className="text-sm text-gray-700">
+                    Check Availability
+                  </span>
                 </div>
+                <button className="text-[#7EC1B1] text-sm font-medium">
+                  Check
+                </button>
               </div>
 
-              {/* Share Button */}
-              <button className="w-[150px] h-[50px] px-4 py-2 border border-[#7EC1B1] text-[#7EC1B1] rounded-lg">
+              {/* Share */}
+              <button className="border border-[#7EC1B1] text-[#7EC1B1] rounded-lg px-4 py-2 hover:bg-[#7ec1b111] transition">
                 Share
               </button>
             </div>
           </div>
 
-          {/* Offers Section */}
+          {/* Offers */}
           <div>
-            <h3 className="text-lg font-semibold">Available Offers</h3>
-            <div className="my-2 border-t border-dashed border-gray-400"></div>
+            <h3 className="text-lg font-semibold mb-2">Available Offers</h3>
+            <div className="border-t border-dashed border-gray-300 mb-4"></div>
 
-            <div className="space-y-4">
-              {/* Offer 1 */}
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 rounded-full bg-[#7EC1B1] flex items-center justify-center text-white">
-                  <span>%</span>
+            {[
+              { title: "UPI Off ₹50", desc: "Pay using any UPI and get ₹50 off" },
+              {
+                title: "Debit Card Off ₹100",
+                desc: "Pay using Debit Card and get ₹100 off",
+              },
+              {
+                title: "Credit Card Off 5%",
+                desc: "Pay using Credit Card and get 5% off",
+              },
+            ].map((offer, index) => (
+              <div key={index} className="flex items-start space-x-4 mb-4">
+                <div className="w-10 h-10 rounded-full bg-[#7EC1B1] flex items-center justify-center text-white text-lg font-semibold">
+                  %
                 </div>
                 <div>
-                  <div className="font-medium">UPI Off ₹50</div>
-                  <div className="text-sm text-gray-600">
-                    Pay using any UPI and get instant off ₹50
-                  </div>
+                  <p className="font-medium">{offer.title}</p>
+                  <p className="text-sm text-gray-600">{offer.desc}</p>
                 </div>
               </div>
-
-              {/* Offer 2 */}
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 rounded-full bg-[#7EC1B1] flex items-center justify-center text-white">
-                  <span>%</span>
-                </div>
-                <div>
-                  <div className="font-medium">Debit Card Off ₹100</div>
-                  <div className="text-sm text-gray-600">
-                    Pay using Debit Card and get off ₹50
-                  </div>
-                </div>
-              </div>
-
-              {/* Offer 3 */}
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 rounded-full bg-[#7EC1B1] flex items-center justify-center text-white">
-                  <span>%</span>
-                </div>
-                <div>
-                  <div className="font-medium">Credit Card Off 5%</div>
-                  <div className="text-sm text-gray-600">
-                    Pay using Credit Card and get 5% off
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <button className="bg-transparent text-[#7EC1B1] hover:text-lg transition-all">
+            ))}
+            <button className="text-[#7EC1B1] hover:text-lg transition-all">
               View More Offers
             </button>
           </div>
 
-          {/*Description */}
-          <div className="w-full">
-            {/* Description with Bullet Points */}
-            <div className="mb-4">
-              <p className="text-xl font-semibold mb-2">Description</p>
-              <div className="my-2 border-t border-dashed border-gray-400"></div>
-              <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                <li>
-                  Lorem ipsum dolor sit amet consectetur. Netus bibendum duis
-                  lorem ullamcorper id. Amet mattis eu fringilla nibh interdum.
-                  Tempus turpis enim blandit eget viverra nulla. Vulputate nisi
-                  dignissim ipsum ornare non. Ullamcorper vitae leo dictum a
-                  sollicitudin quisque. Varius sed maecenas donec lobortis eu
-                  ornare arcu fermentum. Aliquam maecenas non neque accumsan
-                  tristique turpis. Commodo facilisis nunc in scelerisque aenean
-                  dolor felis in odio. Non massa lacus auctor sit cursus mus
-                  egestas. Porta sem aenean adipiscing nibh risus enim.
-                </li>
-                <li>
-                  Pharetra sit in risus felis dictum enim suspendisse sodales.
-                  Lobortis aliquam morbi tortor aliquet pretium eu. Porta
-                  dapibus tristique sit fringilla ut eleifend. Condimentum
-                  feugiat et massa odio sit. Odio imperdiet dignissim posuere
-                  est quis ornare lorem dui amet. Facilisis gravida morbi sed
-                  porttitor a amet tempor.
-                </li>
-                <li>
-                  Eget sed ultrices mauris aliquam sed senectus quam sed
-                  imperdiet. Arcu enim est facilisis consectetur. Facilisis.
-                </li>
-              </ul>
-            </div>
+          {/* Description */}
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Description</h3>
+            <div className="border-t border-dashed border-gray-300 mb-4"></div>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+              <li>
+                Lorem ipsum dolor sit amet consectetur. Netus bibendum duis
+                lorem ullamcorper id. Amet mattis eu fringilla nibh interdum.
+              </li>
+              <li>
+                Pharetra sit in risus felis dictum enim suspendisse sodales.
+                Lobortis aliquam morbi tortor aliquet pretium eu.
+              </li>
+              <li>
+                Eget sed ultrices mauris aliquam sed senectus quam sed
+                imperdiet. Arcu enim est facilisis consectetur.
+              </li>
+            </ul>
           </div>
 
-          {/*Customer Reviews */}
+          {/* Reviews */}
           <div>
-            <h3 className="text-lg font-semibold">Customer Reviews</h3>
-            <div className="my-2 border-t border-dashed border-gray-400"></div>
-            <div className="w-[30%]">
-              <div className="flex items-center gap-3 mb-3">
-                <img src={BlueStar} alt="" />
-                <span>4.96</span>
+            <h3 className="text-lg font-semibold mb-2">Customer Reviews</h3>
+            <div className="border-t border-dashed border-gray-300 mb-4"></div>
+
+            {/* Rating Summary */}
+            <div className="max-w-sm mb-4">
+              <div className="flex items-center gap-3 mb-2">
+                <img src={BlueStar} alt="rating" className="w-5 h-5" />
+                <span className="text-lg font-semibold">4.96</span>
               </div>
-              <span className="text-gray-800 text-md">2.3M Reviews</span>
-              {/* Rating Rows */}
-              {ratings.map((rating, index) => (
-                <div key={rating.star} className="flex items-center mb-4">
-                  {/* Star */}
-                  <div className="flex items-center">
-                    <span className="text-2xl text-[#7EC1B1]">★</span>
-                  </div>
-                  {/* Rating Value */}
-                  <span className="ml-2 text-sm">{rating.star}</span>
-                  {/* Rating Bar */}
-                  <div className="w-full h-1 bg-gray-300 rounded-lg ml-4 mt-1">
+              <p className="text-gray-600 text-sm mb-3">2.3M Reviews</p>
+
+              {ratings.map((r) => (
+                <div key={r.star} className="flex items-center mb-2">
+                  <span className="text-[#7EC1B1] text-lg">★</span>
+                  <span className="ml-1 text-sm">{r.star}</span>
+                  <div className="flex-1 ml-3 bg-gray-200 rounded-full h-2">
                     <div
-                      className="h-full bg-[#7EC1B1] rounded-lg"
-                      style={{ width: `${rating.value * 100}%` }}
+                      className="h-2 bg-[#7EC1B1] rounded-full"
+                      style={{ width: `${r.value * 100}%` }}
                     />
                   </div>
                 </div>
               ))}
             </div>
+
+            {/* Individual Reviews */}
             {reviews.map((review, index) => (
-              <div key={index}>
-                <div className="flex items-center space-x-4 mb-1 justify-between">
-                  <div className="flex items-center space-x-4 mb-1 ">
+              <div key={index} className="mb-6">
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center space-x-3">
                     <img
                       src={Customer}
                       alt="Customer"
-                      className="w-12 h-12 rounded-full"
+                      className="w-10 h-10 rounded-full"
                     />
-                    <div className="flex flex-col">
-                      <p className="text-sm text-gray-600">{review.name}</p>
-                      <p className="text-sm text-gray-500">{review.date}</p>
+                    <div>
+                      <p className="text-sm font-medium">{review.name}</p>
+                      <p className="text-xs text-gray-500">{review.date}</p>
                     </div>
                   </div>
-                  <div className="flex space-x-1">
-                    {[...Array(5)].map((_, index) => (
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
                       <span
-                        key={index}
-                        className={`text-2xl ${
-                          index < review.rating
+                        key={i}
+                        className={`text-xl ${
+                          i < review.rating
                             ? "text-[#7EC1B1]"
                             : "text-gray-300"
                         }`}
@@ -336,58 +300,42 @@ const BuyNow = () => {
                     ))}
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 mb-2">{review.review}</p>
+                <p className="text-sm text-gray-600">{review.review}</p>
               </div>
             ))}
 
-            {/* Button to view more reviews */}
-            <button className="bg-transparent text-[#7EC1B1] hover:text-lg transition-all">
+            <button className="text-[#7EC1B1] hover:text-lg transition-all">
               View More Reviews
             </button>
           </div>
         </div>
       </div>
-      {/*Similar Products */}
-      <div className="flex flex-col w-full">
-        {/* Title Section */}
-        <div className="mb-4">
-          <h2 className="text-2xl font-semibold">Similar Products</h2>
-        </div>
 
-        {/* Horizontal Scrollable Products */}
-        <div className="flex overflow-x-auto space-x-4 scrollbar-hidden">
+      {/* Similar Products */}
+      <div>
+        <h2 className="text-2xl font-semibold mb-4">Similar Products</h2>
+        <div className="flex overflow-x-auto space-x-4 pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
           {products.map((offer, index) => (
             <div
               key={index}
-              className="flex-none w-[calc(20%-1rem)] h-auto border border-gray-300 rounded-lg rounded-lg overflow-hidden shadow-md"
+              className="flex-none w-[250px] border border-gray-200 rounded-lg shadow-sm p-4 flex flex-col items-center"
             >
-              <div className="flex flex-col items-center justify-center  gap-2 py-5 px-2">
-                <img
-                  src={offer.img}
-                  alt={offer.title}
-                  className="w-[160px] h-[160px] mb-3 border border-gray-200 rounded-lg p-4"
-                />
-                <h3 className="text-lg font-semibold mb-2 text-center">
-                  {offer.title}
-                </h3>
-                {/* Rating Row */}
-                <div className="flex items-center text-gray-600">
-                  <img src={BlueStar} alt="Star" className="w-4 h-4 mr-1" />
-                  <span className="font-semibold">4.81</span>
-                  <span className="ml-1">(1.9M Reviews)</span>
-                </div>
-                {/* Price & Time */}
-                <div className="flex items-center text-gray-600 gap-2">
-                  <span className="font-semibold text-lg">₹299.00</span>
-                  <span className="flex items-center">
-                    <div className="w-3 h-3 rounded-full bg-black"></div> Time:
-                    30 mins
-                  </span>
-                </div>
-                <button className="px-4 py-2 bg-[#7EC1B1] text-white rounded-lg">
-                  Buy Now
-                </button>
+              <img
+                src={offer.img}
+                alt={offer.title}
+                className="w-[160px] h-[160px] object-contain mb-3 border border-gray-200 rounded-lg p-2"
+              />
+              <h3 className="text-center text-sm font-medium mb-1">
+                {offer.title}
+              </h3>
+              <div className="flex items-center text-gray-600 text-xs mb-1">
+                <img src={BlueStar} alt="star" className="w-4 h-4 mr-1" />
+                <span>4.81 (1.9M Reviews)</span>
               </div>
+              <p className="text-[#333] text-sm font-semibold mb-2">₹299.00</p>
+              <button className="px-4 py-2 bg-[#7EC1B1] text-white rounded-lg text-sm hover:bg-[#66b3a1]">
+                Buy Now
+              </button>
             </div>
           ))}
         </div>
