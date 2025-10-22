@@ -28,6 +28,7 @@ import MyOrders from "./pages/profile/MyOrders";
 import ServiceDetail from "./pages/profile/ServiceDetail";
 import Settings from "./pages/profile/Settings";
 import PrivacyPage from "./pages/PrivacyPage";
+import ServiceCategoryPage from "./components/services/ServiceCategoryPage";
 
 
 
@@ -35,6 +36,7 @@ const Home = React.lazy(() => import("./components/home/Home"));
 const ServiceusPage = React.lazy(() =>
   import("./components/services/ServicesPage")
 );
+
 const Products = React.lazy(() => import("./components/products/ProductsPage"));
 
 const Cart = React.lazy(() => import("./pages/Cart"));
@@ -117,9 +119,9 @@ function App() {
               <Route path="/profile/favorites" element={<FavouriteItems />} />
               <Route path="/profile/edit" element={<EditProfile />} />
 
-
               <Route path="/profile/settings" element={<Settings />} />
             </Route>
+              <Route path="/service-category" element={<ServiceCategoryPage />}/>
             <Route path="/cancel-reason" element={<CancelReason />}/>
               <Route path="/order-detail-invoice" element={<ServiceDetail />} />
             <Route path="/beforeComplete" element={<BeforeComplete />} />

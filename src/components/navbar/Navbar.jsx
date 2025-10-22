@@ -93,7 +93,7 @@ export default function Header() {
           <Link to="/product-category" className="hover:text-blue-600">
             Products
           </Link>
-          <Link to="/services" className="hover:text-blue-600">
+          <Link to="/service-category" className="hover:text-blue-600">
             Services
           </Link>
           <span
