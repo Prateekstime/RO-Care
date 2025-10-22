@@ -4,12 +4,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 
-// Your video/image imports
-import Video from "../../assets/video.png";
-import Video1 from "../../assets/video1.png";
-import Video2 from "../../assets/video2.png";
-import Video3 from "../../assets/video3.png";
-import Video4 from "../../assets/video4.png";
+import Video from "../../assets/Video.png";
+import Video1 from "../../assets/Video2.png";
+import Video2 from "../../assets/Video2.png";
+import Video3 from "../../assets/Video3.png";
+import Video4 from "../../assets/Video4.png";
 
 const EngineerCard = () => {
   const engineers = [
