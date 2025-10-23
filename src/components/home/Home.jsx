@@ -13,8 +13,7 @@ import BrandCarousel from "./BrandCorousel.jsx";
 import EngineerCard from "./EngineerCard.jsx";
 import ServiceSection from "./ServiceSection.jsx";
 import ProductsSection from "./ProductsSection.jsx";
-import RoMobile from "../../assets/rocareMobile.webp";
-import googlePlay from "../../assets/googleplay.png";
+
 import CategoryCard from "../home/CategoryCard.jsx";
 import { FaPhoneAlt } from "react-icons/fa";
 
@@ -23,102 +22,105 @@ const Home = () => {
   return (
     <div className="w-full flex flex-col  items-center justify-center px-1"> 
       <Banner />
-      <div className="w-full max-w-[1420px] h-auto px-4">
+      <div className="w-full max-w-[1420px] h-auto ">
         <h2 className="text-3xl font-semibold text-start p-5 text-gray-900">
           What are you looking for?
         </h2>
 
-        <div className="grid grid-cols-6 gap-4 mb-10  h-auto px-[40px] py-[20px] ">
-          {/* Card 1 */}
-          <div className="flex flex-col items-center justify-between  p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
-            <div className="w-28 h-28 flex items-center justify-center mb-2  rounded-full bg-gradient-to-r from-green-200 to-emerald-300">
-              <img
-                src={Repair}
-                alt="Repair"
-                className="h-14 object-contain transition-transform duration-300 hover:scale-110"
-              />
-            </div>
-            <p className="text-lg font-semibold text-green-900 text-center">
-              Repair
-            </p>
-          </div>
+<div className="flex flex-col-2 w-full max-w-[1440px] flex-wrap !gap-10 sm:gap-5 mb-10 px-2 sm:px-6 py-6 overflow-x-auto sm:overflow-visible justify-center">
+  {/* Card 1 */}
+  <div className="flex-shrink-0 flex  w-full sm:w-1/3 lg:w-1/3  sm:flex-col items-center justify-between p-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
+    <div className="w-24 h-24 sm:w-36 sm:h-36 flex items-center justify-center rounded-full bg-gradient-to-r from-green-200 to-emerald-300">
+      <img
+        src={Repair}
+        alt="Repair"
+        className="h-10 sm:h-24 object-contain transition-transform duration-300 hover:scale-110"
+      />
+    </div>
+    <p className="text-sm sm:text-lg font-semibold text-green-900 text-center mt-2">
+      Repair
+    </p>
+  </div>
 
-          {/* Card 2 */}
-          <div className="flex flex-col items-center justify-between p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
-            <div className="w-28 h-28  flex items-center justify-center mb-2  rounded-full bg-gradient-to-r from-amber-200 to-orange-300 ">
-              <img
-                src={Servicing}
-                alt="Servicing"
-                className="h-14 object-contain transition-transform duration-300 hover:scale-110"
-              />
-            </div>
-            <p className="text-lg font-semibold text-amber-900 text-center">
-              Servicing
-            </p>
-          </div>
+  {/* Card 2 */}
+  <div className="flex-shrink-0 w-2/3 sm:w-1/3 lg:w-1/4 xl:w-1/6 flex flex-col items-center justify-between p-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
+    <div className="w-16 h-16 sm:w-28 sm:h-28 flex items-center justify-center rounded-full bg-gradient-to-r from-amber-200 to-orange-300">
+      <img
+        src={Servicing}
+        alt="Servicing"
+        className="h-10 sm:h-14 object-contain transition-transform duration-300 hover:scale-110"
+      />
+    </div>
+    <p className="text-sm sm:text-lg font-semibold text-amber-900 text-center mt-2">
+      Servicing
+    </p>
+  </div>
 
-          {/* Card 3 */}
-          <div className="flex flex-col items-center justify-between p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
-            <div className="w-28 h-28  flex items-center justify-center mb-2  rounded-full  bg-gradient-to-r from-red-200 to-pink-300">
-              <img
-                src={Uninstallation}
-                alt="Installation/Uninstallation"
-                className="h-12  object-contain transition-transform duration-300 hover:scale-110"
-              />
-            </div>
-            <p className="text-lg font-semibold text-red-900 text-center">
-              Installation / <br /> Uninstallation
-            </p>
-          </div>
+  {/* Card 3 */}
+  <div className="flex-shrink-0 w-2/3 sm:w-1/3 lg:w-1/4 xl:w-1/6 flex flex-col items-center justify-between p-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
+    <div className="w-16 h-16 sm:w-28 sm:h-28 flex items-center justify-center rounded-full bg-gradient-to-r from-red-200 to-pink-300">
+      <img
+        src={Uninstallation}
+        alt="Installation/Uninstallation"
+        className="h-10 sm:h-12 object-contain transition-transform duration-300 hover:scale-110"
+      />
+    </div>
+    <p className="text-sm sm:text-lg font-semibold text-red-900 text-center mt-2">
+      Installation / <br /> Uninstallation
+    </p>
+  </div>
 
-          {/* Card 4 */}
-          <div className="flex flex-col items-center justify-betweenrounded-[20px] p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
-            <div className="w-28 h-28  flex items-center justify-center mb-2  bg-gradient-to-r from-purple-200 to-indigo-300  rounded-full">
-              <img
-                src={Maintenance}
-                alt="Maintenance"
-                className="h-14 object-contain transition-transform duration-300 hover:scale-110"
-              />
-            </div>
-            <p className="text-lg font-semibold text-purple-900 text-center">
-              Maintenance
-            </p>
-          </div>
+  {/* Card 4 */}
+  <div className="flex-shrink-0 w-2/3 sm:w-1/3 lg:w-1/4 xl:w-1/6 flex flex-col items-center justify-between p-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
+    <div className="w-16 h-16 sm:w-28 sm:h-28 flex items-center justify-center rounded-full bg-gradient-to-r from-purple-200 to-indigo-300">
+      <img
+        src={Maintenance}
+        alt="Maintenance"
+        className="h-12 sm:h-14 object-contain transition-transform duration-300 hover:scale-110"
+      />
+    </div>
+    <p className="text-sm sm:text-lg font-semibold text-purple-900 text-center mt-2">
+      Maintenance
+    </p>
+  </div>
 
-          {/* Card 5 */}
-          <div className="flex flex-col items-center justify-betweenp-6 p-6  transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
-            <div className="w-28 h-28  flex items-center justify-center mb-2 bg-gradient-to-r from-blue-200 to-cyan-300 rounded-full">
-              <img
-                src={WaterQuality}
-                alt="Water Quality Testing"
-                className="h-14 object-contain transition-transform duration-300 hover:scale-110"
-              />
-            </div>
-            <p className="text-lg font-semibold text-blue-900 text-center">
-              Water Quality Testing
-            </p>
-          </div>
+  {/* Card 5 */}
+  <div className="flex-shrink-0 w-2/3 sm:w-1/3 lg:w-1/4 xl:w-1/6 flex flex-col items-center justify-between p-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
+    <div className="w-16 h-16 sm:w-28 sm:h-28 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-200 to-cyan-300">
+      <img
+        src={WaterQuality}
+        alt="Water Quality Testing"
+        className="h-12 sm:h-14 object-contain transition-transform duration-300 hover:scale-110"
+      />
+    </div>
+    <p className="text-sm sm:text-lg font-semibold text-blue-900 text-center mt-2">
+      Water Quality Testing
+    </p>
+  </div>
 
-          {/* Card 6 */}
-          <div className="flex flex-col items-center justify-betweenrounded-[40px] p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
-            <div className="w-28 h-28 flex items-center justify-center mb-4  bg-gradient-to-r from-pink-200 to-rose-300 rounded-full ">
-              <img
-                src={SystemCheckup}
-                alt="System Checkup"
-                className="h-14 object-contain transition-transform duration-300 hover:scale-110"
-              />
-            </div>
-            <p className="text-lg font-semibold text-pink-900 text-center">
-              System Checkup
-            </p>
-          </div>
-        </div>
+  {/* Card 6 */}
+  <div className="flex-shrink-0 w-2/3 sm:w-1/3 lg:w-1/4 xl:w-1/6 flex flex-col items-center justify-between p-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105 overflow-hidden">
+    <div className="w-16 h-16 sm:w-28 sm:h-28 flex items-center justify-center rounded-full bg-gradient-to-r from-pink-200 to-rose-300">
+      <img
+        src={SystemCheckup}
+        alt="System Checkup"
+        className="h-12 sm:h-14 object-contain transition-transform duration-300 hover:scale-110"
+      />
+    </div>
+    <p className="text-sm sm:text-lg font-semibold text-pink-900 text-center mt-2">
+      System Checkup
+    </p>
+  </div>
+</div>
+
+
+
       </div>
      
-    <div className="w-full flex flex-col max-w-[1440px] rounded-2xl p-3 justify-between items-center">
+    <div className="w-full flex flex-col max-w-[1440px] rounded-2xl  justify-between items-center">
   <div className="w-full text-left">
-    <h2 className="text-3xl font-semibold p-5 text-gray-900">
-      Shop from <span className="text-blue-700">Top Categories</span>
+    <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold p-1 sm:p-5 whitespace-nowrap text-gray-900">
+      Shop from <span className="text-blue-700 whitespace-nowrap">Top Categories</span>
     </h2>
   </div>
   <CategoryCard />
@@ -133,20 +135,6 @@ const Home = () => {
       <div className=" w-full max-w-[1440px] flex justify-between items-center ">
         <ProductCard />
       </div>
-
-      {/*   Services by product category */}
-      {/* <div className="relative w-full max-w-[1420px] "> */}
-      {/* Left Arrow Button */}
-      {/*        
-        <h2 className="text-3xl font-semibold text-center p-5 text-blue-900">
-          Services by Product Category
-        </h2> */}
-      {/* <div className="w-[360px] mx-auto  h-1 rounded-lg bg-gradient-to-r  mb-8 from-blue-700 via-blue-400 to-blue-700"></div> */}
-
-      {/* <div className=" w-full max-w-[1440px] ">
-        <CategoryCard />
-       </div> */}
-      {/* </div> */}
 
       <div className="w-full max-w-[1440px] ">
         <EngineerCard />
