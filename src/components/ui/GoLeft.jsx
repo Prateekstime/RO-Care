@@ -6,8 +6,8 @@ function GoLeft() {
     <div>
               {/* Left Arrow Button */}
               <button
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 bg-white h-[40px] w-[40px] 
-          rounded-full border-b-4 border-blue-300 hover:border-hidden shadow-lg transition-all duration-300 hover:bg-blue-400 hover:scale-110 hover:shadow-xl z-10"
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 bg-white h-[30px] w-[30px] 
+          rounded-full   shadow-lg transition-all duration-300 hover:bg-blue-400 hover:scale-110 hover:shadow-xl z-10"
               >
                 <img
                   src={LeftArrow}
