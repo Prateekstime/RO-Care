@@ -22,7 +22,7 @@ function CategoryCard() {
   // Custom navigation buttons
   const NextArrow = ({ onClick }) => (
     <button
-      className="absolute right-[-30px] top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-2 rounded-full hover:scale-110 transition"
+      className="absolute -right-2 sm:right-[-30px] sm:top-1/2 top-12 -translate-y-1/2 z-10 h bg-white shadow-md p-2 rounded-full hover:scale-110 transition"
       onClick={onClick}
     >
       <GoRightButton />
@@ -31,7 +31,7 @@ function CategoryCard() {
 
   const PrevArrow = ({ onClick }) => (
     <button
-      className="absolute left-[-30px] top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-2 rounded-full hover:scale-110 transition"
+      className="absolute -left-2 sm:left-[-30px] sm:top-1/2 top-12  -translate-y-1/2 z-10 bg-white shadow-md p-2 rounded-full hover:scale-110 transition"
       onClick={onClick}
     >
       <GoLeft />
@@ -58,38 +58,38 @@ function CategoryCard() {
       },
       {
         breakpoint: 1024,
-        settings: { slidesToShow: 3 },
+        settings: { slidesToShow: 4 },
       },
       {
         breakpoint: 768,
-        settings: { slidesToShow: 2 },
+        settings: { slidesToShow: 4 },
       },
       {
         breakpoint: 480,
-        settings: { slidesToShow: 1 },
+        settings: { slidesToShow: 4 },
       },
     ],
   };
 
   return (
-    <div className="relative w-full px-10 py-6">
+    <div className="relative w-full px-2 sm:px-10 py-6">
       <Slider {...settings}>
         {categoryData.map((category) => (
           <div
             key={category.id}
-            className="flex flex-col items-center justify-center p-4"
+            className="!flex !justify-center !items-center flex-col text-center"
           >
             {/* Circle */}
-            <div className="w-40 h-40 flex items-center justify-center bg-gray-50 border border-cyan-400 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-2 hover:border-blue-300 cursor-pointer">
+            <div className="sm:w-40 sm:h-40 w-16 h-16 flex items-center justify-center bg-gray-50 border border-cyan-400 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-2 hover:border-blue-300 cursor-pointer">
               <img
                 src={category.image}
                 alt={category.title}
-                className="h-24 w-24 object-contain transition-transform duration-300 hover:scale-110"
+                className="h-12 w-12 object-contain transition-transform duration-300 hover:scale-110"
               />
             </div>
 
             {/* Text below the circle */}
-            <p className="mt-3 text-base font-semibold text-blue-800 text-center">
+            <p className="mt-3 text-[8px] sm:text-base font-semibold text-blue-800 text-center">
               {category.title}
             </p>
           </div>
@@ -97,6 +97,7 @@ function CategoryCard() {
       </Slider>
     </div>
   );
+
 }
 
 export default CategoryCard;
