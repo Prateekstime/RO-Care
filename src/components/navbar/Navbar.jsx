@@ -58,9 +58,9 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full shadow-sm border-b border-gray-200">
+    <header className="w-full  shadow-sm border-b border-gray-200">
       {/* --- Top Bar --- */}
-      <div className="hidden sm:flex bg-[#F5F5F5] text-sm text-gray-950 items-center justify-between px-2 gap-2 py-2">
+      <div className="hidden sm:flex sm:px-4 bg-[#F5F5F5] text-sm text-gray-950 items-center justify-between px-2 gap-2 py-2">
         <span className="md:text-[15px] sm:text-[10px]  whitespace-nowrap">
           Welcome to <strong>Techno RO</strong>
         </span>
@@ -116,7 +116,7 @@ export default function Header() {
       </div>
 
       {/* --- Main Navbar --- */}
-      <div className="flex items-center justify-between px-2 py-3 bg-white max-w-[1440px] mx-auto">
+      <div className="flex sm:px-4 items-center justify-between px-2 py-3 bg-white max-w-[1440px] mx-auto">
         {/* Left Section - Logo */}
         <div className="flex items-center gap-3 px-2">
 

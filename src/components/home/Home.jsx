@@ -114,7 +114,7 @@ const Home = () => {
       <div className=" w-full max-w-[1440px]  bg-cyan-50 rounded-2xl p-3 flex justify-between items-center ">
         <ServiceSection />
       </div>
-      <div className=" w-full max-w-[1440px]  rounded-2xl p-3 flex justify-between items-center ">
+      <div className=" w-full max-w-[1440px]  rounded-2xl  flex justify-between items-center ">
         <ProductsSection />
       </div>
       <div className=" w-full max-w-[1440px] flex justify-between items-center ">
