@@ -13,8 +13,10 @@ import BrandCarousel from "./BrandCorousel.jsx";
 import EngineerCard from "./EngineerCard.jsx";
 import ServiceSection from "./ServiceSection.jsx";
 import ProductsSection from "./ProductsSection.jsx";
-
+import CertifiedLogo from '../../assets/certifiedLogo.svg'
 import CategoryCard from "../home/CategoryCard.jsx";
+import tagLogo from "../../assets/TagLogo.svg"
+import satisfactionLogo from "../../assets/satisfyCustomerLogo.svg"
 import { FaPhoneAlt } from "react-icons/fa";
 
 
@@ -121,9 +123,9 @@ const Home = () => {
         <ProductCard />
       </div>
 
-      <div className="w-full max-w-[1440px] ">
+      {/* <div className="w-full max-w-[1440px] ">
         <EngineerCard />
-      </div>
+      </div> */}
       <div className="w-full max-w-[1440px] ">
               <h2 className="text-3xl text-center  font-semibold  mb-2">
                 Trusted By Top Brands
@@ -131,8 +133,28 @@ const Home = () => {
         <BrandCarousel />
          </div>
 
-        <div className="w-full max-w-[1440px]">
-          <h2 className="text-3xl font-semibold text-center mb-4 ">
+        <div className="w-full max-w-[1440px] flex flex-col justify-center ">
+            <h1 className="text-sm sm:text-3xl font-semibold text-center pb-6">Why Choose Us</h1>
+          <div className="flex flex-col sm:flex-row m-2 gap-2">
+            <div className="shadow-lg border rounded-2xl p-4">
+              <img src={CertifiedLogo} alt="" />
+              <h1 className="font-medium pb-4 text-xl">Cartified Professionals</h1>
+              <p>Our experts handle all services with precision and care.</p>
+            </div>
+           <div className="shadow-lg border rounded-2xl p-4">
+              <img src={satisfactionLogo} alt="" className="object-cover" />
+              <h1 className="font-medium pb-4 text-xl">Customer Satisfaction</h1>
+              <p>Our priority is your satisfaction; we strive to exceed expectations.</p>
+            </div>
+              <div className="shadow-lg border rounded-2xl p-4">
+              <img src={tagLogo} alt="" />
+              <h1 className="font-medium pb-4 text-xl">Affordable Pricing</h1>
+              <p>Get competitive rates without compromising on quality</p>
+            </div>
+             
+
+          </div>
+          <h2 className="text-3xl mt-6 font-semibold text-center mb-4 ">
             What Our Customers Say
           </h2>
           {/* <div className="w-[340px] mx-auto  h-1 rounded-lg bg-gradient-to-r  mb-2 from-blue-700 via-blue-400 to-blue-700"></div> */}

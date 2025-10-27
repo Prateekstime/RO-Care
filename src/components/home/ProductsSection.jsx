@@ -111,12 +111,12 @@ const ProductsSection = () => {
 
 
     
-<div className="flex flex-nowrap whitespace-nowrap scrollbar-hide overflow-x-auto justify-start gap-2 sm:gap-6 mb-8 px-2">
+<div className="flex flex-nowrap whitespace-nowrap scrollbar-hide overflow-x-auto justify-start sm:justify-center gap-2 sm:gap-4 mb-8 px-2">
   {categories.map((cat) => (
     <button
       key={cat}
       onClick={() => setActiveCategory(cat)}
-      className={`flex-shrink-0 px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition ${
+      className={`flex-shrink-0 px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs  font-medium transition ${
         activeCategory === cat
           ? "bg-[#31B22BD9] text-white"
           : "bg-gray-200 text-black hover:bg-[#ddfff7]"
@@ -138,7 +138,7 @@ const ProductsSection = () => {
     320: { slidesPerView: 4 },       // small phones
     480: { slidesPerView: 4 },       // large phones
     768: { slidesPerView: 4 },       // tablets
-    1024: { slidesPerView: 4 },      // laptops
+    1024: { slidesPerView: 5 },      // laptops
     1280: { slidesPerView: 5 },      // desktops
   }}
 >
@@ -165,7 +165,7 @@ const ProductsSection = () => {
               ₹{parseInt(product.price.replace(/[₹,]/g, "")) + 5000}
             </span>
           </p>
-          <div className="flex gap-2 w-full justify-between">
+          <div className="flex gap-2 w-full justify-evenly">
             <button className="text-xs sm:text-sm whitespace-nowrap px-2 flex items-center justify-center border border-black rounded-md hover:bg-green-500 transition">
               Add to <br /> Cart
             </button>

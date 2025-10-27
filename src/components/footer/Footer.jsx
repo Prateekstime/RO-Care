@@ -1,158 +1,84 @@
-import { Link, NavLink } from "react-router-dom";
-import InstagramIcon from "../../assets/Instagram.png";
-import FaceBookIcon from "../../assets/Facebook.png";
-import LinkedinIcon from "../../assets/Linkedin.png";
-import AppStoreIcon from "../../assets/appStore.png";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import GooglePlayIcon from "../../assets/googleplay.png";
+import FacebookIcon from "../../assets/Facebook.png";
+import InstagramIcon from "../../assets/Instagram.png";
+import LinkedinIcon from "../../assets/Linkedin.png";
 import X from "../../assets/X.png";
-import Wave from "react-wavify";
+import GooglePlayIcon from "../../assets/googleplay.png";
 
 const Footer = () => {
   return (
-    <footer className="footer relative overflow-hidden bg-[#1D283A] text-gray-200">
-      {/* Waves */}
-      {/* <div className="waveContainer absolute w-full z-10 -top-12 h-[800px] overflow-hidden bg-gradient-to-b from-blue-800 via-blue-600 to-cyan-600">
-        <Wave
-          className="wave absolute top-0"
-          fill="#1e3a8a"
-          paused={false}
-          options={{ height: 60, amplitude: 80, speed: 0.15, points: 4 }}
-        />
-        <Wave
-          className="wave absolute top-0"
-          fill="#1e40af"
-          paused={false}
-          options={{ height: 90, amplitude: 65, speed: 0.13, points: 5 }}
-        />
-        <Wave
-          className="wave absolute top-0"
-          fill="#115dd1"
-          paused={false}
-          options={{ height: 120, amplitude: 50, speed: 0.15, points: 6 }}
-        />
-      </div> */}
-
-      {/* Footer Content */}
-      <div className="footerContent relative z-10 pt-6 w-11/12 mx-auto">
-        {/* Logo */}
-        <div className="footer-log">
-          <NavLink to="/" className="footer-brand flex items-center gap-2">
-            <img src={logo} alt="Techno RO" className="footer-logo w-30 h-14 m-4" />
-          </NavLink>
-        </div>
-
-        {/* Main Sections */}
-        <div className="footer-container grid grid-cols-1 md:grid-cols-4 gap-10 mt-6">
-          {/* Company Description */}
-          <div className="footer-section">
-            <p className="text-xs leading-relaxed">
-              RO Care India is one of the trusted & independent water purifier service providers in India.
-              We offer a complete solution such as RO installation, RO repair, maintenance and AMC services 
-              for domestic, commercial & industrial water purifiers. We deal in all brands at a relatively 
-              low price. RO Care India is a unit of 3D Logic Pvt. Ltd.
-            </p>
-            {/* Social Icons */}
-           
-          </div>
-
-          {/* Categories */}
-          <div className="footer-section">
-            <h3 className="font-bold text-xl mb-2">Categories</h3>
-            <ul className="space-y-0 text-sm">
-              <li>RO Plant</li>
-              <li>Water Softener</li>
-              <li>Water Dispenser</li>
-              {/* <li>Water ATM</li> */}
-              <li>Water Ionizer</li>
-              <li>Water Cooler</li>
-              <li>Spare Parts</li>
-            </ul>
-          </div>
-
-          {/* Useful Links */}
-          <div className="footer-section">
-            <h3 className="font-bold text-xl mb-2">Useful Links</h3>
-            <ul className="space-y-0  text-sm">
-              <li>RO Service</li>
-              <li>Buy Water Purifier</li>
-              <li>Water Purifier Installation</li>
-              <li>Water Purifier AMC</li>
-              <li>RO Customer Care</li>
-              <li>Contact</li>
-              <li>Store Locator</li>
-              <li>Careers</li>
-              <li>Franchise</li>
-            </ul>
-          </div>
-
-          {/* Contact Us */}
-          <div className="footer-section">
-            <h3 className="font-bold text-xl mb-2">Contact Us</h3>
-            <ul className="space-y-1 text-sm">
-              <li>📍 Unit No. 831, 8th Floor, JMD Megapolis, Gurgaon, Haryana 122018</li>
-
-              <li>📞 ‪+91-9268887770‬</li>
-              <li>📞 ‪+91-9311587744‬</li>
-              <li>🌐 rocareindia.com</li>
-              <li>✉ info@rocareindia.com</li>
-
-              <li>📞 +91-9268887770</li>
-              <li>📞 +91-9311587744</li>
-              <li>🌐 rocareindia.com</li>
-              <li>✉️ info@rocareindia.com</li>
-
-            </ul>
-             {/* Social Links */}
-          <div className="mt-4 ">
+    <footer className="bg-[#1D283A] text-gray-300"> 
+      <div className="max-w-[1440px] mx-auto px-6 py-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6">
+        {/* Column 1 - Logo & About */}
+        <div className="col-span-1 ">
+          <div className="flex items-center gap-3 mb-4">
+            <img src={logo} alt="Techno RO" className="h-10" />
           
-            <ul className="footer-social-links flex gap-3 mb-4">
-              <li>
-                <a href="https://www.x.com/" target="_blank" rel="noopener noreferrer">
-                  <img src={X} alt="X" className="w-6 h-6" />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                  <img src={FaceBookIcon} alt="Facebook" className="w-6 h-6" />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                  <img src={InstagramIcon} alt="Instagram" className="w-6 h-6" />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
-                  <img src={LinkedinIcon} alt="LinkedIn" className="w-6 h-6" />
-                </a>
-              </li>
-            </ul>
-
-            <div className="footer-app-links flex gap-4">
-              <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
-                <img src={AppStoreIcon} alt="App Store" className="w-24 h-auto" />
-              </a>
-              <a href="https://play.google.com/" target="_blank" rel="noopener noreferrer">
-                <img src={GooglePlayIcon} alt="Google Play" className="w-24 h-auto" />
-              </a>
-            </div>
           </div>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="w-5/6 mx-auto h-[2px] bg-gray-500 rounded-full mt-6"></div>
-
-        {/* Bottom Note */}
-        <div className="mx-auto mt-2 mb-8 text-sm text-gray-200 text-center w-5/6">
-          <p>
-            &copy; Copyright Techno RO. All rights reserved. | CIN: UID2584937HDR20250101
+          <p className="text-sm leading-relaxed text-gray-400">
+            Your trusted partner Techno RO Care <br />
+            for pure water solution. Professional RO service, repair, and
+            maintenance across major cities.
           </p>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-3 mt-4">
+            <a href="#" target="_blank">
+              <img src={FacebookIcon} alt="Facebook" className="w-5 h-5" />
+            </a>
+            <a href="#" target="_blank">
+              <img src={InstagramIcon} alt="Instagram" className="w-5 h-5" />
+            </a>
+            <a href="#" target="_blank">
+              <img src={LinkedinIcon} alt="LinkedIn" className="w-5 h-5" />
+            </a>
+            <a href="#" target="_blank">
+              <img src={X} alt="X" className="w-5 h-5" />
+            </a>
+            <a href="#" target="_blank">
+              <img src={GooglePlayIcon} alt="YouTube" className="w-5 h-5" />
+            </a>
+          </div>
         </div>
+
+        {/* Column 2 - Quick Links */}
+        <div className="w-full grid grid-cols-2  col-span-2">
+
+        <div className="sm:mx-auto ">
+          <h4 className="text-white font-semibold text-lg mb-3 sm:mb-6">Quick Links</h4>
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/amc">AMC Plans</Link></li>
+          </ul>
+        </div>
+
+        {/* Column 3 - Contact */}
+        <div>
+          <h4 className="text-white font-semibold text-lg  mb-3 sm:mb-6">Contact</h4>
+          <ul className="space-y-2 text-sm">
+            <li>📞 +91 987654321</li>
+            <li>✉️ Support@Technoro.com</li>
+            <li>
+              📍 Unit No. 123 12th floor, AMD Metro,<br />
+              Gurgaon, Haryana 123456
+            </li>
+          </ul>
+        </div>
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="border-t border-gray-600 w-11/12 mx-auto mt-6"></div>
+
+      {/* Bottom Text */}
+      <div className="text-center text-gray-400 text-sm py-4">
+        © Copyright 2025 Techno RO. All rights reserved. | CIN: UID2584937HDR20250101
       </div>
     </footer>
   );
 };
 
-export default Footer;
+export default Footer;
