@@ -29,79 +29,80 @@ const Home = () => {
           What are you looking for?
         </h2>
 
-<div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4 mb-10 px-2 sm:px-6 py-6 max-w-[1440px] mx-auto">
+<div className="flex sm:flex-nowrap  gap-3 sm:gap-5 mb-6 px-2 sm:px-6 py-2 overflow-x-auto scrollbar-hide max-w-[1440px] mx-auto">
   {/* Card 1 */}
-  <div className="flex sm:flex-col h-fit sm:h-auto items-center justify-center gap-2 rounded-2xl sm:rounded-full bg-gradient-to-r from-green-200 to-emerald-300 p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
+  <div className="flex-shrink-0 w-20 h-20 sm:w-36 sm:h-36 flex flex-col items-center justify-center rounded-full bg-gradient-to-r from-green-200 to-emerald-300 p-3 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
     <img
       src={Repair}
       alt="Repair"
-      className="h-8 sm:h-14 lg:h-20 object-contain transition-transform duration-300 hover:scale-110"
+      className="h-10 sm:h-14 lg:h-16 object-contain transition-transform duration-300 hover:scale-110"
     />
-    <p className="text-xs sm:text-lg font-semibold text-green-900 text-center">
+    <p className="text-xs sm:text-base font-semibold text-green-900 text-center">
       Repair
     </p>
   </div>
 
   {/* Card 2 */}
-  <div className="flex sm:flex-col h-fit sm:h-auto items-center gap-2 rounded-2xl sm:rounded-full bg-gradient-to-r from-amber-200 to-orange-300 p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
+  <div className="flex-shrink-0 w-20 h-20 sm:w-36 sm:h-36 flex flex-col items-center justify-center rounded-full bg-gradient-to-r from-amber-200 to-orange-300 p-3 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
     <img
       src={Servicing}
       alt="Servicing"
-      className="h-8 sm:h-14 lg:h-20 object-contain transition-transform duration-300 hover:scale-110"
+      className="h-10 sm:h-14 lg:h-16 object-contain transition-transform duration-300 hover:scale-110"
     />
-    <p className="text-sm sm:text-lg font-semibold text-amber-900 text-center">
+    <p className="text-xs sm:text-base font-semibold text-amber-900 text-center">
       Servicing
     </p>
   </div>
 
   {/* Card 3 */}
-  <div className="flex sm:flex-col h-fit sm:h-auto items-center gap-2 rounded-2xl sm:rounded-full bg-gradient-to-r from-red-200 to-pink-300 p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
+  <div className="flex-shrink-0 w-20 h-20 sm:w-36 sm:h-36 flex flex-col items-center justify-center rounded-full bg-gradient-to-r from-red-200 to-pink-300 p-3 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
     <img
       src={Uninstallation}
-      alt="Installation/Uninstallation"
-      className="h-8 sm:h-14 lg:h-20 object-contain transition-transform duration-300 hover:scale-110"
+      alt="Installation / Uninstallation"
+      className="h-7 sm:h-14 lg:h-16 object-contain transition-transform duration-300 hover:scale-110"
     />
-    <p className="text-sm sm:text-lg font-semibold text-red-900 text-center">
+    <p className="text-[10px] sm:text-base font-semibold text-red-900 text-center leading-tight">
       Installation / <br /> Uninstallation
     </p>
   </div>
 
   {/* Card 4 */}
-  <div className="flex sm:flex-col h-fit sm:h-auto items-center gap-2 rounded-2xl sm:rounded-full bg-gradient-to-r from-purple-200 to-indigo-300 p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
+  <div className="flex-shrink-0 w-20 h-20 sm:w-36 sm:h-36 flex flex-col items-center justify-center rounded-full bg-gradient-to-r from-purple-200 to-indigo-300 p-3 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
     <img
       src={Maintenance}
       alt="Maintenance"
-      className="h-8 sm:h-14 lg:h-20 object-contain transition-transform duration-300 hover:scale-110"
+      className="h-8 sm:h-14 lg:h-16 object-contain transition-transform duration-300 hover:scale-110"
     />
-    <p className="text-sm sm:text-lg font-semibold text-purple-900 text-center">
+    <p className="text-xs sm:text-base font-semibold text-purple-900 text-center">
       Maintenance
     </p>
   </div>
 
   {/* Card 5 */}
-  <div className="flex sm:flex-col h-fit sm:h-auto items-center gap-2 rounded-2xl sm:rounded-full bg-gradient-to-r from-blue-200 to-cyan-300 p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
+  <div className="flex-shrink-0  w-20 h-20 sm:w-36 sm:h-36 flex flex-col items-center justify-center rounded-full bg-gradient-to-r from-blue-200 to-cyan-300 p-3 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
     <img
       src={WaterQuality}
       alt="Water Quality Testing"
-      className="h-8 sm:h-14 lg:h-20 object-contain transition-transform duration-300 hover:scale-110"
+      className="h-8 sm:h-14 lg:h-16 object-contain transition-transform duration-300 hover:scale-110"
     />
-    <p className="text-sm sm:text-lg font-semibold text-blue-900 text-center">
-      Water Quality Testing
+    <p className="text-[10px] sm:text-base font-semibold text-blue-900 text-center leading-tight">
+      Water Quality <br /> Testing
     </p>
   </div>
 
   {/* Card 6 */}
-  <div className="flex sm:flex-col h-fit sm:h-auto items-center gap-2 rounded-2xl sm:rounded-full bg-gradient-to-r from-pink-200 to-rose-300 p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
+  <div className="flex-shrink-0  w-20 h-20 sm:w-36 sm:h-36 flex flex-col items-center justify-center rounded-full bg-gradient-to-r from-pink-200 to-rose-300 p-3 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
     <img
       src={SystemCheckup}
       alt="System Checkup"
-      className="h-8 sm:h-14 lg:h-20 object-contain transition-transform duration-300 hover:scale-110"
+      className="h-8 sm:h-14 lg:h-16 object-contain transition-transform duration-300 hover:scale-110"
     />
-    <p className="text-sm sm:text-lg font-semibold text-pink-900 text-center">
+    <p className="text-xs sm:text-base font-semibold text-pink-900 text-center">
       System Checkup
     </p>
   </div>
 </div>
+
       </div>
      
     <div className="w-full flex flex-col max-w-[1440px] rounded-2xl  justify-between items-center">

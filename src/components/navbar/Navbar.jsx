@@ -272,7 +272,7 @@ export default function Header() {
   <div className="absolute top-full left-0 w-full bg-white border-t shadow-lg z-50 p-4">
  
 
-     <div className="w-full lg:w-3/12 p-4  rounded-lg bg-white">
+     <div className="w-full sm:w-3/12 p-4 rounded-lg bg-white">
              {/* Product Brands */}
              <div>
                <h3 className="text-lg font-semibold">Product Brands</h3>

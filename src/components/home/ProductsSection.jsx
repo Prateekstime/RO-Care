@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { ShoppingCart, CreditCard } from "lucide-react"; // icons
 import featureImage1 from "../../assets/product_1676_2_thumb.jpg"
 import featureImage2 from "../../assets/product_427_1_thumb.webp";
 import featureImage3 from "../../assets/product_445_1_thumb.webp";
@@ -99,7 +100,7 @@ const ProductsSection = () => {
   const products = productsByCategory[activeCategory]; // dynamically get products for selected category
 
   return (
-    <div className="w-full max-w-[1440px] mx-auto px-6 py-4">
+    <div className="w-full max-w-[1440px] mx-auto px-2 py-4">
       <h2 className="text-xl sm:text-3xl font-semibold text-center text-black mb-2">
         Our Products
       </h2>
@@ -135,8 +136,8 @@ const ProductsSection = () => {
   spaceBetween={10}
   breakpoints={{
     180: { slidesPerView: 2.5 },     // tiny screens
-    320: { slidesPerView: 4 },       // small phones
-    480: { slidesPerView: 4 },       // large phones
+    320: { slidesPerView: 2.5 },       // small phones
+    480: { slidesPerView: 3 },       // large phones
     768: { slidesPerView: 4 },       // tablets
     1024: { slidesPerView: 5 },      // laptops
     1280: { slidesPerView: 5 },      // desktops
@@ -144,35 +145,45 @@ const ProductsSection = () => {
 >
   {products.map((product) => (
     <SwiperSlide key={product.id}>
-      <div className="bg-white border rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
-        <div className="flex justify-center items-center h-24 sm:h-36 lg:h-50 p-1 sm:p-4 relative">
-          <div className="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-white px-2 bg-[#008ECC]">
+      <div className="bg-white border rounded-sm sm:rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+        <div className="flex justify-center items-center h-20 sm:h-36 lg:h-50 p-0 sm:p-4 relative">
+          <div className="absolute top-0 right-0 rounded-tr-sm rounded-bl-sm text-white px-1 sm:px-2 bg-[#008ECC] text-[8px]">
             <p>42%<br />Off</p>
           </div>
           <img
             src={product.image}
             alt={product.name}
-            className="h-20 sm:h-full object-contain"
+            className="h-16 sm:h-full object-contain"
           />
         </div>
         <div className="p-4 flex flex-col gap-2">
-          <p className="text-gray-800 text-xs sm:text-base font-medium">
+          <p className="text-gray-800 text-[10px] sm:text-xs md:text-sm font-medium">
             {product.name}
           </p>
-          <p className="font-semibold text-sm text-blue-900">
+          <p className=" text-[10px] sm:text-xs md:text-sm font-semibold  text-blue-900">
             {product.price}
             <span className="inline line-through text-gray-500 ml-1">
               ₹{parseInt(product.price.replace(/[₹,]/g, "")) + 5000}
             </span>
           </p>
-          <div className="flex gap-2 w-full justify-evenly">
-            <button className="text-xs sm:text-sm whitespace-nowrap px-2 flex items-center justify-center border border-black rounded-md hover:bg-green-500 transition">
-              Add to <br /> Cart
-            </button>
-            <button className="text-xs sm:text-sm   px-2 flex items-center justify-center bg-green-500 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
-              Buy Now
-            </button>
-          </div>
+        <div className="flex gap-2 w-full justify-evenly">
+  {/* Add to Cart */}
+  <button className="text-xs sm:text-sm whitespace-nowrap px-2 flex items-center justify-center border border-black rounded-md hover:bg-green-500 transition">
+    {/* Show icon on small screens */}
+    <ShoppingCart size={14} className="sm:hidden" />
+    {/* Show text on larger screens */}
+    <span className="hidden sm:block">
+      Add to <br /> Cart
+    </span>
+  </button>
+
+  <button className="text-xs sm:text-sm px-2 flex items-center justify-center bg-green-500 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
+   
+    <span className="">
+      Buy Now
+    </span>
+  </button>
+</div>
         </div>
       </div>
     </SwiperSlide>

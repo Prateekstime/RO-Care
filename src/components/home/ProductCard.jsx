@@ -114,13 +114,16 @@ function ProductCard() {
             key={`${product.id}-${currentIndex}-${index}`}
             onClick={() => handleCardClick(product.id)}
             className={`flex-1 bg-gradient-to-b from-blue-100 via-white to-blue-50  rounded-[16px]   border
-             flex flex-col gap-[16px]  transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-gray-600 cursor-pointer`}
+             flex flex-col gap-[16px]   transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-gray-600 cursor-pointer`}
           >
+            <div className='p-2'>
+
             <img
               src={product.image}
               alt="Offer"
-              className="w-full h-[160px] object-contain m-4 rounded-md transition-transform duration-300 hover:scale-105"
+              className="w-full sm:h-[100px] object-contain  rounded-md transition-transform duration-300 hover:scale-105"
             />
+            </div>
             <div className='bg-gray-300 p-4 rounded-2xl rounded-t-none  '>
 
             <div className="flex flex-col justify-center  border-t border-b">
