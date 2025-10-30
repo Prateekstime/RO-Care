@@ -29,7 +29,7 @@ const Home = () => {
           What are you looking for?
         </h2>
 
-<div className="flex sm:flex-nowrap  gap-3 sm:gap-5 mb-6 px-2 sm:px-6 py-2 overflow-x-auto scrollbar-hide max-w-[1440px] mx-auto">
+<div className="flex sm:flex-nowrap  justify-center gap-3 sm:gap-5 mb-6 px-2 sm:px-6 py-2 overflow-x-auto scrollbar-hide max-w-[1440px] mx-auto">
   {/* Card 1 */}
   <div className="flex-shrink-0 w-20 h-20 sm:w-36 sm:h-36 flex flex-col items-center justify-center rounded-full bg-gradient-to-r from-green-200 to-emerald-300 p-3 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
     <img
