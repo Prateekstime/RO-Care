@@ -81,7 +81,7 @@ const testimonials = [
 
 const CustomerReviewCard = () => {
   return (
-    <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-10">
+    <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-10">
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{
@@ -102,7 +102,7 @@ const CustomerReviewCard = () => {
             slidesPerView: 1,
           },
           640: {
-            slidesPerView: 1,
+            slidesPerView: 2,
           },
           768: {
             slidesPerView: 2,
