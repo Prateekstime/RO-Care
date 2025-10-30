@@ -269,121 +269,121 @@ export default function Header() {
       </div>
       {/* --- Filter Section Overlay --- */}
 {showFilter && (
-  <div className="absolute top-full left-0 w-full bg-white border-t shadow-lg z-50 p-4">
- 
+  <div className="absolute top-full left-0 w-full bg-white border-t shadow-lg z-50 p-4 block sm:hidden">
 
-     <div className="w-full sm:w-3/12 p-4 rounded-lg bg-white">
-             {/* Product Brands */}
-             <div>
-               <h3 className="text-lg font-semibold">Product Brands</h3>
-               <div className="my-2 border-t border-dashed border-gray-400"></div>
-               <ul className="space-y-3 text-sm">
-                 {[
-                   "KENT",
-                   "Pure it",
-                   "Livpure",
-                   "Eureka FORBES",
-                   "BLUE MOUNT",
-                 ].map((brand, i) => (
-                   <li key={i}>
-                     <input type="checkbox" className="mr-2" />
-                     <label>{brand}</label>
-                   </li>
-                 ))}
-               </ul>
-             </div>
-   
-             {/* Sort By */}
-             <div className="mt-6">
-               <h3 className="text-lg font-semibold">Sort By</h3>
-               <div className="my-2 border-t border-dashed border-gray-400"></div>
-               {["Popular", "Price Low - High", "Price High - Low", "Latest"].map(
-                 (opt, i) => (
-                   <div key={i} className="mb-2">
-                     <input type="checkbox" className="mr-2" />
-                     <label>{opt}</label>
-                   </div>
-                 )
-               )}
-             </div>
-                <div className="w-full max-w-md mx-auto">
-         {/* Header */}
-         <div className="flex justify-between items-center mb-2">
-           <h2 className="text-lg font-semibold text-gray-800">Price</h2>
-           <p className="text-gray-800 font-medium">₹{price}</p>
-         </div>
-   
-         {/* Slider */}
-         <div className="relative w-full">
-           <input
-             type="range"
-             min={min}
-             max={max}
-             value={price}
-             onChange={handleChange}
-             className="w-full h-2 rounded-full appearance-none cursor-pointer bg-gradient-to-r from-purple-600 via-blue-600 to-red-500"
-           />
-         </div>
-   
-         {/* Price Range Text */}
-         <div className="flex justify-between mt-3 text-gray-700 font-medium">
-           <span>₹{min}</span>
-           <span>₹{max}</span>
-         </div>
-       </div>
-   
-             {/* Customer Reviews */}
-             <div className="mt-6">
-               <h3 className="text-lg font-semibold">Customer Reviews</h3>
-               <div className="my-2 border-t border-dashed border-gray-400"></div>
-               {reviews.map((review, index) => (
-                 <div key={index}>
-                   <div className="flex items-center justify-between mb-1">
-                     <div className="flex items-center space-x-4">
-                       <img
-                         src={Customer}
-                         alt="Customer"
-                         className="w-10 h-10 rounded-full"
-                       />
-                       <div>
-                         <p className="text-sm text-gray-600">{review.name}</p>
-                         <p className="text-xs text-gray-500">{review.date}</p>
-                       </div>
-                     </div>
-                     <div className="flex space-x-1">
-                       {[...Array(5)].map((_, i) => (
-                         <span
-                           key={i}
-                           className={`text-md ${
-                             i < review.rating ? "text-[#7EC1B1]" : "text-gray-300"
-                           }`}
-                         >
-                           ★
-                         </span>
-                       ))}
-                     </div>
-                   </div>
-                   <p className="text-sm text-gray-600 mb-3">{review.review}</p>
-                 </div>
-               ))}
-             </div>
-   
-             {/* Techno RO Promise */}
-             <div className="mt-6">
-               <h3 className="text-lg font-semibold mb-2">Techno RO Promise</h3>
-               <div className="flex gap-3 items-start">
-                 <ul className="space-y-2 text-sm">
-                   <li>✓ Verified Professionals</li>
-                   <li>✓ Hassle-Free Booking</li>
-                   <li>✓ Transparent Pricing</li>
-                   <li>✓ Genuine Spare Parts</li>
-                 </ul>
-                 <img src={Quality} alt="" className="w-16 h-16" />
-               </div>
-             </div>
-           </div>
+    <div className="w-full p-4 rounded-lg bg-white">
+      {/* Product Brands */}
+      <div>
+        <h3 className="text-lg font-semibold">Product Brands</h3>
+        <div className="my-2 border-t border-dashed border-gray-400"></div>
+        <ul className="space-y-3 text-sm">
+          {[
+            "KENT",
+            "Pure it",
+            "Livpure",
+            "Eureka FORBES",
+            "BLUE MOUNT",
+          ].map((brand, i) => (
+            <li key={i}>
+              <input type="checkbox" className="mr-2" />
+              <label>{brand}</label>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Sort By */}
+      <div className="mt-6">
+        <h3 className="text-lg font-semibold">Sort By</h3>
+        <div className="my-2 border-t border-dashed border-gray-400"></div>
+        {["Popular", "Price Low - High", "Price High - Low", "Latest"].map(
+          (opt, i) => (
+            <div key={i} className="mb-2">
+              <input type="checkbox" className="mr-2" />
+              <label>{opt}</label>
+            </div>
+          )
+        )}
+      </div>
+
+      {/* Price Slider */}
+      <div className="w-full max-w-md mx-auto">
+        <div className="flex justify-between items-center mb-2">
+          <h2 className="text-lg font-semibold text-gray-800">Price</h2>
+          <p className="text-gray-800 font-medium">₹{price}</p>
+        </div>
+
+        <div className="relative w-full">
+          <input
+            type="range"
+            min={min}
+            max={max}
+            value={price}
+            onChange={handleChange}
+            className="w-full h-2 rounded-full appearance-none cursor-pointer bg-gradient-to-r from-purple-600 via-blue-600 to-red-500"
+          />
+        </div>
+
+        <div className="flex justify-between mt-3 text-gray-700 font-medium">
+          <span>₹{min}</span>
+          <span>₹{max}</span>
+        </div>
+      </div>
+
+      {/* Customer Reviews */}
+      <div className="mt-6">
+        <h3 className="text-lg font-semibold">Customer Reviews</h3>
+        <div className="my-2 border-t border-dashed border-gray-400"></div>
+        {reviews.map((review, index) => (
+          <div key={index}>
+            <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center space-x-4">
+                <img
+                  src={Customer}
+                  alt="Customer"
+                  className="w-10 h-10 rounded-full"
+                />
+                <div>
+                  <p className="text-sm text-gray-600">{review.name}</p>
+                  <p className="text-xs text-gray-500">{review.date}</p>
+                </div>
+              </div>
+              <div className="flex space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <span
+                    key={i}
+                    className={`text-md ${
+                      i < review.rating ? "text-[#7EC1B1]" : "text-gray-300"
+                    }`}
+                  >
+                    ★
+                  </span>
+                ))}
+              </div>
+            </div>
+            <p className="text-sm text-gray-600 mb-3">{review.review}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Promise Section */}
+      <div className="mt-6">
+        <h3 className="text-lg font-semibold mb-2">Techno RO Promise</h3>
+        <div className="flex gap-3 items-start">
+          <ul className="space-y-2 text-sm">
+            <li>✓ Verified Professionals</li>
+            <li>✓ Hassle-Free Booking</li>
+            <li>✓ Transparent Pricing</li>
+            <li>✓ Genuine Spare Parts</li>
+          </ul>
+          <img src={Quality} alt="" className="w-16 h-16" />
+        </div>
+      </div>
+
+    </div>
   </div>
 )}
+
 
     </header>
   );

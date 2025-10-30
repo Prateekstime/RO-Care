@@ -365,7 +365,7 @@ const ServicesPage = () => {
                       className="w-full m-2 h-48 object-cover"
                     />
                     <div className="p-1 flex flex-col justify-between">
-                      <h3 className="text-sm md:text-lg font-semibold text-[#0B3D91] mb-2">
+                      <h3 className="text-xs sm:text-sm md:text-lg font-semibold text-[#0B3D91] mb-2">
                         {item.name}
                       </h3>
                       <div className="flex items-center gap-2 mb-2">
@@ -374,37 +374,37 @@ const ServicesPage = () => {
                           alt="Star"
                           className="w-3 h-3 sm:w-4 sm:h-4"
                         />
-                        <span className="font-semibold text-xs sm:text-base">
+                        <span className="font-semibold text-[10px] sm:text-base">
                           {item.rating}
                         </span>
-                        <span className="text-gray-400 text-xs sm:text-sm">
+                        <span className="text-gray-400 text-[10px] sm:text-sm">
                           ({item.reviews})
                         </span>
                       </div>
-                      <div className="flex items-center gap-6 mb-3">
-                        <span className="font-semibold text-lg flex items-center gap-1 text-[#1F7A8C]">
+                      <div className="flex justify-between mb-3">
+                        <span className="font-semibold text-sm sm:text-lg flex items-center gap-1 text-[#1F7A8C]">
                           <FaRupeeSign /> {item.price}
                         </span>
-                        <span className="text-gray-500 text-sm flex items-center gap-1">
+                        <span className="text-gray-600  whitespace-nowrap text-[10px] sm-text-sm flex items-center gap-1">
                           <div className="w-2 h-2 rounded-full bg-black"></div>{" "}
                           {item.time}
                         </span>
                       </div>
-                      <p className="text-gray-600 text-sm mb-3">
+                      <p className="text-gray-600 text-[10px] sm-text-sm mb-3">
                         {item.description}
                       </p>
                             <div className="flex gap-2 w-full justify-evenly">
   {/* Add to Cart */}
   <button className="text-xs sm:text-sm whitespace-nowrap px-2 flex items-center justify-center border border-black rounded-md hover:bg-green-500 transition">
     {/* Show icon on small screens */}
-    <ShoppingCart size={14} className="sm:hidden" />
+    <ShoppingCart size={18} className="sm:hidden" />
     {/* Show text on larger screens */}
     <span className="hidden sm:block">
       Add to <br /> Cart
     </span>
   </button>
 
-  <button className="text-xs sm:text-sm px-2 flex items-center justify-center bg-green-500 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
+  <button className="text-sm py-2 sm:text-sm px-2 flex items-center justify-center bg-green-500 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
    
     <span className="">
       Buy Now
