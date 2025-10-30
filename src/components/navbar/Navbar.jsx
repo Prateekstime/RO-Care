@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo.svg";
 import { useNavigate, Link } from "react-router-dom";
 import FilterLogo from "../../assets/filter.svg";
 import userLogo from "../../assets/user.svg";
@@ -100,7 +100,7 @@ export default function Header() {
             <img
               src={logo}
               alt="Logo"
-              className="w-28 sm:w-32 h-auto cursor-pointer object-contain"
+              className="w-16 sm:w-24 h-auto cursor-pointer object-contain"
             />
           </Link>
         </div>
@@ -117,9 +117,9 @@ export default function Header() {
             onMouseEnter={() => setShowProduct(true)}
             onMouseLeave={() => setShowProduct(false)}
           >
-            <span className="hover:text-blue-600 cursor-pointer">Products</span>
+            <span className="hover:text-blue-600 cursor-pointer" onClick={()=>{navigate("product-category")}}>Products</span>
             {showProduct && (
-              <div className="absolute top-full left-0 mt-2 bg-white border rounded-2xl shadow-lg p-5 z-50 w-[600px] grid grid-cols-3 gap-6">
+              <div className="absolute top-full left-0  bg-white border rounded-2xl shadow-lg p-2 z-50 w-[400px] grid grid-cols-3 gap-2">
                 {[
                   ["Water Purifier", "Vacuum Cleaner", "Air Purifier"],
                   ["RO Plant", "Water Cooler", "Home Appliance"],
@@ -143,7 +143,7 @@ export default function Header() {
             onMouseEnter={() => setShowService(true)}
             onMouseLeave={() => setShowService(false)}
           >
-            <span className="hover:text-blue-600 cursor-pointer">Services</span>
+            <span className="hover:text-blue-600 cursor-pointer" onClick={()=>{navigate("service-category")}}>Services</span>
             {showService && (
               <div className="absolute top-full left-0 mt-2 bg-white border rounded-2xl shadow-lg w-56 z-50 p-3">
                 <ul className="flex flex-col gap-2 text-gray-800 text-sm font-medium">

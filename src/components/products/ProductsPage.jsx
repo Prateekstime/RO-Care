@@ -1,3 +1,4 @@
+
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +13,6 @@ import Offer3 from "../../assets/Offer3.png";
 import Offer4 from "../../assets/Offer4.png";
 import Offer5 from "../../assets/Offer5.png";
 import Offer6 from "../../assets/Offer6.png";
-import Purifier from "../../assets/Purifier.png";
 
 // ✅ Your Category-Wise Product Data
 const productsByCategory = {
@@ -318,12 +318,10 @@ const reviews = [
   },
 ];
 
-
-
 const ProductsPage = () => {
   const navigate = useNavigate();
   const [price, setPrice] = useState(9999);
-    const min = 99;
+  const min = 99;
   const max = 99999;
 
   const handleChange = (e) => {
@@ -331,35 +329,33 @@ const ProductsPage = () => {
   };
 
   return (
-    <div className="flex w-5/6  flex-col mx-auto gap-5 my-6">
-      {/*Title */}
+    <div className="flex w-5/6 flex-col mx-auto gap-5 my-6">
+     
+      {/* Title */}
       <div className="flex items-center">
         <div className="flex-grow border-t border-gray-900"></div>
-        <span className="mx-2 text-3xl font-semibold ">Products</span>
+        <span className="mx-2 text-3xl font-semibold">Products</span>
         <div className="flex-grow border-t border-gray-900"></div>
       </div>
 
-      {/* Content Section */}
       <div className="flex flex-col lg:flex-row gap-x-10 mx-4">
+        
         {/* Sidebar */}
-        <div className="w-full lg:w-3/12 p-4  rounded-lg bg-white">
+        <div className="w-full lg:w-3/12 p-4 bg-white rounded-lg">
+          
           {/* Product Brands */}
           <div>
             <h3 className="text-lg font-semibold">Product Brands</h3>
             <div className="my-2 border-t border-dashed border-gray-400"></div>
             <ul className="space-y-3 text-sm">
-              {[
-                "KENT",
-                "Pure it",
-                "Livpure",
-                "Eureka FORBES",
-                "BLUE MOUNT",
-              ].map((brand, i) => (
-                <li key={i}>
-                  <input type="checkbox" className="mr-2" />
-                  <label>{brand}</label>
-                </li>
-              ))}
+              {["KENT", "Pure it", "Livpure", "Eureka FORBES", "BLUE MOUNT"].map(
+                (brand, i) => (
+                  <li key={i}>
+                    <input type="checkbox" className="mr-2" />
+                    <label>{brand}</label>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
@@ -376,51 +372,42 @@ const ProductsPage = () => {
               )
             )}
           </div>
-             <div className="w-full max-w-md mx-auto">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-2">
-        <h2 className="text-lg font-semibold text-gray-800">Price</h2>
-        <p className="text-gray-800 font-medium">₹{price}</p>
-      </div>
 
-      {/* Slider */}
-      <div className="relative w-full">
-        <input
-          type="range"
-          min={min}
-          max={max}
-          value={price}
-          onChange={handleChange}
-          className="w-full h-2 rounded-full appearance-none cursor-pointer bg-gradient-to-r from-purple-600 via-blue-600 to-red-500"
-        />
-      </div>
+          {/* Price Range */}
+          <div className="w-full max-w-md mx-auto mt-4">
+            <div className="flex justify-between items-center mb-2">
+              <h2 className="text-lg font-semibold text-gray-800">Price</h2>
+              <p className="text-gray-800 font-medium">₹{price}</p>
+            </div>
+            <input
+              type="range"
+              min={min}
+              max={max}
+              value={price}
+              onChange={handleChange}
+              className="w-full h-2 rounded-full appearance-none cursor-pointer bg-gradient-to-r from-purple-600 via-blue-600 to-red-500"
+            />
+            <div className="flex justify-between mt-3 text-gray-700 font-medium">
+              <span>₹{min}</span>
+              <span>₹{max}</span>
+            </div>
+          </div>
 
-      {/* Price Range Text */}
-      <div className="flex justify-between mt-3 text-gray-700 font-medium">
-        <span>₹{min}</span>
-        <span>₹{max}</span>
-      </div>
-    </div>
-
-          {/* Customer Reviews */}
+          {/* Reviews */}
           <div className="mt-6">
             <h3 className="text-lg font-semibold">Customer Reviews</h3>
             <div className="my-2 border-t border-dashed border-gray-400"></div>
             {reviews.map((review, index) => (
-              <div key={index}>
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center space-x-4">
-                    <img
-                      src={Customer}
-                      alt="Customer"
-                      className="w-10 h-10 rounded-full"
-                    />
+              <div key={index} className="mb-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <img src={Customer} alt="" className="w-10 h-10 rounded-full" />
                     <div>
                       <p className="text-sm text-gray-600">{review.name}</p>
                       <p className="text-xs text-gray-500">{review.date}</p>
                     </div>
                   </div>
-                  <div className="flex space-x-1">
+                  <div className="flex">
                     {[...Array(5)].map((_, i) => (
                       <span
                         key={i}
@@ -433,7 +420,7 @@ const ProductsPage = () => {
                     ))}
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 mb-3">{review.review}</p>
+                <p className="text-sm text-gray-600">{review.review}</p>
               </div>
             ))}
           </div>
@@ -453,63 +440,55 @@ const ProductsPage = () => {
           </div>
         </div>
 
-        {/* Product Categories Section */}
+        {/* ✅ Product Grid Section */}
         <div className="flex-1 flex flex-col gap-10">
           {Object.entries(productsByCategory).map(([category, products]) => (
-            <div
-              key={category}
-              className="w-full p-2 "
-            >
+            <div key={category} className="w-full">
               <h1 className="text-2xl font-semibold text-gray-800 text-center md:text-left">
                 {category}
               </h1>
               <div className="my-2 border-t border-gray-200"></div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-x-8 gap-y-8  py-5">
+
+              {/* ✅ Responsive Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 
+                              gap-x-4 gap-y-6 py-5">
                 {products.map((p) => (
                   <div
                     key={p.id}
-                    className="flex  shadow-gray-500  shadow-md flex-col w-full items-center justify-center border bg-white border-gray-300 rounded-lg py-2 hover:shadow-md transition-shadow duration-300"
+                    className="flex shadow-gray-500 shadow-md flex-col items-center 
+                              justify-center border bg-white border-gray-300 rounded-lg py-2 
+                              hover:shadow-md transition duration-300"
                   >
                     <img
                       src={p.image}
                       alt={p.name}
-                      onClick={() => {
-                        navigate("/product-detail");
-                      }}
-                      className="h-[120px] sm:h-[140px] md:h-[200px] mb-3  object-contain"
+                      onClick={() => navigate("/product-detail")}
+                      className="h-[100px] sm:h-[140px] md:h-[200px] mb-3 object-contain cursor-pointer"
                     />
-                    <h3 className="text-xs w-full sm:text-sm md:text-xl font-semibold mb-2 border-t border-b px-2 text-start">
+                    <h3 className="text-xs sm:text-sm md:text-md font-semibold mb-2 
+                                   border-t border-b px-2 text-start w-full">
                       {p.name}
                     </h3>
-                    <p className="px-2 text-sm text-gray-600 space-y-0">
-                      {p.description}
-                    </p>
-                    <div className="flex  w-full justify-between px-2  text-gray-600 mb-1">
+                    <p className="px-2 text-sm text-gray-600">{p.description}</p>
+
+                    <div className="flex w-full justify-between px-2 text-gray-600 mb-1">
                       <span className="font-semibold text-lg text-gray-700">
                         {p.price}
                       </span>
-                      <div
-                        className="grid grid-cols-2 bg-green-300 rounded-sm px-1 mt-1
-                    "
-                      >
+                      <div className="grid grid-cols-2 bg-green-300 rounded-sm px-1 mt-1">
                         <span className="font-semibold text-gray-950 text-sm">
                           4.81
                         </span>
-                        <img
-                          src={BlueStar}
-                          className="w-5 h-5 mb-1 text-black"
-                          alt="Star"
-                        />
+                        <img src={BlueStar} className="w-5 h-5" alt="Star" />
                       </div>
-                      {/* <span className="ml-1 text-xs">(1.9M Reviews)</span> */}
                     </div>
-                    <NavLink className={"w-full "} to="/buynow">
+
+                    <NavLink className="w-full" to="/buynow">
                       <div className="grid w-full px-2 grid-cols-2 gap-3">
-                        <button className="text-md px-2 py-2 flex items-center justify-center border border-black rounded-md hover:bg-green-500 transition">
+                        <button className="text-sm px-2 py-2 border border-black rounded-md hover:bg-green-500 transition">
                           Add to Cart
                         </button>
-
-                        <button className="text-md px-2 py-2 flex items-center justify-center bg-green-400 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
+                        <button className="text-sm px-2 py-2 bg-green-400 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
                           Buy Now
                         </button>
                       </div>
@@ -520,9 +499,11 @@ const ProductsPage = () => {
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );
 };
 
 export default ProductsPage;
+

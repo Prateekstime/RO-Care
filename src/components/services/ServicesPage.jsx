@@ -1,5 +1,7 @@
 import React from "react";
 import { FaRupeeSign } from "react-icons/fa";
+import { ShoppingCart, CreditCard } from "lucide-react"; 
+import { ChevronRight } from "lucide-react";
 import AMC from "../../assets/AMC.png";
 import AMCPlan from "../../assets/AMCPlan.png";
 import BlueStar from "../../assets/BlueStar.png";
@@ -14,166 +16,212 @@ import Quality from "../../assets/Quality.png";
 import Customer from "../../assets/Customer.png";
 import { Check } from "lucide-react";
 import { PhoneCall, Globe, Mail } from "lucide-react";
-
 import { useState } from "react";
 import CustomerReviewCard from "../home/CustomerReviewCard";
+import { useNavigate } from "react-router-dom";
+const reviews = [
+  {
+    name: "Devon Lane",
+    date: "24 Dec, 2024",
+    review:
+      "Lorem ipsum dolor sit amet consectetur. Sed lacus facilisi semper lacus rhoncus cursus...",
+    rating: 4,
+  },
+  {
+    name: "Eleanor Pena",
+    date: "20 Jul, 2024",
+    review:
+      "Lorem ipsum dolor sit amet consectetur. Sed lacus facilisi semper lacus rhoncus cursus...",
+    rating: 5,
+  },
+  {
+    name: "Jane Cooper",
+    date: "15 Jan, 2024",
+    review:
+      "Lorem ipsum dolor sit amet consectetur. Sed lacus facilisi semper lacus rhoncus cursus...",
+    rating: 4,
+  },
+];
 
 const ServicesPage = () => {
-  const [price, setPrice] = useState({ min: 99, max: 9999 });
+  const navigate = useNavigate();
+    const [price, setPrice] = useState(9999);
+  const min = 99;
+  const max = 99999;
 
-  const handleMinChange = (e) => {
-    const newMin = Number(e.target.value);
-    setPrice((prev) => ({
-      min: newMin,
-      max: Math.max(newMin, prev.max), // Ensure max is not less than min
-    }));
+  const handleChange = (e) => {
+    setPrice(e.target.value);
   };
 
-  const handleMaxChange = (e) => {
-    const newMax = Number(e.target.value);
-    setPrice((prev) => ({
-      min: Math.min(prev.min, newMax), // Ensure min is not more than max
-      max: newMax,
-    }));
-  };
-  // Customer reviews
-  const reviews = [
-    {
-      name: "Devon Lane",
-      date: "24 Dec, 2024",
-      review:
-        "Lorem ipsum dolor sit amet consectetur. Sed lacus facilisi semper lacus rhoncus cursus...",
-      rating: 4,
-    },
-    {
-      name: "Eleanor Pena",
-      date: "20 Jul, 2024",
-      review:
-        "Lorem ipsum dolor sit amet consectetur. Sed lacus facilisi semper lacus rhoncus cursus...",
-      rating: 5,
-    },
-    {
-      name: "Jane Cooper",
-      date: "15 Jan, 2024",
-      review:
-        "Lorem ipsum dolor sit amet consectetur. Sed lacus facilisi semper lacus rhoncus cursus...",
-      rating: 4,
-    },
-  ];
-   const features = [
-    {
-      title: "Experienced Professionals",
-      desc: "Our highly trained and skilled team ensures top-quality service.",
-    },
-    {
-      title: "Fast & Reliable",
-      desc: "We offer same-day service to keep your RO system running efficiently.",
-    },
-    {
-      title: "Affordable Pricing",
-      desc: "Transparent pricing with no hidden charges.",
-    },
-    {
-      title: "Customer Satisfaction",
-      desc: "100% guaranteed results for pure and healthy water.",
-    },
-    {
-      title: "24/7 Support",
-      desc: "Our team is always ready to assist you with your RO service needs.",
-    },
-    {
-      title: "Trusted Service",
-      desc: "Reliable and expert solutions for all RO maintenance needs.",
-    },
-  ];
+  
 
-  // Service sections
-  const servicesData = [
+  const repairData = {
+  section: "Repair",
+  image: Service1,
+  products: [
     {
-      section: "Repair",
-      image: Service1,
-      products: [
-        {
-          name: "Water Purifier Check-up",
-          price: 299,
-          time: "30 mins",
-          rating: 4.81,
-          reviews: "1.9M Reviews",
-          description: "Complete check-up to identify issues before repair.",
-        },
-        {
-          name: "RO Filter Replacement",
-          price: 499,
-          time: "45 mins",
-          rating: 4.9,
-          reviews: "1.2M Reviews",
-          description: "Replace old filter for better purification.",
-        },
-      ],
+      name: "Water Purifier Check-up",
+      price: 299,
+      time: "30 mins",
+      rating: 4.81,
+      reviews: "1.9M Reviews",
+      description: "Complete check-up to identify issues before repair.",
     },
     {
-      section: "Service",
-      image: Service2,
-      products: [
-        {
-          name: "Water Purifier Servicing",
-          price: 399,
-          time: "40 mins",
-          rating: 4.8,
-          reviews: "2M Reviews",
-          description: "Regular maintenance service for RO systems.",
-        },
-      ],
+      name: "RO Filter Replacement",
+      price: 499,
+      time: "45 mins",
+      rating: 4.9,
+      reviews: "1.2M Reviews",
+      description: "Replace old filter for better purification.",
     },
     {
-      section: "Installation/Uninstallation",
-      image: UnInService,
-      products: [
-        {
-          name: "RO Installation",
-          price: 599,
-          time: "60 mins",
-          rating: 4.85,
-          reviews: "1.5M Reviews",
-          description: "Professional installation by experts.",
-        },
-      ],
+      name: "UV Lamp Replacement",
+      price: 699,
+      time: "40 mins",
+      rating: 4.85,
+      reviews: "900K Reviews",
+      description: "Enhance germicidal efficiency with a new UV lamp.",
     },
     {
-      section: "AMC Plan",
-      image: AMC,
-      products: [
-        {
-          name: "AMC 6 Months",
-          price: 999,
-          time: "N/A",
-          rating: 4.9,
-          reviews: "500K Reviews",
-          description: "Annual maintenance contract for your RO system.",
-        },
-      ],
-    },
-  ];
-    const contactInfo = [
-    {
-      icon: <PhoneCall className="text-white" size={18} />,
-      bg: "bg-blue-600",
-      text: "+91-9268887770",
-      link: "tel:+919268887770",
+      name: "RO Membrane Change",
+      price: 1199,
+      time: "60 mins",
+      rating: 4.87,
+      reviews: "850K Reviews",
+      description: "Replace membrane to restore purification performance.",
     },
     {
-      icon: <Globe className="text-white" size={18} />,
-      bg: "bg-blue-600",
-      text: "www.rocareindia.com",
-      link: "https://www.rocareindia.com",
+      name: "Pump Repair",
+      price: 899,
+      time: "90 mins",
+      rating: 4.78,
+      reviews: "650K Reviews",
+      description: "Fix or replace damaged booster pumps.",
     },
     {
-      icon: <Mail className="text-white" size={18} />,
-      bg: "bg-blue-600",
-      text: "info@rocareindia.com",
-      link: "mailto:info@rocareindia.com",
+      name: "TDS Level Adjustment",
+      price: 249,
+      time: "20 mins",
+      rating: 4.82,
+      reviews: "720K Reviews",
+      description: "Adjust TDS levels for better water taste.",
     },
-  ];
+    {
+      name: "Water Leakage Fix",
+      price: 349,
+      time: "25 mins",
+      rating: 4.84,
+      reviews: "1M Reviews",
+      description: "Identify and repair leakage points efficiently.",
+    },
+    {
+      name: "RO Tap Replacement",
+      price: 199,
+      time: "15 mins",
+      rating: 4.91,
+      reviews: "560K Reviews",
+      description: "Replace broken or leaking water purifier tap.",
+    },
+    {
+      name: "Filter Candle Replacement",
+      price: 299,
+      time: "30 mins",
+      rating: 4.79,
+      reviews: "440K Reviews",
+      description: "Replace sediment candle for clean filtration.",
+    },
+    {
+      name: "Sediment Filter Change",
+      price: 349,
+      time: "30 mins",
+      rating: 4.77,
+      reviews: "510K Reviews",
+      description: "Remove dirt particles for clearer water flow.",
+    },
+    {
+      name: "Carbon Filter Replacement",
+      price: 449,
+      time: "35 mins",
+      rating: 4.83,
+      reviews: "600K Reviews",
+      description: "Improve taste and odor with a new carbon filter.",
+    },
+    {
+      name: "Inline Filter Change",
+      price: 399,
+      time: "25 mins",
+      rating: 4.81,
+      reviews: "480K Reviews",
+      description: "Upscale purification quality with inline filters.",
+    },
+    {
+      name: "Water Flow Speed Fix",
+      price: 249,
+      time: "15 mins",
+      rating: 4.72,
+      reviews: "430K Reviews",
+      description: "Fix low water flow caused by clogged filters.",
+    },
+    {
+      name: "Noisy RO Repair",
+      price: 499,
+      time: "30 mins",
+      rating: 4.74,
+      reviews: "390K Reviews",
+      description: "Reduce noise caused by malfunctioning parts.",
+    },
+    {
+      name: "RO Water Storage Cleaning",
+      price: 599,
+      time: "60 mins",
+      rating: 4.88,
+      reviews: "820K Reviews",
+      description: "Deep clean tank to remove bacteria & scale.",
+    },
+    {
+      name: "Pressure Valve Setup",
+      price: 399,
+      time: "20 mins",
+      rating: 4.76,
+      reviews: "550K Reviews",
+      description: "Correct pressure to maintain smooth flow.",
+    },
+    {
+      name: "Anti-Scalant Filter Setup",
+      price: 549,
+      time: "30 mins",
+      rating: 4.9,
+      reviews: "470K Reviews",
+      description: "Prevent scale buildup in membrane.",
+    },
+    {
+      name: "RO Adapter Replacement",
+      price: 649,
+      time: "25 mins",
+      rating: 4.73,
+      reviews: "340K Reviews",
+      description: "Replace faulty adapters for stable powering.",
+    },
+    {
+      name: "Float Valve Change",
+      price: 299,
+      time: "20 mins",
+      rating: 4.86,
+      reviews: "370K Reviews",
+      description: "Fix water overflow and leakage issues.",
+    },
+    {
+      name: "Copper Guard Installation",
+      price: 899,
+      time: "50 mins",
+      rating: 4.92,
+      reviews: "200K Reviews",
+      description: "Enhance purification using copper shield.",
+    },
+  ],
+};
+
 
   return (
     <div className="flex flex-col gap-5 mx-4 my-6 font-sans">
@@ -186,313 +234,192 @@ const ServicesPage = () => {
         <div className="flex-grow border-t border-gray-600"></div>
       </div>
 
-      {/* Top Service Cards */}
-      <div className="grid grid-cols-4 gap-6 mt-6">
-        {[
-          { img: RepairService, title: "Repair" },
-          { img: Service, title: "Service" },
-          { img: UnIn, title: "Installation/Uninstallation" },
-          { img: AMCPlan, title: "AMC Plan" },
-        ].map((service, index) => (
-          <div
-            key={index}
-            className="bg-white border border-gray-200 p-5 rounded-xl text-center shadow-[0_4px_10px_rgba(0,0,0,0.08)] 
-                 hover:shadow-[0_8px_25px_rgba(31,122,140,0.25)]  transition-all duration-300 ease-in-out"
-          >
-            <img
-              src={service.img}
-              alt={service.title}
-              className="w-78 h-78 mx-auto object-contain"
-            />
-            <div className="pt-3">
-              <h4 className="text-lg font-semibold text-[#0B3D91]">
-                {service.title}
-              </h4>
-            </div>
-          </div>
-        ))}
-      </div>
-
       {/* Main Body */}
-      <div className="flex gap-x-10 mt-8">
+      <div className="flex gap-x-4 mt-8 max-w-[1440px] mx-auto">
         {/* Sidebar */}
-        <div className="w-1/4 flex flex-col gap-8">
-          {/* Sort By */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2 text-[#0B3D91]">
-              Sort By
-            </h3>
-            {["Popular", "Price Low - High", "Price High - Low", "Latest"].map(
-              (item, index) => (
-                <div key={index} className="mb-1">
-                  <input
-                    type="checkbox"
-                    id={item}
-                    className="mr-2 accent-[#1F7A8C]"
-                  />
-                  <label htmlFor={item} className="text-gray-600">
-                    {item}
-                  </label>
-                </div>
-              )
-            )}
-          </div>
+        <div className="hidden sm:flex sm:w-1/3">
 
-          {/* Price */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2 text-[#0B3D91]">Price</h3>
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-5 h-5 rounded-full "></div>
-              <input
-                type="range"
-                min="0"
-                max="10000"
-                value={price.min}
-                onChange={handleMinChange}
-                className="w-full"
-              />
-              <div className="w-5 h-5 rounded-full "></div>
-            </div>
-
-            <div className="text-gray-600 flex ">
-              <FaRupeeSign className="mt-1 text-sm"/> {price.min} - <FaRupeeSign className="mt-1 text-sm" /> {price.max}
-            </div>
-          </div>
-
-          {/* Offers */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2 text-[#0B3D91]">
-              Offers
-            </h3>
-            {[
-              {
-                title: "UPI Off ₹50",
-                desc: "Pay using any UPI and get instant off ₹50",
-              },
-              {
-                title: "Debit Card Off ₹100",
-                desc: "Pay using Debit Card and get off ₹50",
-              },
-              {
-                title: "Credit Card Off 5%",
-                desc: "Pay using Credit Card and get 5% off",
-              },
-            ].map((offer, idx) => (
-              <div key={idx} className="flex items-start gap-3 mb-2">
-                <div className="w-8 h-8 text-white rounded-full flex items-center justify-center">
-                  %
-                </div>
-                <div>
-                  <div className="font-medium text-[#0B3D91]">
-                    {offer.title}
+          <div className="   p-4 bg-white rounded-lg">
+                  
+                  {/* Product Brands */}
+                  <div>
+                    <h3 className="text-lg font-semibold">Product Brands</h3>
+                    <div className="my-2 border-t border-dashed border-gray-400"></div>
+                    <ul className="space-y-3 text-sm">
+                      {["KENT", "Pure it", "Livpure", "Eureka FORBES", "BLUE MOUNT"].map(
+                        (brand, i) => (
+                          <li key={i}>
+                            <input type="checkbox" className="mr-2" />
+                            <label>{brand}</label>
+                          </li>
+                        )
+                      )}
+                    </ul>
                   </div>
-                  <div className="text-sm text-gray-600">{offer.desc}</div>
-                </div>
-              </div>
-            ))}
-            <button className="text-[#1F7A8C] mt-2 hover:underline">
-              View More Offers
-            </button>
-          </div>
-
-          {/* Customer Reviews */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2 text-[#0B3D91]">
-              Customer Reviews
-            </h3>
-            {reviews.map((review, idx) => (
-              <div key={idx} className="mb-4 border-b border-gray-300 pb-2">
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={Customer}
-                      alt={review.name}
-                      className="w-12 h-12 rounded-full"
+        
+                  {/* Sort By */}
+                  <div className="mt-6">
+                    <h3 className="text-lg font-semibold">Sort By</h3>
+                    <div className="my-2 border-t border-dashed border-gray-400"></div>
+                    {["Popular", "Price Low - High", "Price High - Low", "Latest"].map(
+                      (opt, i) => (
+                        <div key={i} className="mb-2">
+                          <input type="checkbox" className="mr-2" />
+                          <label>{opt}</label>
+                        </div>
+                      )
+                    )}
+                  </div>
+        
+                  {/* Price Range */}
+                  <div className="w-full max-w-md mx-auto mt-4">
+                    <div className="flex justify-between items-center mb-2">
+                      <h2 className="text-lg font-semibold text-gray-800">Price</h2>
+                      <p className="text-gray-800 font-medium">₹{price}</p>
+                    </div>
+                    <input
+                      type="range"
+                      min={min}
+                      max={max}
+                      value={price}
+                      onChange={handleChange}
+                      className="w-full h-2 rounded-full appearance-none cursor-pointer bg-gradient-to-r from-purple-600 via-blue-600 to-red-500"
                     />
-                    <div className="text-sm text-gray-600">
-                      <div>{review.name}</div>
-                      <div className="text-gray-500">{review.date}</div>
+                    <div className="flex justify-between mt-3 text-gray-700 font-medium">
+                      <span>₹{min}</span>
+                      <span>₹{max}</span>
                     </div>
                   </div>
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <span
-                        key={i}
-                        className={`text-xl ${
-                          i < review.rating ? "text-[#1F7A8C]" : "text-gray-300"
-                        }`}
-                      >
-                        ★
-                      </span>
+        
+                  {/* Reviews */}
+                  <div className="mt-6">
+                    <h3 className="text-lg font-semibold">Customer Reviews</h3>
+                    <div className="my-2 border-t border-dashed border-gray-400"></div>
+                    {reviews.map((review, index) => (
+                      <div key={index} className="mb-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <img src={Customer} alt="" className="w-10 h-10 rounded-full" />
+                            <div>
+                              <p className="text-sm text-gray-600">{review.name}</p>
+                              <p className="text-xs text-gray-500">{review.date}</p>
+                            </div>
+                          </div>
+                          <div className="flex">
+                            {[...Array(5)].map((_, i) => (
+                              <span
+                                key={i}
+                                className={`text-md ${
+                                  i < review.rating ? "text-[#7EC1B1]" : "text-gray-300"
+                                }`}
+                              >
+                                ★
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <p className="text-sm text-gray-600">{review.review}</p>
+                      </div>
                     ))}
                   </div>
-                </div>
-                <p className="text-sm text-gray-600">{review.review}</p>
-              </div>
-            ))}
-            <button className="text-[#1F7A8C] mt-2 hover:underline">
-              View More Reviews
-            </button>
-          </div>
-
-          {/* Techno RO Promise */}
-          <div>
-            <h3 className="text-lg font-semibold mb-2 text-[#0B3D91]">
-              Techno RO Promise
-            </h3>
-            {[Quality, Customer].map((img, idx) => (
-              <div key={idx} className="flex items-center gap-3 mb-3">
-                <img src={img} alt="Promise" className="w-12 h-12" />
-                <p className="text-gray-600">
-                  We provide quality services and satisfaction guaranteed.
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div
-          className="w-11/12 md:w-4/5 flex flex-col gap-8 mx-auto 
-                   
-                    p-8 rounded-3xl"
-        >
-          {servicesData.map((section, idx) => (
-            <div key={idx}>
-              <h2 className="text-2xl font-semibold mb-6 text-[#0B3D91]">
-                {section.section}
-              </h2>
-
-              <div className="flex flex-col gap-6">
-                {section.products.map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex flex-col md:flex-row border border-[#1F7A8C]/30 
-                           rounded-3xl overflow-hidden bg-white 
-                           shadow-md hover:shadow-xl hover:shadow-[#1F7A8C]/40
-                           transition-transform transform hover:scale-105"
-                  >
-                    {/* Image */}
-                    <div className="md:w-1/3 w-full h-52 md:h-auto">
-                      <img
-                        src={section.image}
-                        alt={item.name}
-                        className="w-full h-full object-cover"
-                      />
+        
+                  {/* Techno RO Promise */}
+                  <div className="mt-6">
+                    <h3 className="text-lg font-semibold mb-2">Techno RO Promise</h3>
+                    <div className="flex gap-3 items-start">
+                      <ul className="space-y-2 text-sm">
+                        <li>✓ Verified Professionals</li>
+                        <li>✓ Hassle-Free Booking</li>
+                        <li>✓ Transparent Pricing</li>
+                        <li>✓ Genuine Spare Parts</li>
+                      </ul>
+                      <img src={Quality} alt="" className="w-16 h-16" />
                     </div>
+                  </div>
+                </div>
+        </div>
+        
 
-                    {/* Details */}
-                    <div className="md:w-2/3 w-full p-6 flex flex-col justify-between">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-2 text-[#0B3D91]">
-                          {item.name}
-                        </h3>
+        {/* ✅ Single Repair Section */}
+        <div>
+          <div className="flex flex-col gap-2 sm:gap-6  ">
+            <div>
+              <div className="flex justify-between">
+                <h2 className="text-xl md:text-2xl my-3 text-gray-800">
+                  {repairData.section}
+                </h2>
+              </div>
 
-                        <div className="flex items-center gap-2 mb-2">
-                          <img src={BlueStar} alt="Star" className="w-4 h-4" />
-                          <span className="font-semibold">{item.rating}</span>
-                          <span className="text-gray-400 text-sm">
-                            ({item.reviews})
-                          </span>
-                        </div>
-
-                        <div className="flex items-center gap-6 mb-2">
-                          <span className="font-semibold text-lg flex items-center gap-1 text-[#1F7A8C]">
-                            <FaRupeeSign /> {item.price}
-                          </span>
-                          <span className="text-gray-500 text-sm flex items-center gap-1">
-                            <div className="w-2 h-2 rounded-full bg-black"></div>
-                            {item.time}
-                          </span>
-                        </div>
-
-                        <p className="text-gray-600 text-sm line-clamp-3 mb-3">
-                          {item.description}
-                        </p>
-
-                        <button className="text-[#1F7A8C] hover:text-[#145C66] font-semibold text-sm">
-                          View Details
-                        </button>
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 gap-1 shadow-md rounded-2xl border-t p-4">
+                {repairData.products.map((item, i) => (
+                  <div
+                    onClick={() => {
+                      navigate("/services");
+                    }}
+                    key={i}
+                    className="borderrounded-2xl bg-white shadow hover:shadow-xl hover:shadow-[#1F7A8C]/30 transition-transform hover:scale-[1.02] overflow-hidden"
+                  >
+                    <img
+                      src={repairData.image}
+                      alt={item.name}
+                      className="w-full m-2 h-48 object-cover"
+                    />
+                    <div className="p-1 flex flex-col justify-between">
+                      <h3 className="text-sm md:text-lg font-semibold text-[#0B3D91] mb-2">
+                        {item.name}
+                      </h3>
+                      <div className="flex items-center gap-2 mb-2">
+                        <img
+                          src={BlueStar}
+                          alt="Star"
+                          className="w-3 h-3 sm:w-4 sm:h-4"
+                        />
+                        <span className="font-semibold text-xs sm:text-base">
+                          {item.rating}
+                        </span>
+                        <span className="text-gray-400 text-xs sm:text-sm">
+                          ({item.reviews})
+                        </span>
                       </div>
+                      <div className="flex items-center gap-6 mb-3">
+                        <span className="font-semibold text-lg flex items-center gap-1 text-[#1F7A8C]">
+                          <FaRupeeSign /> {item.price}
+                        </span>
+                        <span className="text-gray-500 text-sm flex items-center gap-1">
+                          <div className="w-2 h-2 rounded-full bg-black"></div>{" "}
+                          {item.time}
+                        </span>
+                      </div>
+                      <p className="text-gray-600 text-sm mb-3">
+                        {item.description}
+                      </p>
+                            <div className="flex gap-2 w-full justify-evenly">
+  {/* Add to Cart */}
+  <button className="text-xs sm:text-sm whitespace-nowrap px-2 flex items-center justify-center border border-black rounded-md hover:bg-green-500 transition">
+    {/* Show icon on small screens */}
+    <ShoppingCart size={14} className="sm:hidden" />
+    {/* Show text on larger screens */}
+    <span className="hidden sm:block">
+      Add to <br /> Cart
+    </span>
+  </button>
 
-                      <button
-                        className="bg-[#1F7A8C] hover:bg-[#145C66] text-white 
-                                     px-5 py-2 rounded-lg text-sm font-medium 
-                                     shadow w-max self-start mt-4 transition-all"
-                      >
-                        Buy Now
-                      </button>
+  <button className="text-xs sm:text-sm px-2 flex items-center justify-center bg-green-500 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
+   
+    <span className="">
+      Buy Now
+    </span>
+  </button>
+</div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-
-       <section className="max-w-7xl mx-auto px-6 py-4">
-      <h2 className="text-center text-xl md:text-2xl font-bold mb-10">
-        Why Choose <span className="text-blue-600">RO Care India</span> Water
-        Purifier Service In India{" "}
-        <span className="text-blue-600 font-semibold">@9268887770?</span>
-      </h2>
-
-      <div className="grid md:grid-cols-2 gap-6">
-        {features.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-start gap-3 bg-gray-100 rounded-lg px-5 py-4 border-l-4 border-blue-600 shadow-sm"
-          >
-            <Check className="text-blue-600 mt-1 flex-shrink-0" size={20} />
-            <div>
-              <h3 className="font-semibold text-lg text-gray-900">
-                {item.title}
-              </h3>
-              <p className="text-gray-700 text-sm md:text-base">{item.desc}</p>
-            </div>
           </div>
-        ))}
-      </div>
-    </section>
-      <section className="max-w-7xl mx-auto px-6 ">
-      <div className="bg-gray-50 rounded-lg shadow-md p-8 text-center">
-        <h2 className="text-lg md:text-xl font-bold text-gray-800">
-          Book Your Water Purifier Service Today!
-        </h2>
-        <p className="text-gray-600 mt-2">
-          Don’t wait! Get the <span className="font-semibold">Best RO service</span> 
-          at the most competitive rates. Contact rocareindia today for a free 
-          consultation and quote.
-        </p>
-
-        <div className="mt-8 flex flex-col md:flex-row justify-center items-center gap-6">
-          {contactInfo.map((item, index) => (
-            <a
-              key={index}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-white rounded-full shadow-md px-6 py-3 transition hover:shadow-lg w-full md:w-auto"
-            >
-              <div className={`p-2 rounded-full ${item.bg}`}>{item.icon}</div>
-              <span className="text-gray-800 font-medium">{item.text}</span>
-            </a>
-          ))}
         </div>
+
       </div>
-    </section>
-
-    <section>
-          <h2 className="text-3xl font-semibold text-center mb-4 text-blue-800">
-        Happiness Guarantee
-      </h2>
-       <div className="w-[340px] mx-auto  h-1 rounded-lg bg-gradient-to-r  mb-2 from-blue-700 via-blue-400 to-blue-700"></div>
-
-    
-      <CustomerReviewCard />
-    </section>
-
-
     </div>
   );
 };
