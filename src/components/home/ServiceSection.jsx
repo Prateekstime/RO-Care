@@ -74,7 +74,7 @@ const ServiceSection = () => {
       </p>
 
       {/* --- Scrollable Service Cards --- */}
-      <div className="flex overflow-x-auto gap-4 sm:gap-6 pb-2 snap-x snap-mandatory scrollbar-hide">
+      <div className="flex overflow-x-auto gap-4 sm:gap-6 pb-2 justify-center snap-x snap-mandatory scrollbar-hide">
         {services.map((service) => (
           <div
             key={service.id}

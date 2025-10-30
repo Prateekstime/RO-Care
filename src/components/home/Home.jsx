@@ -114,7 +114,7 @@ const Home = () => {
   <CategoryCard />
 </div>
 
-      <div className=" w-full max-w-[1440px]  bg-cyan-50 rounded-2xl p-3 flex justify-between items-center ">
+      <div className=" w-full  max-w-[1440px]  bg-cyan-50 rounded-2xl p-3 flex justify-around mx-auto items-center ">
         <ServiceSection />
       </div>
       <div className=" w-full max-w-[1440px]  rounded-2xl  flex justify-between items-center ">
@@ -167,7 +167,7 @@ const Home = () => {
           <CustomerReviewCard />
 
       <div className="w-full py-10 px-6 flex justify-center items-center relative overflow-">
-      <div className="max-w-5xl w-full bg-[#BCBBFF] rounded-xl shadow-md text-center text-gray-900 p-10 relative overflow-hidden">
+      <div className=" w-full bg-[#BCBBFF] rounded-xl shadow-md text-center text-gray-900 p-10 relative overflow-hidden">
 
         {/* Decorative background circles (BEHIND CONTENT) */}
         <div className="absolute inset-0 z-10">
