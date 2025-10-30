@@ -13,6 +13,7 @@ import Service2 from "../../assets/Service2.png";
 import UnIn from "../../assets/UnIn.png";
 import UnInService from "../../assets/UnInService.png";
 import CustomerReviewCard from "../home/CustomerReviewCard";
+import { ChevronRight } from "lucide-react";
 
 const ServiceCategoryPage = () => {
     const navigate =useNavigate();
@@ -116,7 +117,7 @@ const ServiceCategoryPage = () => {
       </div>
 
       {/* Top Service Categories */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+      <div className="grid  grid-cols-4 gap-2 sm:gap-6 mt-6">
         {[
           { img: RepairService, title: "Repair" },
           { img: Service, title: "Service" },
@@ -125,34 +126,42 @@ const ServiceCategoryPage = () => {
         ].map((service, index) => (
           <div
             key={index}
-            className="bg-white border border-gray-200 p-5 rounded-xl text-center shadow-md hover:shadow-xl hover:shadow-[#1F7A8C]/25 transition-all duration-300"
+            className="bg-white border border-gray-200 p-1 sm:p-3 rounded-xl text-center shadow-md hover:shadow-xl hover:shadow-[#1F7A8C]/25 transition-all duration-300"
           >
-            <img src={service.img} alt={service.title} className="w-32 h-32 mx-auto object-contain" />
-            <h4 className="text-lg font-semibold text-[#0B3D91] mt-4">{service.title}</h4>
+            <img src={service.img} alt={service.title} className="  object-contain" />
+            <h4 className="text-xs w-full sm:text-sm font-semibold text-[#0B3D91] mt-4">{service.title}</h4>
            
           </div>
         ))}
       </div>
 
       {/* Service Details */}
-      <div className="flex flex-col gap-10  ">
+      <div className="flex flex-col gap-2 sm:gap-6  ">
         {servicesData.map((section, idx) => (
           <div key={idx}>
+            <div className="flex justify-between">
+
             <h2 className="text-xl md:text-2xl font-semibold  text-[#0B3D91]">{section.section}</h2>
+            <div className="flex" onClick={()=>{navigate("/services")}}>
+
+            <h2 className="text-sm md:text-lg font-semibold  text-gray-400">View All</h2>
+            <ChevronRight className="h-5 my-auto" />
+            </div>
+            </div>
              <div className="w-32 h-1 rounded-full bg-[#008ECC] mb-4"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 shadow-md rounded-2xl border-t p-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 sm:gap-6 gap-1 shadow-md rounded-2xl border-t p-4">
               {section.products.map((item, i) => (
                 <div onClick={()=>{navigate("/services")}}
                   key={i}
                   className="border border-[#1F7A8C]/30 rounded-2xl bg-white shadow hover:shadow-xl hover:shadow-[#1F7A8C]/30 transition-transform hover:scale-[1.02] overflow-hidden"
                 >
                   <img src={section.image} alt={item.name} className="w-full h-48 object-cover" />
-                  <div className="p-5 flex flex-col justify-between">
-                    <h3 className="text-lg font-semibold text-[#0B3D91] mb-2">{item.name}</h3>
+                  <div className="p-1 flex flex-col justify-between">
+                    <h3 className="text-sm md:text-lg font-semibold text-[#0B3D91] mb-2">{item.name}</h3>
                     <div className="flex items-center gap-2 mb-2">
-                      <img src={BlueStar} alt="Star" className="w-4 h-4" />
-                      <span className="font-semibold">{item.rating}</span>
-                      <span className="text-gray-400 text-sm">({item.reviews})</span>
+                      <img src={BlueStar} alt="Star" className="w-3 h-3 sm:w-4 sm:h-4" />
+                      <span className="font-semibold text-xs sm:text-base">{item.rating}</span>
+                      <span className="text-gray-400 text-xs sm:text-sm">({item.reviews})</span>
                     </div>
                     <div className="flex items-center gap-6 mb-3">
                       <span className="font-semibold text-lg flex items-center gap-1 text-[#1F7A8C]">
@@ -179,8 +188,8 @@ const ServiceCategoryPage = () => {
           </div>
         ))}
       </div>
-
-      {/* Why Choose Section */}
+{/* 
+      Why Choose Section
       <section className="bg-gray-50 rounded-xl shadow-md p-6 md:p-10">
         <h2 className="text-center text-xl md:text-2xl font-bold mb-10">
           Why Choose <span className="text-blue-600">RO Care India</span> Water Purifier Service In India{" "}
@@ -201,10 +210,10 @@ const ServiceCategoryPage = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
-      <section className="bg-gray-50 rounded-lg shadow-md p-8 text-center">
+      {/* <section className="bg-gray-50 rounded-lg shadow-md p-8 text-center">
         <h2 className="text-lg md:text-xl font-bold text-gray-800">
           Book Your Water Purifier Service Today!
         </h2>
@@ -227,14 +236,9 @@ const ServiceCategoryPage = () => {
             </a>
           ))}
         </div>
-      </section>
+      </section> */}
 
-      {/* Customer Review Section */}
-      <section>
-        <h2 className="text-3xl font-semibold text-center mb-4 text-blue-800">Happiness Guarantee</h2>
-        <div className="w-[340px] mx-auto h-1 rounded-lg bg-gradient-to-r mb-2 from-blue-700 via-blue-400 to-blue-700"></div>
-        <CustomerReviewCard />
-      </section>
+      
     </div>
   );
 };

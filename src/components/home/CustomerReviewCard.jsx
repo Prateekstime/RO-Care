@@ -3,8 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
-import RoMobile from "../../assets/rocareMobile.webp";
-import googlePlay from "../../assets/googleplay.png";
 
 const testimonials = [
   {
@@ -83,9 +81,7 @@ const testimonials = [
 
 const CustomerReviewCard = () => {
   return (
-    <div className="max-w-[1440px] mx-auto px-6 py-4">
-  
-
+    <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-10">
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{
@@ -97,67 +93,63 @@ const CustomerReviewCard = () => {
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }}
-        spaceBetween={30}
-        slidesPerView={1}
+        spaceBetween={20}
         loop={true}
-        speed={800}
         grabCursor={true}
+        speed={800}
         breakpoints={{
-          320: {
+          0: {
             slidesPerView: 1,
-            spaceBetween: 20,
           },
           640: {
             slidesPerView: 1,
-            spaceBetween: 20,
           },
           768: {
             slidesPerView: 2,
-            spaceBetween: 25,
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 30,
           },
           1280: {
-            slidesPerView: 3,
-            spaceBetween: 30,
+            slidesPerView: 4,
           },
         }}
         className="pb-12"
       >
         {testimonials.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="bg-white my-2 rounded-xl shadow-lg p-6 flex flex-col justify-between w-full border border-gray-100 hover:shadow-xl transition-all duration-300">
-               <div>
-                  <h5 className="font-bold text-gray-800">{item.name}</h5>
-                  <p className="text-sm text-gray-600">{item.location}</p>
-                </div>
-                 <div className="flex items-center gap-3 mt-auto  border-t border-gray-100">
-                <img
-                  src={item.avatar}
-                  alt={item.name}
-                  className="w-10 h-10 rounded-full object-cover border-2 border-blue-100"
-                />
-               
-              </div>
-              <div className="mb-2">
-                <div className="text-yellow-500 text-lg mb-3">
-                  {"★".repeat(item.rating)}
-                  <span className="text-gray-300">
-                    {"☆".repeat(5 - item.rating)}
-                  </span>
-                </div>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  {item.review}
-                </p>
-              </div>
-             
-            </div>
+          <div className="bg-white w-full max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-full mx-auto rounded-2xl shadow-lg p-4 flex flex-col justify-between h-full border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden">
+  <div className="flex items-center gap-3 mb-4">
+    <img
+      src={item.avatar}
+      alt={item.name}
+      className="w-10 h-10 rounded-full object-cover border-2 border-blue-100"
+    />
+    <div>
+      <h5 className="font-semibold text-gray-800 text-sm sm:text-base">
+        {item.name}
+      </h5>
+      <p className="text-xs text-gray-500">{item.location}</p>
+    </div>
+  </div>
+
+  <div className="mb-3 w-full">
+    <div className="text-yellow-500 text-sm sm:text-lg mb-2 flex items-center">
+      {"★".repeat(item.rating)}
+      <span className="text-gray-300">
+        {"☆".repeat(5 - item.rating)}
+      </span>
+    </div>
+
+    <p className="text-gray-700 text-xs sm:text-sm leading-relaxed break-words text-justify">
+      {item.review}
+    </p>
+  </div>
+</div>
+
           </SwiperSlide>
         ))}
       </Swiper>
-   
     </div>
   );
 };

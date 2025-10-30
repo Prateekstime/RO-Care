@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { ShoppingCart, CreditCard } from "lucide-react"; // icons
 import featureImage1 from "../../assets/product_1676_2_thumb.jpg"
 import featureImage2 from "../../assets/product_427_1_thumb.webp";
 import featureImage3 from "../../assets/product_445_1_thumb.webp";
@@ -99,78 +100,96 @@ const ProductsSection = () => {
   const products = productsByCategory[activeCategory]; // dynamically get products for selected category
 
   return (
-    <div className="w-full max-w-[1440px] mx-auto px-6 py-4">
-      <h2 className="text-3xl font-semibold text-center text-black mb-2">
+    <div className="w-full max-w-[1440px] mx-auto px-2 py-4">
+      <h2 className="text-xl sm:text-3xl font-semibold text-center text-black mb-2">
         Our Products
       </h2>
       
-      <p className=" text-center mb-6">
+      <p className="text-sm sm:text-xl text-center mb-4">
         Choose the product according your preference.
       </p>
       
 
-      {/* Categories */}
-      <div className="flex flex-wrap justify-center gap-10 mb-8">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-              activeCategory === cat
-                ? "bg-[#70FFDD] text-white"
-                : "bg-gray-200 text-black hover:bg-[#ddfff7]"
-            }`}
-          >
-             {cat} 
-          </button>
-        ))}
-      </div> 
 
-      {/* Product Slider */}
-      <Swiper
-        modules={[Navigation]}
-        navigation
-        spaceBetween={20}
-        breakpoints={{
-          180: { slidesPerView: 1 },
-          480: { slidesPerView: 2 },
-          768: { slidesPerView: 3 },
-          1024: { slidesPerView: 4 },
-          1280: { slidesPerView: 5 },
-        }}
-      >
-        {products.map((product) => (
-          <SwiperSlide key={product.id}>
-            <div className="bg-white border rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
-              <div className="flex justify-center items-center h-56 p-4">
-                <div className="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-white px-2 bg-[#008ECC]"> <p>42%<br />Off</p></div>
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="h-full object-contain"
-                />
-              </div>
-              <div className="p-4 flex flex-col gap-2">
-                <p className="text-gray-800  font-medium">{product.name}</p>
-                {/* <p className="text-gray-500 text-sm">{product.brand}</p> */}
-                <p className="font-semibold text-sm text-blue-900">{product.price}{"  "}
-              <span className="inline line-through text-gray-500">
-  {product.price + 5000}
-</span>
-                </p>
-                <div className="flex justify-between">
-                <button className="text-md px-2 flex items-center justify-center border border-black rounded-md hover:bg-green-500 transition">
-                  Add to Cart
-                </button>
-                  <button className="text-sm  px-2 flex items-center justify-center bg-green-500 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
-                  Buy Now
-                </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    
+<div className="flex flex-nowrap whitespace-nowrap scrollbar-hide overflow-x-auto justify-start sm:justify-center gap-2 sm:gap-4 mb-8 px-2">
+  {categories.map((cat) => (
+    <button
+      key={cat}
+      onClick={() => setActiveCategory(cat)}
+      className={`flex-shrink-0 px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs  font-medium transition ${
+        activeCategory === cat
+          ? "bg-[#31B22BD9] text-white"
+          : "bg-gray-200 text-black hover:bg-[#ddfff7]"
+      }`}
+      style={{ width: "fit-content" }}
+    >
+      {cat}
+    </button>
+  ))}
+</div>
+
+
+<Swiper
+  modules={[Navigation]}
+  navigation
+  spaceBetween={10}
+  breakpoints={{
+    180: { slidesPerView: 2.5 },     // tiny screens
+    320: { slidesPerView: 2.5 },       // small phones
+    480: { slidesPerView: 3 },       // large phones
+    768: { slidesPerView: 4 },       // tablets
+    1024: { slidesPerView: 5 },      // laptops
+    1280: { slidesPerView: 5 },      // desktops
+  }}
+>
+  {products.map((product) => (
+    <SwiperSlide key={product.id}>
+      <div className="bg-white border rounded-sm sm:rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+        <div className="flex justify-center items-center h-20 sm:h-36 lg:h-50 p-0 sm:p-4 relative">
+          <div className="absolute top-0 right-0 rounded-tr-sm rounded-bl-sm text-white px-1 sm:px-2 bg-[#008ECC] text-[8px]">
+            <p>42%<br />Off</p>
+          </div>
+          <img
+            src={product.image}
+            alt={product.name}
+            className="h-16 sm:h-full object-contain"
+          />
+        </div>
+        <div className="p-4 flex flex-col gap-2">
+          <p className="text-gray-800 text-[10px] sm:text-xs md:text-sm font-medium">
+            {product.name}
+          </p>
+          <p className=" text-[10px] sm:text-xs md:text-sm font-semibold  text-blue-900">
+            {product.price}
+            <span className="inline line-through text-gray-500 ml-1">
+              ₹{parseInt(product.price.replace(/[₹,]/g, "")) + 5000}
+            </span>
+          </p>
+        <div className="flex gap-2 w-full justify-evenly">
+  {/* Add to Cart */}
+  <button className="text-xs sm:text-sm whitespace-nowrap px-2 flex items-center justify-center border border-black rounded-md hover:bg-green-500 transition">
+    {/* Show icon on small screens */}
+    <ShoppingCart size={14} className="sm:hidden" />
+    {/* Show text on larger screens */}
+    <span className="hidden sm:block">
+      Add to <br /> Cart
+    </span>
+  </button>
+
+  <button className="text-xs sm:text-sm px-2 flex items-center justify-center bg-green-500 border border-green-700 text-white rounded-md hover:bg-green-600 transition">
+   
+    <span className="">
+      Buy Now
+    </span>
+  </button>
+</div>
+        </div>
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
+
 
       {/* Features */}
       <div className="flex flex-wrap justify-center gap-10 mt-12">

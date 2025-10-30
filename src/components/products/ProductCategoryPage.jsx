@@ -331,7 +331,7 @@ const ProductCategoryPage = () => {
       </div>
 
       
-      <div className="flex flex-col lg:flex-row gap-x-10">
+      <div className="flex flex-col sm:flex-row gap-x-10">
         
         
         <div className="flex-1 flex flex-col gap-10">
