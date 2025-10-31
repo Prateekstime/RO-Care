@@ -37,7 +37,7 @@ const Footer = () => {
               <img src={X} alt="X" className="w-5 h-5" />
             </a>
             <a href="#" target="_blank">
-              <img src={GooglePlayIcon} alt="YouTube" className="w-5 h-5" />
+              <img src={GooglePlayIcon} alt="YouTube" className="w-auto h-5" />
             </a>
           </div>
         </div>
@@ -59,11 +59,10 @@ const Footer = () => {
         <div>
           <h4 className="text-white font-semibold text-lg  mb-3 sm:mb-6">Contact</h4>
           <ul className="space-y-2 text-sm">
-            <li>📞 +91 987654321</li>
-            <li>✉️ Support@Technoro.com</li>
+            <li>📞 +91 9823208362</li>
+            <li>✉️ info@talentricetechnokrate.com</li>
             <li>
-              📍 Unit No. 123 12th floor, AMD Metro,<br />
-              Gurgaon, Haryana 123456
+              📍 4th floor,Prince Complex, Chatrapati Nagar, Nagpur, Maharastra, 440015
             </li>
           </ul>
         </div>
